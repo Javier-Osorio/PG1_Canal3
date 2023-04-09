@@ -2062,11 +2062,26 @@
     <Content Include="plugins\uplot\uPlot.iife.min.js" />
     <Content Include="plugins\uplot\uPlot.min.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\MaterialDigital\WebMaterialDigital.aspx" />
     <Content Include="WebLogIn.aspx" />
-    <Content Include="WebMasterPage.aspx" />
+    <Content Include="WebForms\WebMasterPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SitioWeb.Master.cs">
+      <DependentUpon>SitioWeb.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SitioWeb.Master.designer.cs">
+      <DependentUpon>SitioWeb.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\MaterialDigital\WebMaterialDigital.aspx.cs">
+      <DependentUpon>WebMaterialDigital.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\MaterialDigital\WebMaterialDigital.aspx.designer.cs">
+      <DependentUpon>WebMaterialDigital.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebLogIn.aspx.cs">
       <DependentUpon>WebLogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2074,11 +2089,11 @@
     <Compile Include="WebLogIn.aspx.designer.cs">
       <DependentUpon>WebLogIn.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebMasterPage.aspx.cs">
+    <Compile Include="WebForms\WebMasterPage.aspx.cs">
       <DependentUpon>WebMasterPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebMasterPage.aspx.designer.cs">
+    <Compile Include="WebForms\WebMasterPage.aspx.designer.cs">
       <DependentUpon>WebMasterPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -2217,6 +2232,7 @@
     <Content Include="plugins\summernote\summernote.js.map" />
     <Content Include="plugins\summernote\summernote.min.js.map" />
     <Content Include="plugins\toastr\toastr.js.map" />
+    <Content Include="SitioWeb.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2225,7 +2241,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="WebForms\MaterialDigital\" />
     <Folder Include="WebForms\Programacion\" />
   </ItemGroup>
   <PropertyGroup>
