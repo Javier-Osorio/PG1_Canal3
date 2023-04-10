@@ -67,11 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\adminlte.min.css" />
-    <Content Include="css\fontawesome-free\all.min.css" />
-    <Content Include="css\icheck-bootstrap\icheck-bootstrap.min.css" />
-    <Content Include="css\overlayScrollbars\OverlayScrollbars.min.css" />
-    <Content Include="css\tempusdominus-bootstrap-4\tempusdominus-bootstrap-4.min.css" />
     <Content Include="dist\css\adminlte.css" />
     <Content Include="dist\css\adminlte.min.css" />
     <Content Include="dist\css\alt\adminlte.components.css" />
@@ -125,10 +120,6 @@
     <Content Include="dist\js\pages\dashboard.js" />
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="dist\js\pages\dashboard3.js" />
-    <Content Include="js\jquery-ui\jquery-ui.min.js" />
-    <Content Include="js\jquery\jquery.min.js" />
-    <Content Include="js\overlayScrollbars\jquery.overlayScrollbars.min.js" />
-    <Content Include="js\tempusdominus-bootstrap-4\tempusdominus-bootstrap-4.min.js" />
     <Content Include="pages\calendar.html" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
@@ -2063,6 +2054,7 @@
     <Content Include="plugins\uplot\uPlot.min.css" />
     <Content Include="Web.config" />
     <Content Include="WebForms\MaterialDigital\WebMaterialDigital.aspx" />
+    <Content Include="WebForms\Programacion\WebProgramacion.aspx" />
     <Content Include="WebLogIn.aspx" />
     <Content Include="WebForms\WebMasterPage.aspx" />
   </ItemGroup>
@@ -2081,6 +2073,13 @@
     </Compile>
     <Compile Include="WebForms\MaterialDigital\WebMaterialDigital.aspx.designer.cs">
       <DependentUpon>WebMaterialDigital.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebProgramacion.aspx.cs">
+      <DependentUpon>WebProgramacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebProgramacion.aspx.designer.cs">
+      <DependentUpon>WebProgramacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebLogIn.aspx.cs">
       <DependentUpon>WebLogIn.aspx</DependentUpon>
@@ -2240,9 +2239,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WebForms\Programacion\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

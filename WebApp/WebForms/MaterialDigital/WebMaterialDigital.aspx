@@ -3,5 +3,6 @@
     <title>Material Digital</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    Web Material Digital /
+    Aqui va a ir las tablas del material
 </asp:Content>
