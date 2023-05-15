@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebApp.WebForms.MaterialDigital {
+namespace WebApp {
     
     
-    public partial class WebMaterialDigital {
+    public partial class WebNuevaContra {
     }
 }

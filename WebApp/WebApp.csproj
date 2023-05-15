@@ -2053,10 +2053,11 @@
     <Content Include="plugins\uplot\uPlot.iife.min.js" />
     <Content Include="plugins\uplot\uPlot.min.css" />
     <Content Include="Web.config" />
-    <Content Include="WebForms\MaterialDigital\WebMaterialDigital.aspx" />
     <Content Include="WebForms\Programacion\WebProgramacion.aspx" />
     <Content Include="WebLogIn.aspx" />
     <Content Include="WebForms\WebMasterPage.aspx" />
+    <Content Include="WebNuevaContra.aspx" />
+    <Content Include="WebRecuperar.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2066,13 +2067,6 @@
     </Compile>
     <Compile Include="SitioWeb.Master.designer.cs">
       <DependentUpon>SitioWeb.Master</DependentUpon>
-    </Compile>
-    <Compile Include="WebForms\MaterialDigital\WebMaterialDigital.aspx.cs">
-      <DependentUpon>WebMaterialDigital.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\MaterialDigital\WebMaterialDigital.aspx.designer.cs">
-      <DependentUpon>WebMaterialDigital.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Programacion\WebProgramacion.aspx.cs">
       <DependentUpon>WebProgramacion.aspx</DependentUpon>
@@ -2094,6 +2088,20 @@
     </Compile>
     <Compile Include="WebForms\WebMasterPage.aspx.designer.cs">
       <DependentUpon>WebMasterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebNuevaContra.aspx.cs">
+      <DependentUpon>WebNuevaContra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebNuevaContra.aspx.designer.cs">
+      <DependentUpon>WebNuevaContra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebRecuperar.aspx.cs">
+      <DependentUpon>WebRecuperar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebRecuperar.aspx.designer.cs">
+      <DependentUpon>WebRecuperar.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebLogIn.aspx.cs" Inherits="WebApp.WebLogIn" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebNuevaContra.aspx.cs" Inherits="WebApp.WebNuevaContra" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Iniciar Sesión</title>
+    <title>Nueva Contraseña</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <!-- Font Awesome -->
@@ -17,25 +17,23 @@
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
-        <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <h1><b>Deptartamento</b> programacion y manejo de contenidos</h1>
+                <h1><b>Departamento</b> programación y manejo de contenidos</h1>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Iniciar Sesión</p>
-
+                <p class="login-box-msg">Recupera tu contraseña ahora</p>
                 <form action="#" method="post">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="correo@gmail.com" />
+                        <input type="password" class="form-control" placeholder="Nueva contraseña" />
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="" />
+                        <input type="password" class="form-control" placeholder="Confirmar Contraseña" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -43,39 +41,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <%--<div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember" />
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>--%>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">Cambiar contraseña</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-                <%--<div class="social-auth-links text-center mt-2 mb-3">
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i>Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i>Sign in using Google+
-                    </a>
-                </div>--%>
-                <!-- /.social-auth-links -->
-                <br />
-                <p class="mb-1">
-                    <a href="WebRecuperar.aspx">Olvide mi contraseña</a>
+                <p class="mt-3 mb-1">
+                    <%--<a href="login.html">Login</a>--%>
                 </p>
             </div>
-            <!-- /.card-body -->
+            <!-- /.login-card-body -->
         </div>
-        <!-- /.card -->
     </div>
     <!-- /.login-box -->
 
