@@ -2070,6 +2070,17 @@
       <DependentUpon>SitioWeb.Master</DependentUpon>
     </Compile>
     <Compile Include="App_Data\Connection\Connection.cs" />
+    <Compile Include="App_Data\Dao\Dao_Programacion.cs" />
+    <Compile Include="App_Data\Dao\Dao_LogIn.cs" />
+    <Compile Include="App_Data\Model\LogIn\Modulos.cs" />
+    <Compile Include="App_Data\Model\LogIn\Roles.cs" />
+    <Compile Include="App_Data\Model\Programacion\Backup_peliculas.cs" />
+    <Compile Include="App_Data\Model\Programacion\Backup_series.cs" />
+    <Compile Include="App_Data\Model\Programacion\Casa_productoras.cs" />
+    <Compile Include="App_Data\Model\Programacion\Nombre_material.cs" />
+    <Compile Include="App_Data\Model\Programacion\Tipos_peliculas.cs" />
+    <Compile Include="App_Data\Model\Programacion\Tipos_series.cs" />
+    <Compile Include="App_Data\Model\Programacion\Ubicaciones.cs" />
     <Compile Include="WebForms\Programacion\WebProgramacionPeliculas.aspx.cs">
       <DependentUpon>WebProgramacionPeliculas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2084,6 +2095,7 @@
     <Compile Include="WebForms\Programacion\WebProgramacionSeries.aspx.designer.cs">
       <DependentUpon>WebProgramacionSeries.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Data\Model\LogIn\Usuarios.cs" />
     <Compile Include="WebLogIn.aspx.cs">
       <DependentUpon>WebLogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2256,10 +2268,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\Dao\" />
-    <Folder Include="App_Data\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
