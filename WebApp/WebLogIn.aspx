@@ -20,7 +20,7 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <h1><b>Deptartamento</b> programacion y manejo de contenidos</h1>
+                <h1><b>Departamento</b> programacion y manejo de contenidos</h1>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Iniciar Sesión</p>

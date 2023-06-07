@@ -2053,7 +2053,8 @@
     <Content Include="plugins\uplot\uPlot.iife.min.js" />
     <Content Include="plugins\uplot\uPlot.min.css" />
     <Content Include="Web.config" />
-    <Content Include="WebForms\Programacion\WebProgramacion.aspx" />
+    <Content Include="WebForms\Programacion\WebProgramacionPeliculas.aspx" />
+    <Content Include="WebForms\Programacion\WebProgramacionSeries.aspx" />
     <Content Include="WebLogIn.aspx" />
     <Content Include="WebForms\WebMasterPage.aspx" />
     <Content Include="WebNuevaContra.aspx" />
@@ -2068,12 +2069,20 @@
     <Compile Include="SitioWeb.Master.designer.cs">
       <DependentUpon>SitioWeb.Master</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\Programacion\WebProgramacion.aspx.cs">
-      <DependentUpon>WebProgramacion.aspx</DependentUpon>
+    <Compile Include="App_Data\Connection\Connection.cs" />
+    <Compile Include="WebForms\Programacion\WebProgramacionPeliculas.aspx.cs">
+      <DependentUpon>WebProgramacionPeliculas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Programacion\WebProgramacion.aspx.designer.cs">
-      <DependentUpon>WebProgramacion.aspx</DependentUpon>
+    <Compile Include="WebForms\Programacion\WebProgramacionPeliculas.aspx.designer.cs">
+      <DependentUpon>WebProgramacionPeliculas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebProgramacionSeries.aspx.cs">
+      <DependentUpon>WebProgramacionSeries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebProgramacionSeries.aspx.designer.cs">
+      <DependentUpon>WebProgramacionSeries.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebLogIn.aspx.cs">
       <DependentUpon>WebLogIn.aspx</DependentUpon>
@@ -2247,7 +2256,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\Dao\" />
+    <Folder Include="App_Data\Model\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
