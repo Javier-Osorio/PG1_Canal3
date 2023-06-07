@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApp.WebForms
+namespace WebApp.Modelo_Controlador.Dao
 {
-    public class Usuarios
+    public class Dao_Login
     {
     }
 }

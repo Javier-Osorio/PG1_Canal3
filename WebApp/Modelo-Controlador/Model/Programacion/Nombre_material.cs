@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApp.WebForms.Programacion
+namespace WebApp.Modelo_Controlador.Model.Programacion
 {
     public class Nombre_material
     {

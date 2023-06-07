@@ -2053,14 +2053,30 @@
     <Content Include="plugins\uplot\uPlot.iife.min.js" />
     <Content Include="plugins\uplot\uPlot.min.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\Programacion\WebCasa_productora.aspx" />
+    <Content Include="WebForms\Programacion\WebNombre_material.aspx" />
     <Content Include="WebForms\Programacion\WebProgramacionPeliculas.aspx" />
     <Content Include="WebForms\Programacion\WebProgramacionSeries.aspx" />
+    <Content Include="WebForms\Programacion\WebTipo_pelicula.aspx" />
+    <Content Include="WebForms\Programacion\WebTipo_serie.aspx" />
+    <Content Include="WebForms\Programacion\WebUbicacion.aspx" />
     <Content Include="WebLogIn.aspx" />
     <Content Include="WebForms\WebMasterPage.aspx" />
     <Content Include="WebNuevaContra.aspx" />
     <Content Include="WebRecuperar.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelo-Controlador\Connection\Conexion.cs" />
+    <Compile Include="Modelo-Controlador\Connection\DataLayer.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Dao_Login.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Dao_Programacion.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Backup_peliculas.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Backup_series.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Casa_productoras.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Nombre_material.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Tipos_peliculas.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Tipos_series.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Ubicaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SitioWeb.Master.cs">
       <DependentUpon>SitioWeb.Master</DependentUpon>
@@ -2069,18 +2085,20 @@
     <Compile Include="SitioWeb.Master.designer.cs">
       <DependentUpon>SitioWeb.Master</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\Connection\Connection.cs" />
-    <Compile Include="App_Data\Dao\Dao_Programacion.cs" />
-    <Compile Include="App_Data\Dao\Dao_LogIn.cs" />
-    <Compile Include="App_Data\Model\LogIn\Modulos.cs" />
-    <Compile Include="App_Data\Model\LogIn\Roles.cs" />
-    <Compile Include="App_Data\Model\Programacion\Backup_peliculas.cs" />
-    <Compile Include="App_Data\Model\Programacion\Backup_series.cs" />
-    <Compile Include="App_Data\Model\Programacion\Casa_productoras.cs" />
-    <Compile Include="App_Data\Model\Programacion\Nombre_material.cs" />
-    <Compile Include="App_Data\Model\Programacion\Tipos_peliculas.cs" />
-    <Compile Include="App_Data\Model\Programacion\Tipos_series.cs" />
-    <Compile Include="App_Data\Model\Programacion\Ubicaciones.cs" />
+    <Compile Include="WebForms\Programacion\WebCasa_productora.aspx.cs">
+      <DependentUpon>WebCasa_productora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebCasa_productora.aspx.designer.cs">
+      <DependentUpon>WebCasa_productora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebNombre_material.aspx.cs">
+      <DependentUpon>WebNombre_material.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebNombre_material.aspx.designer.cs">
+      <DependentUpon>WebNombre_material.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Programacion\WebProgramacionPeliculas.aspx.cs">
       <DependentUpon>WebProgramacionPeliculas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2095,7 +2113,27 @@
     <Compile Include="WebForms\Programacion\WebProgramacionSeries.aspx.designer.cs">
       <DependentUpon>WebProgramacionSeries.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\Model\LogIn\Usuarios.cs" />
+    <Compile Include="WebForms\Programacion\WebTipo_pelicula.aspx.cs">
+      <DependentUpon>WebTipo_pelicula.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebTipo_pelicula.aspx.designer.cs">
+      <DependentUpon>WebTipo_pelicula.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebTipo_serie.aspx.cs">
+      <DependentUpon>WebTipo_serie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebTipo_serie.aspx.designer.cs">
+      <DependentUpon>WebTipo_serie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebUbicacion.aspx.cs">
+      <DependentUpon>WebUbicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebUbicacion.aspx.designer.cs">
+      <DependentUpon>WebUbicacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebLogIn.aspx.cs">
       <DependentUpon>WebLogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2268,7 +2306,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Modelo-Controlador\Model\Login\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WebApp.WebForms.Programacion
 {
-    public partial class WebProgramacionPeliculas : System.Web.UI.Page
+    public partial class WebTipo_serie : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
-        
-
     }
 }
