@@ -33,22 +33,52 @@ namespace WebApp.WebForms.Programacion
         {
             if (dao.GetUbicaciones())
             {
-                tabla_ubicacion.DataSource = dao.DsReturn.Tables["ubicacion"];
-                tabla_ubicacion.DataBind();
+                tabla_ubicaciones.DataSource = dao.DsReturn.Tables["ubicacion"];
+                tabla_ubicaciones.DataBind();
                 Session["ubicacion"] = dao.DsReturn;
             }
         }
         void SetUbicaciones()
         {
-            tabla_ubicacion.DataSource = ((DataSet)Session["ubicacion"]);
-            tabla_ubicacion.DataBind();
+            tabla_ubicaciones.DataSource = ((DataSet)Session["ubicacion"]);
+            tabla_ubicaciones.DataBind();
         }
 
-        protected void tabla_ubicacion_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void tabla_ubicaciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            tabla_ubicacion.PageIndex = e.NewPageIndex;
-            tabla_ubicacion.DataSource = ((DataSet)Session["ubicacion"]);
-            tabla_ubicacion.DataBind();
+            tabla_ubicaciones.EditIndex = e.NewEditIndex;
+            tabla_ubicaciones.DataBind();
+        }
+
+        protected void tabla_ubicaciones_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            tabla_ubicaciones.EditIndex = -1;
+            tabla_ubicaciones.DataBind();
+        }
+
+        protected void tabla_ubicaciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            int id = e.RowIndex;
+            //DataTable data = ((DataTable)Session["ubicacion"]);
+            GridViewRow fila = (sender as LinkButton).NamingContainer as GridViewRow;
+            string admkaln = (fila.Cells[1].Controls[0] as TextBox).Text;
+            string jnkjbnk = (fila.Cells[2].Controls[0] as TextBox).Text;
+            //TextBox asasd = ((TextBox)fila.Cells[2].Controls[0]);
+            var vrfww = ((TextBox)fila.Cells[3].Controls[0]).Text;
+            var ver = (tabla_ubicaciones.Rows[e.RowIndex].FindControl("txtNombre") as TextBox).Text.Trim();
+            var ver2 = (tabla_ubicaciones.Rows[e.RowIndex].FindControl("txtUbicacion") as TextBox).Text.Trim();
+            var verID = int.Parse(tabla_ubicaciones.DataKeys[e.RowIndex].Value.ToString());
+            //string ver = tabla_ubicaciones.Rows[e.RowIndex].Cells[1].Text;
+            //string ver2 = tabla_ubicaciones.Rows[e.RowIndex].Cells[2].Text;
+
+            ubi.ID_ubicacion1 = verID;
+            //ubi.Nombre = ver;
+            //ubi.Path_carpeta = ver2;
+
+            if (dao.ModificarUbicaciones(ubi))
+            {
+                CargaUbicaciones();
+            }
         }
     }
 }

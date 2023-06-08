@@ -22,12 +22,12 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Control tabla_ubicacion.
+        /// Control tabla_ubicaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView tabla_ubicacion;
+        protected global::System.Web.UI.WebControls.GridView tabla_ubicaciones;
     }
 }
