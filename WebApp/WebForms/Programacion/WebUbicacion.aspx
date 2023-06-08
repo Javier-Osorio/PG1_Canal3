@@ -22,12 +22,14 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                    <asp:GridView ID="tabla_ubicacion" runat="server" CssClass="table table-hover text-nowrap">
+                    <asp:GridView ID="tabla_ubicacion" runat="server" CssClass="table table-hover text-nowrap" PageSize="10" AllowPaging="true" OnPageIndexChanging="tabla_ubicacion_PageIndexChanging">
                         <Columns>
                             <asp:BoundField DataField="ID_UBICACION" HeaderText="ID_Ubicacion" ReadOnly="true"/>
                             <asp:BoundField DataField="NOMBRE" HeaderText="Nombre"/>
                             <asp:BoundField DataField="PATH_UBICACION" HeaderText="Ubicacion"/>
                         </Columns>
+                        <PagerStyle CssClass=""/>
+                        <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" FirstPageText="&laquo;" LastPageText="&raquo;" />
                     </asp:GridView>
                     <%--<table class="table table-hover text-nowrap">
                         <thead>
@@ -53,7 +55,7 @@
                     </table>--%>
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer clearfix">
+                <%--<div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
                         <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -61,7 +63,7 @@
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                     </ul>
-                </div>
+                </div>--%>
             </div>
             <!-- /.card -->
         </div>

@@ -43,5 +43,12 @@ namespace WebApp.WebForms.Programacion
             tabla_ubicacion.DataSource = ((DataSet)Session["ubicacion"]);
             tabla_ubicacion.DataBind();
         }
+
+        protected void tabla_ubicacion_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            tabla_ubicacion.PageIndex = e.NewPageIndex;
+            tabla_ubicacion.DataSource = ((DataSet)Session["ubicacion"]);
+            tabla_ubicacion.DataBind();
+        }
     }
 }
