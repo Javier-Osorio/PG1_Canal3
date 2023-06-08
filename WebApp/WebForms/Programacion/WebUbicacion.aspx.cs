@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebApp.Modelo_Controlador.Dao;
+using WebApp.Modelo_Controlador.Dao.Programacion;
 using WebApp.Modelo_Controlador.Model.Programacion;
 
 namespace WebApp.WebForms.Programacion
@@ -26,7 +26,7 @@ namespace WebApp.WebForms.Programacion
                 Console.WriteLine(ex.StackTrace);
             }
         }
-        Dao_Programacion dao = new Dao_Programacion();
+        Dao_Ubicacion dao = new Dao_Ubicacion();
         Ubicaciones ubi = new Ubicaciones();
 
         void CargaUbicaciones()

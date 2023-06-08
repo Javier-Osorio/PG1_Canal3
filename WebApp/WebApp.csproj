@@ -2068,8 +2068,8 @@
   <ItemGroup>
     <Compile Include="Modelo-Controlador\Connection\Conexion.cs" />
     <Compile Include="Modelo-Controlador\Connection\DataLayer.cs" />
-    <Compile Include="Modelo-Controlador\Dao\Dao_Login.cs" />
-    <Compile Include="Modelo-Controlador\Dao\Dao_Programacion.cs" />
+    <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Login.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Ubicacion.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Backup_peliculas.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Backup_series.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Casa_productoras.cs" />

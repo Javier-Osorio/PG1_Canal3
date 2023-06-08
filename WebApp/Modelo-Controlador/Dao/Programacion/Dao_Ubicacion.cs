@@ -6,9 +6,9 @@ using System.Web;
 using WebApp.Modelo_Controlador.Connection;
 using WebApp.Modelo_Controlador.Model.Programacion;
 
-namespace WebApp.Modelo_Controlador.Dao
+namespace WebApp.Modelo_Controlador.Dao.Programacion
 {
-    public class Dao_Programacion : DataLayer
+    public class Dao_Ubicacion : DataLayer
     {
         Conexion conexionDB = new Conexion();
         Ubicaciones ubi = new Ubicaciones(); 
