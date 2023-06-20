@@ -4,14 +4,36 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
 
     <div class="row">
         <div class="col-12">
             <div class="card">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Ubicacion BackUps<small></small></h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input runat="server" type="text" name="" class="form-control" id="txtNombre" placeholder="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ubicacion">Ubicacion:</label>
+                                <input runat="server" type="text" name="" class="form-control" id="txtUbicacion" placeholder="" />
+                            </div>
+                            <asp:HiddenField runat="server" ID="idOculto"/>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
+                        </div>
+                </div>
+                <br />
+                <!-- /.card -->
                 <div class="card-header">
-                    <h3 class="card-title">Ubicacion Backups</h3>
+                    <%--<h3 class="card-title">Ubicacion Backups</h3>--%>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -27,35 +49,13 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                    <asp:GridView ID="tabla_ubicaciones" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="ID_UBICACION" CssClass="table table-hover text-nowrap" OnRowEditing="tabla_ubicaciones_RowEditing" OnRowCancelingEdit="tabla_ubicaciones_RowCancelingEdit" OnRowUpdating="tabla_ubicaciones_RowUpdating">
+                    <asp:GridView ClientIDMode="Static" AutoGenerateColumns="false" DataKeyNames="ID_UBICACION" ID="tabla_ubicaciones" runat="server" AllowPaging="true" CssClass="table table-hover text-nowrap"
+                        OnPageIndexChanging="tabla_ubicaciones_PageIndexChanging" OnRowEditing="tabla_ubicaciones_RowEditing" OnRowCancelingEdit="tabla_ubicaciones_RowCancelingEdit"
+                        OnRowDeleting="tabla_ubicaciones_RowDeleting" OnRowUpdating="tabla_ubicaciones_RowUpdating">
                         <Columns>
-                            <asp:TemplateField HeaderText="ID Ubicacion">
-                                <ItemTemplate>
-                                    <asp:Label Text='<%# Eval("ID_UBICACION")%>' runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Nombre">
-                                <ItemTemplate>
-                                    <asp:Label Text='<%# Eval("NOMBRE")%>' runat="server"></asp:Label>
-                                </ItemTemplate>
-                                <EditItemTemplate>
-                                    <asp:TextBox ID="txtNombre" Text='<%# Eval("NOMBRE")%>' runat="server"></asp:TextBox>
-                                </EditItemTemplate>
-                                <FooterTemplate>
-                                    <asp:TextBox ID="txtNombreFooter" runat="server"></asp:TextBox>
-                                </FooterTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Ubicacion">
-                                <ItemTemplate>
-                                    <asp:Label Text='<%# Eval("PATH_UBICACION")%>' runat="server"></asp:Label>
-                                </ItemTemplate>
-                                <EditItemTemplate>
-                                    <asp:TextBox ID="txtUbicacion" Text='<%# Eval("PATH_UBICACION")%>' runat="server"></asp:TextBox>
-                                </EditItemTemplate>
-                                <FooterTemplate>
-                                    <asp:TextBox ID="txtUbicacionFooter" runat="server"></asp:TextBox>
-                                </FooterTemplate>
-                            </asp:TemplateField>
+                            <asp:BoundField HeaderText="Id Ubicacion" DataField="ID_UBICACION" ReadOnly="true"/>
+                            <asp:BoundField HeaderText="Nombre" DataField="NOMBRE" />
+                            <asp:BoundField HeaderText="Ubicacion" DataField="PATH_UBICACION" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" Text="Editar" CommandName="Edit"></asp:LinkButton>
@@ -67,6 +67,7 @@
                                 </EditItemTemplate>
                             </asp:TemplateField>
                         </Columns>
+                        <PagerSettings Mode="NumericFirstLast" PageButtonCount="10" />
                     </asp:GridView>
                 </div>
             </div>

@@ -44,6 +44,41 @@ namespace WebApp.WebForms.Programacion
             tabla_ubicaciones.DataBind();
         }
 
+        protected void tabla_ubicaciones_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            tabla_ubicaciones.PageIndex = e.NewPageIndex;
+            tabla_ubicaciones.DataBind();
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            ubi.Nombre = txtNombre.Value;
+            ubi.Path_carpeta = txtUbicacion.Value;
+
+            if (dao.InsertarUbicaciones(ubi))
+            {
+                CargaUbicaciones();
+                limpiarTextos();
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Se registro correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no guardado'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+        }
+
+        void limpiarTextos()
+        {
+            txtNombre.Value = "";
+            txtUbicacion.Value = "";
+        }
+
         protected void tabla_ubicaciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
             tabla_ubicaciones.EditIndex = e.NewEditIndex;
@@ -56,29 +91,20 @@ namespace WebApp.WebForms.Programacion
             tabla_ubicaciones.DataBind();
         }
 
+        protected void tabla_ubicaciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
         protected void tabla_ubicaciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            int id = e.RowIndex;
-            //DataTable data = ((DataTable)Session["ubicacion"]);
-            GridViewRow fila = (sender as LinkButton).NamingContainer as GridViewRow;
-            string admkaln = (fila.Cells[1].Controls[0] as TextBox).Text;
-            string jnkjbnk = (fila.Cells[2].Controls[0] as TextBox).Text;
-            //TextBox asasd = ((TextBox)fila.Cells[2].Controls[0]);
-            var vrfww = ((TextBox)fila.Cells[3].Controls[0]).Text;
-            var ver = (tabla_ubicaciones.Rows[e.RowIndex].FindControl("txtNombre") as TextBox).Text.Trim();
-            var ver2 = (tabla_ubicaciones.Rows[e.RowIndex].FindControl("txtUbicacion") as TextBox).Text.Trim();
-            var verID = int.Parse(tabla_ubicaciones.DataKeys[e.RowIndex].Value.ToString());
-            //string ver = tabla_ubicaciones.Rows[e.RowIndex].Cells[1].Text;
-            //string ver2 = tabla_ubicaciones.Rows[e.RowIndex].Cells[2].Text;
-
-            ubi.ID_ubicacion1 = verID;
-            //ubi.Nombre = ver;
-            //ubi.Path_carpeta = ver2;
-
-            if (dao.ModificarUbicaciones(ubi))
-            {
-                CargaUbicaciones();
-            }
+            int idprueba = int.Parse(tabla_ubicaciones.DataKeys[e.RowIndex].Value.ToString());
+            string pruebaNombre = ((TextBox)tabla_ubicaciones.Rows[e.RowIndex].Cells[1].Controls[0]).Text.ToString();
+            string pruebaPath = ((TextBox)tabla_ubicaciones.Rows[e.RowIndex].Cells[2].Controls[0]).Text.ToString();
+            string StrQry = "<script language='javascript'>";
+            StrQry += "alert('"+ idprueba +"; "+pruebaNombre +"; "+pruebaPath +"')";
+            StrQry += "</script>";
+            ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
         }
     }
 }

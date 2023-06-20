@@ -38,12 +38,12 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             try
             {
                 strSql = "INSERT INTO UBICACIONES_CINTAS (ID_UBICACION,NOMBRE,PATH_UBICACION) " +
-                    "VALUES ((SELECT ISNULL(MAX(ID_UBICACION), 0) + 1 FROM UBICACION), @nombre, @path";
+                    "VALUES ((SELECT ISNULL(MAX(ID_UBICACION), 0) + 1 FROM UBICACIONES_CINTAS), @Unombre, @Upath)";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                comando.Parameters.AddWithValue("@nombre", u.Nombre);
-                comando.Parameters.AddWithValue("@path", u.Path_carpeta);
+                comando.Parameters.AddWithValue("@Unombre", u.Nombre);
+                comando.Parameters.AddWithValue("@Upath", u.Path_carpeta);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
