@@ -77,7 +77,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                             <label for="txtNombre">Nombre:</label>
-                            <input runat="server" type="text" name="" class="form-control" id="txtNomb" placeholder="" />
+                            <input runat="server" type="text" name="" class="form-control" id="txtNombre" placeholder="" />
                         </div>                        
                 </div>
                 <div class="modal-footer justify-content-between">

@@ -54,18 +54,16 @@ namespace WebApp.WebForms.Programacion
         {
             txtNomb.Value = "";
             txtUbic.Value = "";
+            txtNom.Value = "";
+            txtUbi.Value = "";
         }
 
         protected void tabla_ubicaciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewRow row = tabla_ubicaciones.Rows[e.NewEditIndex];
-            string id = row.Cells[0].Text;
-            string nom = row.Cells[1].Text;
-            string url = row.Cells[2].Text;
-
-            codUbi.Value = id.ToString();
-            txtNom.Value = nom;
-            txtUbi.Value = url;
+            codUbi.Value = row.Cells[0].Text;
+            txtNom.Value = row.Cells[1].Text;
+            txtUbi.Value = row.Cells[2].Text;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "modalEditar", "$('#modalEditar').modal('show');", true);
             e.Cancel = true; // Cancelar la edición en el GridView
@@ -77,15 +75,15 @@ namespace WebApp.WebForms.Programacion
             if (dao.EliminarUbicaciones(ubi))
             {
                 CargaUbicaciones();
-                limpiarTextos();
-                ClientScript.RegisterStartupScript(GetType(), "modalEditar", "$('#modalEditar').modal('hide');", true);
-                string StrQry = "swal('Registro eliminado correctamente','success')";
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro eliminado correctamente'); ";
+                StrQry += "</script>";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }
             else
             {
                 string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no guardado'); ";
+                StrQry += "alert('Registro no se elimino'); ";
                 StrQry += "</script>";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }
@@ -101,7 +99,7 @@ namespace WebApp.WebForms.Programacion
             {
                 CargaUbicaciones();
                 limpiarTextos();
-                ClientScript.RegisterStartupScript(GetType(), "modalEditar", "$('#modalEditar').modal('hide');", true);
+                //ClientScript.RegisterStartupScript(GetType(), "modalEditar", "$('#modalEditar').modal('hide');", true);
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro modificado correctamente'); ";
                 StrQry += "</script>";

@@ -11,7 +11,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
     public class Dao_Casa_Productora : DataLayer
     {
         Conexion conexionDB = new Conexion();
-        Casa_productoras casa = new Casa_productoras();
+        //Casa_productoras casa = new Casa_productoras();
         SqlConnection conectar;
 
         string strSql;

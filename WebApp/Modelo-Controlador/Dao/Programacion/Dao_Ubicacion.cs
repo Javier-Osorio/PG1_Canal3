@@ -11,7 +11,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
     public class Dao_Ubicacion : DataLayer
     {
         Conexion conexionDB = new Conexion();
-        Ubicaciones ubi = new Ubicaciones(); 
+        //Ubicaciones ubi = new Ubicaciones(); 
         SqlConnection conectar;
 
         string strSql;
