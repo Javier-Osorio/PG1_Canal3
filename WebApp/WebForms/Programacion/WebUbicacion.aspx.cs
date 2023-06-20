@@ -52,8 +52,109 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            ubi.Nombre = txtNombre.Value;
-            ubi.Path_carpeta = txtUbicacion.Value;
+            //ubi.Nombre = txtNombre.Value;
+            //ubi.Path_carpeta = txtUbicacion.Value;
+
+            if (dao.InsertarUbicaciones(ubi))
+            {
+                CargaUbicaciones();
+                limpiarTextos();              
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Se registro correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no guardado'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+        }
+
+        void limpiarTextos()
+        {
+            txtNomb.Value = "";
+            txtUbic.Value = "";
+        }
+
+        protected void tabla_ubicaciones_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = tabla_ubicaciones.Rows[e.NewEditIndex];
+            string id = row.Cells[0].Text;
+            string nom = row.Cells[1].Text;
+            string url = row.Cells[2].Text;
+
+            codUbi.Value = id.ToString();
+            txtNom.Value = nom;
+            txtUbi.Value = url;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "modalEditar", "$('#modalEditar').modal('show');", true);
+            e.Cancel = true; // Cancelar la edición en el GridView
+        }
+
+        protected void tabla_ubicaciones_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+
+        }
+
+        protected void tabla_ubicaciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            ubi.ID_ubicacion1 = int.Parse(tabla_ubicaciones.DataKeys[e.RowIndex].Value.ToString());
+            if (dao.EliminarUbicaciones(ubi))
+            {
+                CargaUbicaciones();
+                limpiarTextos();
+                ClientScript.RegisterStartupScript(GetType(), "modalEditar", "$('#modalEditar').modal('hide');", true);
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Se registro correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no guardado'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+        }
+
+        protected void tabla_ubicaciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            ubi.ID_ubicacion1 = int.Parse(codUbi.Value);
+            ubi.Nombre = txtNom.Value;
+            ubi.Path_carpeta = txtUbi.Value;
+
+            if (dao.ModificarUbicaciones(ubi))
+            {
+                CargaUbicaciones();
+                limpiarTextos();
+                ClientScript.RegisterStartupScript(GetType(), "modalEditar", "$('#modalEditar').modal('hide');", true);
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro modificado correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no modificado'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+        }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            ubi.Nombre = txtNomb.Value;
+            ubi.Path_carpeta = txtUbic.Value;
 
             if (dao.InsertarUbicaciones(ubi))
             {
@@ -71,40 +172,6 @@ namespace WebApp.WebForms.Programacion
                 StrQry += "</script>";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }
-        }
-
-        void limpiarTextos()
-        {
-            txtNombre.Value = "";
-            txtUbicacion.Value = "";
-        }
-
-        protected void tabla_ubicaciones_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            tabla_ubicaciones.EditIndex = e.NewEditIndex;
-            tabla_ubicaciones.DataBind();
-        }
-
-        protected void tabla_ubicaciones_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            tabla_ubicaciones.EditIndex = -1;
-            tabla_ubicaciones.DataBind();
-        }
-
-        protected void tabla_ubicaciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-
-        }
-
-        protected void tabla_ubicaciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            int idprueba = int.Parse(tabla_ubicaciones.DataKeys[e.RowIndex].Value.ToString());
-            string pruebaNombre = ((TextBox)tabla_ubicaciones.Rows[e.RowIndex].Cells[1].Controls[0]).Text.ToString();
-            string pruebaPath = ((TextBox)tabla_ubicaciones.Rows[e.RowIndex].Cells[2].Controls[0]).Text.ToString();
-            string StrQry = "<script language='javascript'>";
-            StrQry += "alert('"+ idprueba +"; "+pruebaNombre +"; "+pruebaPath +"')";
-            StrQry += "</script>";
-            ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
         }
     }
 }
