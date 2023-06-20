@@ -8,21 +8,21 @@ using WebApp.Modelo_Controlador.Model.Programacion;
 
 namespace WebApp.Modelo_Controlador.Dao.Programacion
 {
-    public class Dao_Ubicacion : DataLayer
+    public class Dao_Casa_Productora : DataLayer
     {
         Conexion conexionDB = new Conexion();
-        Ubicaciones ubi = new Ubicaciones(); 
+        Casa_productoras casa = new Casa_productoras();
         SqlConnection conectar;
 
         string strSql;
 
 
-        public bool GetUbicaciones()
+        public bool GetCasa_Productora()
         {
             try
             {
-                strSql = "SELECT ID_UBICACION, NOMBRE, PATH_UBICACION FROM UBICACIONES_CINTAS";
-                DsReturn = conexionDB.DataSQL(strSql, "ubicacion");
+                strSql = "SELECT ID_CASAS_PRODUCTORAS, NOMBRE FROM CASAS_PRODUCTORAS";
+                DsReturn = conexionDB.DataSQL(strSql, "casa_productora");
             }
             catch (Exception ex)
             {
@@ -32,17 +32,16 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             return true;
         }
 
-        public bool InsertarUbicaciones(Ubicaciones u)
+        public bool InsertarCasaProductora(Casa_productoras c)
         {
             try
             {
-                strSql = "INSERT INTO UBICACIONES_CINTAS (ID_UBICACION,NOMBRE,PATH_UBICACION) " +
-                    "VALUES ((SELECT ISNULL(MAX(ID_UBICACION), 0) + 1 FROM UBICACIONES_CINTAS), @Unombre, @Upath)";
+                strSql = "INSERT INTO CASAS_PRODUCTORAS (ID_CASA_PRODUCTORA,NOMBRE) " +
+                    "VALUES ((SELECT ISNULL(MAX(ID_CASA_PRODUCTORA), 0) + 1 FROM CASAS_PRODUCTORAS), @nombre)";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                comando.Parameters.AddWithValue("@Unombre", u.Nombre);
-                comando.Parameters.AddWithValue("@Upath", u.Path_carpeta);
+                comando.Parameters.AddWithValue("@nombre", c.Nombre);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
@@ -55,17 +54,16 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
         }
 
-        public bool ModificarUbicaciones(Ubicaciones u)
+        public bool ModificarCasaProductora(Casa_productoras c)
         {
             try
             {
-                strSql = "UPDATE UBICACIONES_CINTAS SET NOMBRE = @nombre,PATH_UBICACION = @path WHERE ID_UBICACION = @id";
+                strSql = "UPDATE CASAS_PRODUCTORAS SET NOMBRE = @nombre WHERE ID_CASA_PRODUCTORA = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                comando.Parameters.AddWithValue("@nombre", u.Nombre);
-                comando.Parameters.AddWithValue("@path", u.Path_carpeta);
-                comando.Parameters.AddWithValue("@id",u.ID_ubicacion1);
+                comando.Parameters.AddWithValue("@nombre", c.Nombre);
+                comando.Parameters.AddWithValue("@id", c.ID_casa_productora1);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
@@ -78,15 +76,15 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
         }
 
-        public bool EliminarUbicaciones(Ubicaciones u)
+        public bool EliminarCasaProductora(Casa_productoras ca)
         {
             try
             {
-                strSql = "DELETE FROM UBICACIONES_CINTAS WHERE ID_UBICACION = @id";
+                strSql = "DELETE FROM CASAS_PRODUCTORAS WHERE ID_CASA_PRODUCTORA = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                comando.Parameters.AddWithValue("@id", u.ID_ubicacion1);
+                comando.Parameters.AddWithValue("@id", ca.ID_casa_productora1);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
@@ -98,5 +96,6 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
                 return false;
             }
         }
+
     }
 }

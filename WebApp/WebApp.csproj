@@ -2069,6 +2069,12 @@
     <Compile Include="Modelo-Controlador\Connection\Conexion.cs" />
     <Compile Include="Modelo-Controlador\Connection\DataLayer.cs" />
     <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Login.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Backup_Pelicula.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Backup_Serie.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Casa_Productora.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Nombre_Material.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Tipo_Pelicula.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Tipo_Serie.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Ubicacion.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Backup_peliculas.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Backup_series.cs" />

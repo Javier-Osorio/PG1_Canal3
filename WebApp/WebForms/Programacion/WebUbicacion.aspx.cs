@@ -50,29 +50,6 @@ namespace WebApp.WebForms.Programacion
             tabla_ubicaciones.DataBind();
         }
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
-        {
-            //ubi.Nombre = txtNombre.Value;
-            //ubi.Path_carpeta = txtUbicacion.Value;
-
-            if (dao.InsertarUbicaciones(ubi))
-            {
-                CargaUbicaciones();
-                limpiarTextos();              
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Se registro correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
-            }
-            else
-            {
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no guardado'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
-            }
-        }
-
         void limpiarTextos()
         {
             txtNomb.Value = "";
@@ -94,11 +71,6 @@ namespace WebApp.WebForms.Programacion
             e.Cancel = true; // Cancelar la edición en el GridView
         }
 
-        protected void tabla_ubicaciones_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-
-        }
-
         protected void tabla_ubicaciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             ubi.ID_ubicacion1 = int.Parse(tabla_ubicaciones.DataKeys[e.RowIndex].Value.ToString());
@@ -107,9 +79,7 @@ namespace WebApp.WebForms.Programacion
                 CargaUbicaciones();
                 limpiarTextos();
                 ClientScript.RegisterStartupScript(GetType(), "modalEditar", "$('#modalEditar').modal('hide');", true);
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Se registro correctamente'); ";
-                StrQry += "</script>";
+                string StrQry = "swal('Registro eliminado correctamente','success')";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }
             else
@@ -119,11 +89,6 @@ namespace WebApp.WebForms.Programacion
                 StrQry += "</script>";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }
-        }
-
-        protected void tabla_ubicaciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)

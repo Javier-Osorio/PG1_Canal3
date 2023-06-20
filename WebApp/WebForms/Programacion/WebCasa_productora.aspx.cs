@@ -13,5 +13,30 @@ namespace WebApp.WebForms.Programacion
         {
 
         }
+
+        protected void tabla_casa_productora_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void tabla_casa_productora_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        protected void tabla_casa_productora_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
