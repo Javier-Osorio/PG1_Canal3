@@ -22,22 +22,22 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.GridView tabla_ubicaciones;
         
         /// <summary>
-        /// Control txtNomb.
+        /// Control txtNombreRegister.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNomb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreRegister;
         
         /// <summary>
-        /// Control txtUbic.
+        /// Control txtUbicacionRegister.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUbic;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUbicacionRegister;
         
         /// <summary>
         /// Control btnRegistrar.
@@ -49,22 +49,22 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
         
         /// <summary>
-        /// Control txtNom.
+        /// Control txtNombreEdit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNom;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreEdit;
         
         /// <summary>
-        /// Control txtUbi.
+        /// Control txtUbicacionEdit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUbi;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUbicacionEdit;
         
         /// <summary>
         /// Control codUbi.

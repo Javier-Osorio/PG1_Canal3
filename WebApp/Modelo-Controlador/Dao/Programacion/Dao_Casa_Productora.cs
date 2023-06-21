@@ -21,7 +21,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT ID_CASAS_PRODUCTORAS, NOMBRE FROM CASAS_PRODUCTORAS";
+                strSql = "SELECT ID_CASA_PRODUCTORA, NOMBRE FROM CASAS_PRODUCTORAS";
                 DsReturn = conexionDB.DataSQL(strSql, "casa_productora");
             }
             catch (Exception ex)

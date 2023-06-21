@@ -22,13 +22,13 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.GridView tabla_casa_productora;
         
         /// <summary>
-        /// Control txtNombre.
+        /// Control txtNombreRegister.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombre;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreRegister;
         
         /// <summary>
         /// Control btnRegistrar.
@@ -40,13 +40,13 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
         
         /// <summary>
-        /// Control txtNom.
+        /// Control txtNombreEdit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNom;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreEdit;
         
         /// <summary>
         /// Control codCasa.

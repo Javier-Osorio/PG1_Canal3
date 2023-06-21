@@ -76,8 +76,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                            <label for="txtNombre">Nombre:</label>
-                            <input runat="server" type="text" name="" class="form-control" id="txtNombre" placeholder="" />
+                            <label for="txtNombreRegister">Nombre:</label>
+                            <input runat="server" type="text" name="" class="form-control" id="txtNombreRegister" placeholder="" />
                         </div>                        
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -102,8 +102,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                            <label for="txtNom">Nombre:</label>
-                            <input runat="server" type="text" name="" class="form-control" id="txtNom" placeholder="" />
+                            <label for="txtNombreEdit">Nombre:</label>
+                            <input runat="server" type="text" name="" class="form-control" id="txtNombreEdit" placeholder="" />
                         </div>                        
                         <input runat="server" id="codCasa" type="hidden"/>
                 </div>

@@ -78,12 +78,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                            <label for="txtNomb">Nombre:</label>
-                            <input runat="server" type="text" name="" class="form-control" id="txtNomb" placeholder="" />
+                            <label for="txtNombreRegister">Nombre:</label>
+                            <input runat="server" type="text" name="" class="form-control" id="txtNombreRegister" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label for="txtUbic">Ubicacion:</label>
-                            <input runat="server" type="text" name="" class="form-control" id="txtUbic" placeholder="" />
+                            <label for="txtUbicacionRegister">Ubicacion:</label>
+                            <input runat="server" type="text" name="" class="form-control" id="txtUbicacionRegister" placeholder="" />
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -108,12 +108,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                            <label for="txtNom">Nombre:</label>
-                            <input runat="server" type="text" name="" class="form-control" id="txtNom" placeholder="" />
+                            <label for="txtNombreEdit">Nombre:</label>
+                            <input runat="server" type="text" name="" class="form-control" id="txtNombreEdit" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label for="txtUbi">Ubicacion:</label>
-                            <input runat="server" type="text" name="" class="form-control" id="txtUbi" placeholder="" />
+                            <label for="txtUbicacionEdit">Ubicacion:</label>
+                            <input runat="server" type="text" name="" class="form-control" id="txtUbicacionEdit" placeholder="" />
                         </div>
                         <input runat="server" id="codUbi" type="hidden"/>
                 </div>

@@ -53,7 +53,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
         }
 
-        public bool ModificarCasaProductora(Nombre_material m)
+        public bool ModificarNombreMaterial(Nombre_material m)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
         }
 
-        public bool EliminarCasaProductora(Nombre_material m)
+        public bool EliminarNombreMaterial(Nombre_material m)
         {
             try
             {

@@ -52,18 +52,18 @@ namespace WebApp.WebForms.Programacion
 
         void limpiarTextos()
         {
-            txtNomb.Value = "";
-            txtUbic.Value = "";
-            txtNom.Value = "";
-            txtUbi.Value = "";
+            txtNombreRegister.Value = "";
+            txtUbicacionRegister.Value = "";
+            txtNombreEdit.Value = "";
+            txtUbicacionEdit.Value = "";
         }
 
         protected void tabla_ubicaciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewRow row = tabla_ubicaciones.Rows[e.NewEditIndex];
             codUbi.Value = row.Cells[0].Text;
-            txtNom.Value = row.Cells[1].Text;
-            txtUbi.Value = row.Cells[2].Text;
+            txtNombreEdit.Value = row.Cells[1].Text;
+            txtUbicacionEdit.Value = row.Cells[2].Text;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "modalEditar", "$('#modalEditar').modal('show');", true);
             e.Cancel = true; // Cancelar la edición en el GridView
@@ -92,8 +92,8 @@ namespace WebApp.WebForms.Programacion
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             ubi.ID_ubicacion1 = int.Parse(codUbi.Value);
-            ubi.Nombre = txtNom.Value;
-            ubi.Path_carpeta = txtUbi.Value;
+            ubi.Nombre = txtNombreEdit.Value;
+            ubi.Path_carpeta = txtUbicacionEdit.Value;
 
             if (dao.ModificarUbicaciones(ubi))
             {
@@ -107,8 +107,9 @@ namespace WebApp.WebForms.Programacion
             }
             else
             {
+                limpiarTextos();
                 string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no modificado'); ";
+                StrQry += "alert('Registro no se modifico'); ";
                 StrQry += "</script>";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }
@@ -116,8 +117,8 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            ubi.Nombre = txtNomb.Value;
-            ubi.Path_carpeta = txtUbic.Value;
+            ubi.Nombre = txtNombreRegister.Value;
+            ubi.Path_carpeta = txtUbicacionRegister.Value;
 
             if (dao.InsertarUbicaciones(ubi))
             {
@@ -130,8 +131,9 @@ namespace WebApp.WebForms.Programacion
             }
             else
             {
+                limpiarTextos();
                 string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no guardado'); ";
+                StrQry += "alert('Registro no se guardo'); ";
                 StrQry += "</script>";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }

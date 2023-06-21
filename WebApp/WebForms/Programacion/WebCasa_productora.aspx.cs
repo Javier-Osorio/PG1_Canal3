@@ -52,15 +52,15 @@ namespace WebApp.WebForms.Programacion
 
         void LimpiarTextos()
         {
-            txtNom.Value = "";
-            txtNombre.Value = "";
+            txtNombreRegister.Value = "";
+            txtNombreEdit.Value = "";
         }
 
         protected void tabla_casa_productora_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewRow row = tabla_casa_productora.Rows[e.NewEditIndex];
             codCasa.Value = row.Cells[0].Text;
-            txtNombre.Value = row.Cells[1].Text;
+            txtNombreEdit.Value = row.Cells[1].Text;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "modalEditar", "$('#modalEditar').modal('show');", true);
             e.Cancel = true; // Cancelar la edición en el GridView
@@ -88,10 +88,11 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            casa.Nombre = txtNombre.Value;
+            casa.Nombre = txtNombreRegister.Value;
             if (dao.InsertarCasaProductora(casa))
             {
                 CargaCasaProductora();
+                LimpiarTextos();
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro guardado correctamente'); ";
                 StrQry += "</script>";
@@ -99,6 +100,7 @@ namespace WebApp.WebForms.Programacion
             }
             else
             {
+                LimpiarTextos();
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro no se guardo'); ";
                 StrQry += "</script>";
@@ -109,10 +111,11 @@ namespace WebApp.WebForms.Programacion
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             casa.ID_casa_productora1 = int.Parse(codCasa.Value);
-            casa.Nombre = txtNom.Value;
+            casa.Nombre = txtNombreEdit.Value;
             if (dao.ModificarCasaProductora(casa))
             {
                 CargaCasaProductora();
+                LimpiarTextos();
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro modificado correctamente'); ";
                 StrQry += "</script>";

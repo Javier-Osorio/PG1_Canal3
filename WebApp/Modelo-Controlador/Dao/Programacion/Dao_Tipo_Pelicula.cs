@@ -60,8 +60,8 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                comando.Parameters.AddWithValue("@nombre", s.Nombre);
-                comando.Parameters.AddWithValue("@id", s.ID_tipo_serie1);
+                comando.Parameters.AddWithValue("@nombre", p.Nombre);
+                comando.Parameters.AddWithValue("@id", p.ID_tipo_pelicula1);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
