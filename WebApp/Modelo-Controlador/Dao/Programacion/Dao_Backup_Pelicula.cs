@@ -19,7 +19,27 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "";
+                strSql = "SELECT dbo.BACKUPS_PELICULAS.ID_BACKUP_PELICULA, \n"
+                        + " dbo.NOMBRES_MATERIALES.NOMBRE, \n"
+                        + " (CASE \n"
+                        + " WHEN dbo.BACKUPS_PELICULAS.FECHA_BACKUP IS NULL THEN '' \n"
+                        + " ELSE CONVERT(varchar, dbo.BACKUPS_PELICULAS.FECHA_BACKUP, 103) \n"
+                        + " END) as FECHA_BACKUP, \n"
+                        + " (CASE \n"
+                        + " WHEN dbo.BACKUPS_PELICULAS.OBSERVACIONES IS NULL THEN '' \n"
+                        + " ELSE dbo.BACKUPS_PELICULAS.OBSERVACIONES \n"
+                        + " END) AS OBSERVACIONES, \n"
+                        + " dbo.TIPOS_PELICULAS.NOMBRE AS TIPO_PELICULA, \n"
+                        + " dbo.CASAS_PRODUCTORAS.NOMBRE AS CASA_PRODUCTORA, \n"
+                        + " dbo.UBICACIONES_CINTAS.NOMBRE AS UBICACION_CINTA, \n"
+                        + " CASE \n"
+                        + " WHEN dbo.BACKUPS_PELICULAS.ESTADO = 1 THEN 'COMPLETO' \n"
+                        + " END ESTADO \n"
+                        + " FROM dbo.BACKUPS_PELICULAS INNER JOIN \n"
+                         + " dbo.CASAS_PRODUCTORAS ON dbo.BACKUPS_PELICULAS.ID_CASA_PRODUCTORA = dbo.CASAS_PRODUCTORAS.ID_CASA_PRODUCTORA INNER JOIN \n"
+                         + " dbo.NOMBRES_MATERIALES ON dbo.BACKUPS_PELICULAS.ID_NOMBRE = dbo.NOMBRES_MATERIALES.ID_NOMBRE INNER JOIN \n"
+                         + " dbo.TIPOS_PELICULAS ON dbo.BACKUPS_PELICULAS.ID_TIPO_PELICULA = dbo.TIPOS_PELICULAS.ID_TIPO_PELICULA INNER JOIN \n"
+                         + " dbo.UBICACIONES_CINTAS ON dbo.BACKUPS_PELICULAS.ID_UBICACION = dbo.UBICACIONES_CINTAS.ID_UBICACION ";
                 DsReturn = conexionDB.DataSQL(strSql, "backup_pelicula");
             }
             catch (Exception ex)
