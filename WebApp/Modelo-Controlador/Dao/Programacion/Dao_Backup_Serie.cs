@@ -19,7 +19,29 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "";
+                strSql = "SELECT dbo.BACKUPS_SERIES.ID_BACKUP_SERIE, "
+                        + "  dbo.NOMBRES_MATERIALES.NOMBRE,"
+                        + " (CASE WHEN dbo.BACKUPS_SERIES.FECHA_BACKUP IS NULL THEN '' "
+                        + " ELSE CONVERT(varchar, dbo.BACKUPS_SERIES.FECHA_BACKUP, 103) "
+                        + " END) as FECHA_BACKUP,"
+                    + " dbo.BACKUPS_SERIES.CANTIDAD_EPISODIO_MIN, "
+                    + " dbo.BACKUPS_SERIES.CANTIDAD_EPISODIO_MAX,"
+                    + " (CASE"
+                     + " WHEN dbo.BACKUPS_SERIES.OBSERVACIONES IS NULL THEN ''"
+                      + " ELSE dbo.BACKUPS_SERIES.OBSERVACIONES"
+                    + " END) AS OBSERVACIONES,"
+                    + " dbo.TIPOS_SERIES.NOMBRE AS TIPO_SERIE, "
+                    + " dbo.CASAS_PRODUCTORAS.NOMBRE AS CASA_PRODUCTORA, "
+                    + " dbo.UBICACIONES_CINTAS.NOMBRE AS UBICACION_CINTA,"
+                    + " CASE"
+                     + " WHEN dbo.BACKUPS_SERIES.ESTADO = 1 THEN 'COMPLETO'"
+                      + " WHEN dbo.BACKUPS_SERIES.ESTADO = 2 THEN 'EN BLOQUES'"
+                       + " END ESTADO"
+                    + " FROM dbo.BACKUPS_SERIES INNER JOIN"
+                         + " dbo.CASAS_PRODUCTORAS ON dbo.BACKUPS_SERIES.ID_CASA_PRODUCTORA = dbo.CASAS_PRODUCTORAS.ID_CASA_PRODUCTORA INNER JOIN"
+                         + " dbo.NOMBRES_MATERIALES ON dbo.BACKUPS_SERIES.ID_NOMBRE = dbo.NOMBRES_MATERIALES.ID_NOMBRE INNER JOIN"
+                         + " dbo.TIPOS_SERIES ON dbo.BACKUPS_SERIES.ID_TIPO_SERIE = dbo.TIPOS_SERIES.ID_TIPO_SERIE INNER JOIN"
+                        + " dbo.UBICACIONES_CINTAS ON dbo.BACKUPS_SERIES.ID_UBICACION = dbo.UBICACIONES_CINTAS.ID_UBICACION";
                 DsReturn = conexionDB.DataSQL(strSql, "backup_serie");
             }
             catch (Exception ex)
