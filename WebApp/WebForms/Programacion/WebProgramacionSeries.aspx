@@ -3,14 +3,37 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" runat="server" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" />
+    <link rel="stylesheet" runat="server" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"/>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script = "text/javascript" >        
+
+        //function confirmarEliminar() {
+        //    var respuesta = confirm("¿Deseas eliminar el registro?");
+
+        //    if (respuesta == true) {
+        //        return true;
+        //    } else {
+        //        return false;
+        //    }
+        //}
+        $(function() {
+            $('#select2').select2({});
+        });
+    </script> 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Backup Series</h3>
-
+                    <br />
+                    <br />
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistrar">Registrar</button>
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
+                        <div class="input-group input-group-sm" style="width: 200px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                             <div class="input-group-append">
@@ -38,7 +61,7 @@
                             <asp:BoundField HeaderText="Ubicacion_Cinta " DataField="UBICACION_CINTA" />
                             <asp:TemplateField HeaderText="Estado">
                                 <ItemTemplate>
-                                    <%# (string)Eval("ESTADO")=="COMPLETO" ? "<span class=\"badge bg-success\">COMPLETO</span>" : "<span class=\"badge bg-warning\">EN BLOQUES</span>" %>                                                                       
+                                    <%# (string)Eval("ESTADO")=="COMPLETO" ? "<span class=\"badge bg-success\">COMPLETO</span>" : "<span class=\"badge bg-warning\">EN BLOQUES</span>" %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
@@ -54,7 +77,78 @@
             </div>
             <!-- /.card -->
 
-            </div>
+        </div>
     </div>
     <!-- /.row -->
+    <!--modal-content -->
+    <div class="modal fade" id="modalRegistrar" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Nuevo Registro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Nombre de Material:</label>
+                        <asp:DropDownList ID="ddlNombreMaterial" runat="server" CssClass="form-control">
+                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="txtEpisodioMin">Episodio Min:</label>
+                                <input runat="server" type="number" class="form-control" id="txtEpisodioMin" placeholder="" min="1" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="txtEpisodioMax">Episodio Max:</label>
+                                <input runat="server" type="number" class="form-control" id="txtEpisodioMax" placeholder="" min="1" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="txtObservaciones">Observacion:</label>
+                        <textarea id="txtObservaciones" cols="20" rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tipo de Serie:</label>
+                        <asp:DropDownList ID="ddlTipoSerie" runat="server" CssClass="form-control">
+                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Casa Productora:</label>
+                        <asp:DropDownList ID="ddlCasaProductora" runat="server" CssClass="form-control">
+                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ubicacion Cinta:</label>
+                        <asp:DropDownList ID="ddlUbicacion" runat="server" CssClass="form-control">
+                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Estado:</label>
+                        <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control">
+                            <asp:ListItem Value="1" Text="COMPLETO"></asp:ListItem>
+                            <asp:ListItem Value="2" Text="EN BLOQUES"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.modal-content -->
 </asp:Content>

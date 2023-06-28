@@ -17,7 +17,10 @@ namespace WebApp.WebForms.Programacion
             try
             {
                 if (!IsPostBack)
+                {
                     CargaBackupSerie();
+                    LlenarListados();
+                }
                 else
                     SetBackupSerie();
             }
@@ -28,6 +31,10 @@ namespace WebApp.WebForms.Programacion
         }
         Dao_Backup_Serie dao = new Dao_Backup_Serie();
         Backup_series series = new Backup_series();
+        Dao_Nombre_Material dao_Nombre = new Dao_Nombre_Material();
+        Dao_Casa_Productora dao_Casa = new Dao_Casa_Productora();
+        Dao_Tipo_Serie dao_Tipo_Serie = new Dao_Tipo_Serie();
+        Dao_Ubicacion dao_Ubicacion = new Dao_Ubicacion();
 
         void CargaBackupSerie()
         {
@@ -44,6 +51,38 @@ namespace WebApp.WebForms.Programacion
             tabla_programacion_serie.DataBind();
         }
 
+        void LlenarListados()
+        {
+            if (dao_Nombre.GetNombre_Material())
+            {
+                ddlNombreMaterial.DataSource = dao_Nombre.DsReturn.Tables["nombre_material"];                
+                ddlNombreMaterial.DataTextField = dao_Nombre.DsReturn.Tables["nombre_material"].Columns["NOMBRE"].ToString();
+                ddlNombreMaterial.DataValueField = dao_Nombre.DsReturn.Tables["nombre_material"].Columns["ID_NOMBRE"].ToString();
+                ddlNombreMaterial.DataBind();
+            }
+            if (dao_Casa.GetCasa_Productora())
+            {
+                ddlCasaProductora.DataSource = dao_Casa.DsReturn.Tables["casa_productora"];
+                ddlCasaProductora.DataTextField = dao_Casa.DsReturn.Tables["casa_productora"].Columns["NOMBRE"].ToString();
+                ddlCasaProductora.DataValueField = dao_Casa.DsReturn.Tables["casa_productora"].Columns["ID_CASA_PRODUCTORA"].ToString();
+                ddlCasaProductora.DataBind();
+            }
+            if (dao_Tipo_Serie.GetTipo_Serie())
+            {
+                ddlTipoSerie.DataSource = dao_Tipo_Serie.DsReturn.Tables["tipos_series"];
+                ddlTipoSerie.DataTextField = dao_Tipo_Serie.DsReturn.Tables["tipos_series"].Columns["NOMBRE"].ToString();
+                ddlTipoSerie.DataValueField = dao_Tipo_Serie.DsReturn.Tables["tipos_series"].Columns["ID_TIPO_SERIE"].ToString();
+                ddlTipoSerie.DataBind();
+            }
+            if (dao_Ubicacion.GetUbicaciones())
+            {
+                ddlUbicacion.DataSource = dao_Ubicacion.DsReturn.Tables["ubicacion"];
+                ddlUbicacion.DataTextField = dao_Ubicacion.DsReturn.Tables["ubicacion"].Columns["NOMBRE"].ToString();
+                ddlUbicacion.DataValueField = dao_Ubicacion.DsReturn.Tables["ubicacion"].Columns["ID_UBICACION"].ToString();
+                ddlUbicacion.DataBind();
+            }
+        }
+
         protected void tabla_programacion_serie_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             tabla_programacion_serie.PageIndex = e.NewPageIndex;
@@ -56,6 +95,11 @@ namespace WebApp.WebForms.Programacion
         }
 
         protected void tabla_programacion_serie_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e)
         {
 
         }

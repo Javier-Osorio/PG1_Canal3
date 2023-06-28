@@ -10,7 +10,7 @@
                     <h3 class="card-title">Backup Peliculas</h3>
 
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
+                        <div class="input-group input-group-sm" style="width: 200px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                             <div class="input-group-append">
