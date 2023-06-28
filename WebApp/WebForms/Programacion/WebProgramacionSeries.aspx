@@ -20,9 +20,9 @@
         //        return false;
         //    }
         //}
-        $(function() {
-            $('#select2').select2({});
-        });
+        //$(function() {
+        //    $('#select2').select2({});
+        //});
     </script> 
     <div class="row">
         <div class="col-12">
@@ -114,7 +114,7 @@
                     
                     <div class="form-group">
                         <label for="txtObservaciones">Observacion:</label>
-                        <textarea id="txtObservaciones" cols="20" rows="3" class="form-control"></textarea>
+                        <textarea runat="server" id="txtObservaciones" cols="20" rows="3" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Tipo de Serie:</label>

@@ -56,11 +56,19 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "";
+                strSql = "INSERT INTO BACKUPS_SERIES (ID_BACKUP_SERIE,ID_NOMBRE,FECHA_BACKUP,CANTIDAD_EPISODIO_MIN,CANTIDAD_EPISODIO_MAX,OBSERVACIONES,ID_TIPO_SERIE,ID_CASA_PRODUCTORA,ID_UBICACION,ESTADO) " +
+                    "VALUES( (SELECT ISNULL(MAX(ID_BACKUP_SERIE), 0) + 1 FROM BACKUPS_SERIES), @nom, GETDATE(), @canmin, @canmax, @obse, @tipo, @casa, @ubi, @estado)";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                //comando.Parameters.AddWithValue("@nombre", p.Nombre);
+                comando.Parameters.AddWithValue("@nom", backups.ID_nombre1);
+                comando.Parameters.AddWithValue("@canmin", backups.Cantidad_episodio_min);
+                comando.Parameters.AddWithValue("@canmax", backups.Cantidad_episodio_max);
+                comando.Parameters.AddWithValue("@obse", backups.Observaciones);
+                comando.Parameters.AddWithValue("@tipo", backups.ID_tipo_serie1);
+                comando.Parameters.AddWithValue("@casa", backups.ID_casa_productora1);
+                comando.Parameters.AddWithValue("@ubi", backups.ID_ubicacion1);
+                comando.Parameters.AddWithValue("@estado", backups.Estado);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
@@ -77,12 +85,21 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "";
+                strSql = "UPDATE [BACKUPS_SERIES] SET [ID_NOMBRE] = @nom, [CANTIDAD_EPISODIO_MIN] = @canmin, " +
+                    "[CANTIDAD_EPISODIO_MAX] = @canmax, [OBSERVACIONES] = @obser, [ID_TIPO_SERIE] = @tipo, [ID_CASA_PRODUCTORA] =  @casa, " +
+                    "[ID_UBICACION] = @ubi, [ESTADO] = @estado  WHERE [ID_BACKUP_SERIE] = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                //comando.Parameters.AddWithValue("@nombre", s.Nombre);
-                //comando.Parameters.AddWithValue("@id", s.ID_tipo_serie1);
+                comando.Parameters.AddWithValue("@nom", backup.ID_nombre1);
+                comando.Parameters.AddWithValue("@canmin", backup.Cantidad_episodio_min);
+                comando.Parameters.AddWithValue("@canmax", backup.Cantidad_episodio_max);
+                comando.Parameters.AddWithValue("@obser", backup.Observaciones);
+                comando.Parameters.AddWithValue("@tipo", backup.ID_tipo_serie1);
+                comando.Parameters.AddWithValue("@casa", backup.ID_casa_productora1);
+                comando.Parameters.AddWithValue("@ubi", backup.ID_ubicacion1);
+                comando.Parameters.AddWithValue("@estado", backup.Estado);
+                comando.Parameters.AddWithValue("@id", backup.ID_backup_serie1);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
@@ -99,11 +116,11 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "";
+                strSql = "DELETE FROM BACKUPS_SERIES WHERE ID_BACKUP_SERIE = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                //comando.Parameters.AddWithValue("@id", p.ID_tipo_pelicula1);
+                comando.Parameters.AddWithValue("@id", backup.ID_backup_serie1);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;

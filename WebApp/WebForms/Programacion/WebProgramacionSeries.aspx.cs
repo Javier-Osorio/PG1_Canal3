@@ -83,6 +83,18 @@ namespace WebApp.WebForms.Programacion
             }
         }
 
+        void limpiarTextos()
+        {
+            txtEpisodioMax.Value = "";
+            txtEpisodioMin.Value = "";
+            txtObservaciones.Value = "";
+            ddlEstado.SelectedIndex = 0;
+            ddlCasaProductora.SelectedIndex = 0;
+            ddlNombreMaterial.SelectedIndex = 0;
+            ddlTipoSerie.SelectedIndex = 0;
+            ddlUbicacion.SelectedIndex = 0;
+        }
+
         protected void tabla_programacion_serie_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             tabla_programacion_serie.PageIndex = e.NewPageIndex;
@@ -101,7 +113,32 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            series.ID_nombre1 = int.Parse(ddlNombreMaterial.SelectedValue);
+            series.Cantidad_episodio_min = int.Parse(txtEpisodioMin.Value);
+            series.Cantidad_episodio_max = int.Parse(txtEpisodioMax.Value);
+            series.Observaciones = txtObservaciones.Value;
+            series.ID_tipo_serie1 = int.Parse(ddlTipoSerie.SelectedValue);
+            series.ID_casa_productora1 = int.Parse(ddlCasaProductora.SelectedValue);
+            series.ID_ubicacion1 = int.Parse(ddlUbicacion.SelectedValue);
+            series.Estado = int.Parse(ddlEstado.SelectedValue);
 
+            if (dao.InsertarBackupSerie(series))
+            {
+                CargaBackupSerie();
+                limpiarTextos();
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Se registro correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {
+                limpiarTextos();
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no se guardo'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
         }
     }
 }

@@ -49,6 +49,15 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEpisodioMax;
         
         /// <summary>
+        /// Control txtObservaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtObservaciones;
+        
+        /// <summary>
         /// Control ddlTipoSerie.
         /// </summary>
         /// <remarks>
