@@ -10,16 +10,15 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <script = "text/javascript" >        
+        function confirmarEliminar() {
+            var respuesta = confirm("¿Deseas eliminar el registro?");
 
-        //function confirmarEliminar() {
-        //    var respuesta = confirm("¿Deseas eliminar el registro?");
-
-        //    if (respuesta == true) {
-        //        return true;
-        //    } else {
-        //        return false;
-        //    }
-        //}
+            if (respuesta == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         //$(function() {
         //    $('#select2').select2({});
         //});
@@ -67,7 +66,7 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" CommandName="Edit" CssClass="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Editar</asp:LinkButton>
-                                    <asp:LinkButton runat="server" CommandName="Delete" CssClass="btn btn-danger btn-sm" OnClientClick=""><i class="fas fa-trash"></i> Eliminar</asp:LinkButton>
+                                    <asp:LinkButton runat="server" CommandName="Delete" CssClass="btn btn-danger btn-sm" OnClientClick="return confirmarEliminar();"><i class="fas fa-trash"></i> Eliminar</asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -148,6 +147,79 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+    <!-- /.modal-content -->
+
+    <!--modal-content -->
+    <div class="modal fade" id="modalEditar" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Registro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Nombre de Material:</label>
+                        <asp:DropDownList ID="ddlNombreEditar" runat="server" CssClass="form-control">
+                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="txtEpiMin">Episodio Min:</label>
+                                <input runat="server" type="number" class="form-control" id="txtEpisodioMinEditar" placeholder="" min="1" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="txtEpiMax">Episodio Max:</label>
+                                <input runat="server" type="number" class="form-control" id="txtEpisodioMaxEditar" placeholder="" min="1" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="txtObserEditar">Observacion:</label>
+                        <textarea runat="server" id="txtObserEditar" cols="20" rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tipo de Serie:</label>
+                        <asp:DropDownList ID="ddlTipoEditar" runat="server" CssClass="form-control">
+                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Casa Productora:</label>
+                        <asp:DropDownList ID="ddlCasaEditar" runat="server" CssClass="form-control">
+                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ubicacion Cinta:</label>
+                        <asp:DropDownList ID="ddlUbicacionEditar" runat="server" CssClass="form-control">
+                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Estado:</label>
+                        <asp:DropDownList ID="ddlEstadoEditar" runat="server" CssClass="form-control">
+                           <%-- <asp:ListItem Value="1" Text="COMPLETO"></asp:ListItem>
+                            <asp:ListItem Value="2" Text="EN BLOQUES"></asp:ListItem>--%>
+                        </asp:DropDownList>
+                    </div>
+                    <input runat="server" id="codBackupSerie" type="hidden"/>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" />
+                </div>
+            </div>
+            
         </div>
     </div>
     <!-- /.modal-content -->

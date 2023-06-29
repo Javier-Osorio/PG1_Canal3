@@ -52,6 +52,26 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             return true;
         }
 
+        public bool listBackup_Serie(int cod)
+        {
+            try
+            {
+                strSql = "SELECT [ID_BACKUP_SERIE],BS.[ID_NOMBRE],N.NOMBRE AS NOMBRE_MATERIAL,[CANTIDAD_EPISODIO_MIN],[CANTIDAD_EPISODIO_MAX]," +
+                    "CASE WHEN BS.OBSERVACIONES IS NULL THEN '' ELSE BS.OBSERVACIONES END AS OBSERVACIONES, BS.ID_TIPO_SERIE,TS.NOMBRE AS TIPO_SERIE,BS.[ID_CASA_PRODUCTORA],CP.NOMBRE AS CASA_PRODUCTORA,BS.[ID_UBICACION],U.NOMBRE AS UBICACION," +
+                    "[ESTADO] ,CASE  WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 2 THEN 'EN BLOQUES' END NOMBRE_ESTADO FROM BACKUPS_SERIES BS " +
+                    "INNER JOIN NOMBRES_MATERIALES N ON BS.ID_NOMBRE = N.ID_NOMBRE INNER JOIN TIPOS_SERIES TS ON BS.ID_TIPO_SERIE = TS.ID_TIPO_SERIE " +
+                    "INNER JOIN CASAS_PRODUCTORAS CP ON CP.ID_CASA_PRODUCTORA = BS.ID_CASA_PRODUCTORA INNER JOIN UBICACIONES_CINTAS U ON U.ID_UBICACION = BS.ID_UBICACION " +
+                    "WHERE ID_BACKUP_SERIE = " +cod;
+                DsReturn = conexionDB.DataSQL(strSql, "list_backup_serie");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
         public bool InsertarBackupSerie(Backup_series backups)
         {
             try

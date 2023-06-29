@@ -94,6 +94,66 @@ namespace WebApp.WebForms.Programacion
             ddlTipoSerie.SelectedIndex = 0;
             ddlUbicacion.SelectedIndex = 0;
         }
+        void limpiarDDLS()
+        {
+            ddlEstadoEditar.Items.Clear();
+            ddlCasaEditar.Items.Clear();
+            ddlNombreEditar.Items.Clear();
+            ddlTipoEditar.Items.Clear();
+            ddlUbicacionEditar.Items.Clear();
+        }
+        void LlenarDDLSEditar()
+        {
+            if (dao_Nombre.GetNombre_Material())
+            {
+                ListItem item;
+                foreach (DataRow list in dao_Nombre.DsReturn.Tables["nombre_material"].Rows)
+                {
+                    string idnom = list["ID_NOMBRE"].ToString();
+                    string nom = list["NOMBRE"].ToString();
+                    item = new ListItem(nom, idnom);
+                    ddlNombreEditar.Items.Add(item);
+                }
+            }
+            if (dao_Casa.GetCasa_Productora())
+            {
+                ListItem item;
+                foreach (DataRow list in dao_Casa.DsReturn.Tables["casa_productora"].Rows)
+                {
+                    string idcasa = list["ID_CASA_PRODUCTORA"].ToString();
+                    string casa = list["NOMBRE"].ToString();
+                    item = new ListItem(casa, idcasa);
+                    ddlCasaEditar.Items.Add(item);
+                }
+            }
+            if (dao_Tipo_Serie.GetTipo_Serie())
+            {
+                ListItem item;
+                foreach (DataRow list in dao_Tipo_Serie.DsReturn.Tables["tipos_series"].Rows)
+                {
+                    string idtipo = list["ID_TIPO_SERIE"].ToString();
+                    string tipo = list["NOMBRE"].ToString();
+                    item = new ListItem(tipo, idtipo);
+                    ddlTipoEditar.Items.Add(item);
+                }
+            }
+            if (dao_Ubicacion.GetUbicaciones())
+            {
+                ListItem item;
+                foreach (DataRow list in dao_Ubicacion.DsReturn.Tables["ubicacion"].Rows)
+                {
+                    string idubic = list["ID_UBICACION"].ToString();
+                    string ubic = list["NOMBRE"].ToString();
+                    item = new ListItem(ubic, idubic);
+                    ddlUbicacionEditar.Items.Add(item);
+                }
+            }
+            ListItem listItem;
+            listItem = new ListItem("COMPLETO","1");
+            ddlEstadoEditar.Items.Add(listItem);
+            listItem = new ListItem("EN BLOQUES", "2");
+            ddlEstadoEditar.Items.Add(listItem);
+        }
 
         protected void tabla_programacion_serie_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -103,12 +163,64 @@ namespace WebApp.WebForms.Programacion
 
         protected void tabla_programacion_serie_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            limpiarDDLS();
+            GridViewRow row = tabla_programacion_serie.Rows[e.NewEditIndex];
+            int id = int.Parse(row.Cells[0].Text);
+            if (dao.listBackup_Serie(id))
+            {
+                ListItem item;
+                codBackupSerie.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_BACKUP_SERIE"].ToString();
+                string idnom = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_NOMBRE"].ToString();
+                string nom = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["NOMBRE_MATERIAL"].ToString();
+                item = new ListItem(nom, idnom);
+                ddlNombreEditar.Items.Add(item);
+                txtEpisodioMinEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["CANTIDAD_EPISODIO_MIN"].ToString();
+                txtEpisodioMaxEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["CANTIDAD_EPISODIO_MAX"].ToString();
+                txtObserEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["OBSERVACIONES"].ToString();
+                string idtipo = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_TIPO_SERIE"].ToString();
+                string tipo = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["TIPO_SERIE"].ToString();
+                item = new ListItem(tipo, idtipo);
+                ddlTipoEditar.Items.Add(item);
+                string idcasa = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_CASA_PRODUCTORA"].ToString();
+                string casa = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["CASA_PRODUCTORA"].ToString();
+                item = new ListItem(casa, idcasa);
+                ddlCasaEditar.Items.Add(item);
+                string idubica = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_UBICACION"].ToString();
+                string ubica = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["UBICACION"].ToString();
+                item = new ListItem(ubica, idubica);
+                ddlUbicacionEditar.Items.Add(item);
+                string idestado = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ESTADO"].ToString();
+                string estado = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["NOMBRE_ESTADO"].ToString();
+                item = new ListItem(estado, idestado);
+                ddlEstadoEditar.Items.Add(item);
 
+                LlenarDDLSEditar();
+            }
+
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "modalEditar", "$('#modalEditar').modal('show');", true);
+            e.Cancel = true; // Cancelar la edición en el GridView
         }
 
         protected void tabla_programacion_serie_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            series.ID_backup_serie1 = int.Parse(tabla_programacion_serie.DataKeys[e.RowIndex].Value.ToString());
 
+            if (dao.EliminarBackupSerie(series))
+            {
+                CargaBackupSerie();
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro eliminado correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no se elimino'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -136,6 +248,37 @@ namespace WebApp.WebForms.Programacion
                 limpiarTextos();
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro no se guardo'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            series.ID_nombre1 = int.Parse(ddlNombreEditar.SelectedValue);
+            series.Cantidad_episodio_min = int.Parse(txtEpisodioMinEditar.Value);
+            series.Cantidad_episodio_max = int.Parse(txtEpisodioMaxEditar.Value);
+            series.Observaciones = txtObserEditar.Value;
+            series.ID_tipo_serie1 = int.Parse(ddlTipoEditar.SelectedValue);
+            series.ID_casa_productora1 = int.Parse(ddlCasaEditar.SelectedValue);
+            series.ID_ubicacion1 = int.Parse(ddlUbicacionEditar.SelectedValue);
+            series.Estado = int.Parse(ddlEstadoEditar.SelectedValue);
+            series.ID_backup_serie1 = int.Parse(codBackupSerie.Value);
+
+            if (dao.ModificarBackupSerie(series))
+            {
+                CargaBackupSerie();
+                limpiarDDLS();
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro modificado correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {
+                limpiarDDLS();
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no se modifico'); ";
                 StrQry += "</script>";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }
