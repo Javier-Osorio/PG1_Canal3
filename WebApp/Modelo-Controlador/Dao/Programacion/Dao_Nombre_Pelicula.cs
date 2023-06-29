@@ -8,20 +8,19 @@ using WebApp.Modelo_Controlador.Model.Programacion;
 
 namespace WebApp.Modelo_Controlador.Dao.Programacion
 {
-    public class Dao_Nombre_Material : DataLayer
+    public class Dao_Nombre_Pelicula : DataLayer
     {
         Conexion conexionDB = new Conexion();
         SqlConnection conectar;
 
         string strSql;
 
-
-        public bool GetNombre_Material()
+        public bool GetNombre_Pelicula()
         {
             try
             {
-                strSql = "SELECT ID_NOMBRE, NOMBRE FROM NOMBRES_MATERIALES";
-                DsReturn = conexionDB.DataSQL(strSql, "nombre_material");
+                strSql = "SELECT ID_NOMBRE_PELICULA, NOMBRE FROM NOMBRES_PELICULAS";
+                DsReturn = conexionDB.DataSQL(strSql, "nombres_peliculas");
             }
             catch (Exception ex)
             {
@@ -31,16 +30,16 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             return true;
         }
 
-        public bool InsertarNombreMaterial(Nombre_material m)
+        public bool InsertarNombrePelicula(Nombre_pelicula p)
         {
             try
             {
-                strSql = "INSERT INTO NOMBRES_MATERIALES (ID_NOMBRE,NOMBRE) " +
-                    "VALUES ((SELECT ISNULL(MAX(ID_NOMBRE), 0) + 1 FROM NOMBRES_MATERIALES), @nombre)";
+                strSql = "INSERT INTO NOMBRES_PELICULAS (ID_NOMBRE_PELICULA,NOMBRE) " +
+                    "VALUES ((SELECT ISNULL(MAX(ID_NOMBRE_PELICULA), 0) + 1 FROM NOMBRES_PELICULAS), @nombre)";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                comando.Parameters.AddWithValue("@nombre", m.Nombre);
+                comando.Parameters.AddWithValue("@nombre", p.Nombre);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
@@ -53,16 +52,16 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
         }
 
-        public bool ModificarNombreMaterial(Nombre_material m)
+        public bool ModificarNombrePelicula(Nombre_pelicula p)
         {
             try
             {
-                strSql = "UPDATE NOMBRES_MATERIALES SET NOMBRE = @nombre WHERE ID_NOMBRE = @id";
+                strSql = "UPDATE NOMBRES_PELICULAS SET NOMBRE = @nombre WHERE ID_NOMBRE_PELICULA = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                comando.Parameters.AddWithValue("@nombre", m.Nombre);
-                comando.Parameters.AddWithValue("@id", m.ID_Nombre1);
+                comando.Parameters.AddWithValue("@nombre", p.Nombre);
+                comando.Parameters.AddWithValue("@id", p.ID_Nombre_pelicula1);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;
@@ -75,15 +74,15 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
         }
 
-        public bool EliminarNombreMaterial(Nombre_material m)
+        public bool EliminarNombrePelicula(Nombre_pelicula p)
         {
             try
             {
-                strSql = "DELETE FROM NOMBRES_MATERIALES WHERE ID_NOMBRE = @id";
+                strSql = "DELETE FROM NOMBRES_PELICULAS WHERE ID_NOMBRE_PELICULA = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
-                comando.Parameters.AddWithValue("@id", m.ID_Nombre1);
+                comando.Parameters.AddWithValue("@id", p.ID_Nombre_pelicula1);
                 comando.ExecuteNonQuery();
                 conectar.Close();
                 return true;

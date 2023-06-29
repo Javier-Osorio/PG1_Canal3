@@ -19,29 +19,19 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT dbo.BACKUPS_SERIES.ID_BACKUP_SERIE, "
-                        + "  dbo.NOMBRES_MATERIALES.NOMBRE,"
-                        + " (CASE WHEN dbo.BACKUPS_SERIES.FECHA_BACKUP IS NULL THEN '' "
-                        + " ELSE CONVERT(varchar, dbo.BACKUPS_SERIES.FECHA_BACKUP, 103) "
-                        + " END) as FECHA_BACKUP,"
-                    + " dbo.BACKUPS_SERIES.CANTIDAD_EPISODIO_MIN, "
-                    + " dbo.BACKUPS_SERIES.CANTIDAD_EPISODIO_MAX,"
-                    + " (CASE"
-                     + " WHEN dbo.BACKUPS_SERIES.OBSERVACIONES IS NULL THEN ''"
-                      + " ELSE dbo.BACKUPS_SERIES.OBSERVACIONES"
-                    + " END) AS OBSERVACIONES,"
-                    + " dbo.TIPOS_SERIES.NOMBRE AS TIPO_SERIE, "
-                    + " dbo.CASAS_PRODUCTORAS.NOMBRE AS CASA_PRODUCTORA, "
-                    + " dbo.UBICACIONES_CINTAS.NOMBRE AS UBICACION_CINTA,"
-                    + " CASE"
-                     + " WHEN dbo.BACKUPS_SERIES.ESTADO = 1 THEN 'COMPLETO'"
-                      + " WHEN dbo.BACKUPS_SERIES.ESTADO = 2 THEN 'EN BLOQUES'"
-                       + " END ESTADO"
-                    + " FROM dbo.BACKUPS_SERIES INNER JOIN"
-                         + " dbo.CASAS_PRODUCTORAS ON dbo.BACKUPS_SERIES.ID_CASA_PRODUCTORA = dbo.CASAS_PRODUCTORAS.ID_CASA_PRODUCTORA INNER JOIN"
-                         + " dbo.NOMBRES_MATERIALES ON dbo.BACKUPS_SERIES.ID_NOMBRE = dbo.NOMBRES_MATERIALES.ID_NOMBRE INNER JOIN"
-                         + " dbo.TIPOS_SERIES ON dbo.BACKUPS_SERIES.ID_TIPO_SERIE = dbo.TIPOS_SERIES.ID_TIPO_SERIE INNER JOIN"
-                        + " dbo.UBICACIONES_CINTAS ON dbo.BACKUPS_SERIES.ID_UBICACION = dbo.UBICACIONES_CINTAS.ID_UBICACION";
+                strSql = "SELECT ID_BACKUP_SERIE," +
+                    "NS.NOMBRE AS NOMBRE_SERIE," +
+                    "CASE WHEN FECHA_BACKUP IS NULL THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
+                    "CANTIDAD_EPISODIO_MIN," +
+                    "CANTIDAD_EPISODIO_MAX," +
+                    "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES," +
+                    "TS.NOMBRE AS TIPO_SERIE," +
+                    "CP.NOMBRE AS CASA_PRODUCTORA," +
+                    "U.NOMBRE AS UBICACION_CINTA,CASE WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 0 THEN 'EN BLOQUES' END ESTADO " +
+                    "FROM BACKUPS_SERIES BS " +
+                    "INNER JOIN NOMBRES_SERIES NS ON NS.ID_NOMBRE_SERIE = BS.ID_NOMBRE_SERIE " +
+                    "INNER JOIN TIPOS_SERIES TS ON TS.ID_TIPO_SERIE = BS.ID_TIPO_SERIE INNER JOIN CASAS_PRODUCTORAS CP ON CP.ID_CASA_PRODUCTORA = BS.ID_CASA_PRODUCTORA " +
+                    "INNER JOIN UBICACIONES_CINTAS U ON U.ID_UBICACION = BS.ID_UBICACION";
                 DsReturn = conexionDB.DataSQL(strSql, "backup_serie");
             }
             catch (Exception ex)
@@ -56,12 +46,14 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT [ID_BACKUP_SERIE],BS.[ID_NOMBRE],N.NOMBRE AS NOMBRE_MATERIAL,[CANTIDAD_EPISODIO_MIN],[CANTIDAD_EPISODIO_MAX]," +
-                    "CASE WHEN BS.OBSERVACIONES IS NULL THEN '' ELSE BS.OBSERVACIONES END AS OBSERVACIONES, BS.ID_TIPO_SERIE,TS.NOMBRE AS TIPO_SERIE,BS.[ID_CASA_PRODUCTORA],CP.NOMBRE AS CASA_PRODUCTORA,BS.[ID_UBICACION],U.NOMBRE AS UBICACION," +
-                    "[ESTADO] ,CASE  WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 2 THEN 'EN BLOQUES' END NOMBRE_ESTADO FROM BACKUPS_SERIES BS " +
-                    "INNER JOIN NOMBRES_MATERIALES N ON BS.ID_NOMBRE = N.ID_NOMBRE INNER JOIN TIPOS_SERIES TS ON BS.ID_TIPO_SERIE = TS.ID_TIPO_SERIE " +
-                    "INNER JOIN CASAS_PRODUCTORAS CP ON CP.ID_CASA_PRODUCTORA = BS.ID_CASA_PRODUCTORA INNER JOIN UBICACIONES_CINTAS U ON U.ID_UBICACION = BS.ID_UBICACION " +
-                    "WHERE ID_BACKUP_SERIE = " +cod;
+                strSql = "SELECT ID_BACKUP_SERIE,NS.ID_NOMBRE_SERIE,NS.NOMBRE AS NOMBRE_SERIE,CANTIDAD_EPISODIO_MIN,CANTIDAD_EPISODIO_MAX," +
+                    "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES,TS.ID_TIPO_SERIE,TS.NOMBRE AS TIPO_SERIE," +
+                    "CP.ID_CASA_PRODUCTORA,CP.NOMBRE AS CASA_PRODUCTORA,U.ID_UBICACION,U.NOMBRE AS UBICACION_CINTA,ESTADO AS ID_ESTADO," +
+                    "CASE WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 0 THEN 'EN BLOQUES' END ESTADO FROM BACKUPS_SERIES BS " +
+                    "INNER JOIN NOMBRES_SERIES NS ON NS.ID_NOMBRE_SERIE = BS.ID_NOMBRE_SERIE " +
+                    "INNER JOIN TIPOS_SERIES TS ON TS.ID_TIPO_SERIE = BS.ID_TIPO_SERIE " +
+                    "INNER JOIN CASAS_PRODUCTORAS CP ON CP.ID_CASA_PRODUCTORA = BS.ID_CASA_PRODUCTORA " +
+                    "INNER JOIN UBICACIONES_CINTAS U ON U.ID_UBICACION = BS.ID_UBICACION WHERE ID_BACKUP_SERIE = " +cod;
                 DsReturn = conexionDB.DataSQL(strSql, "list_backup_serie");
             }
             catch (Exception ex)
@@ -76,8 +68,8 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "INSERT INTO BACKUPS_SERIES (ID_BACKUP_SERIE,ID_NOMBRE,FECHA_BACKUP,CANTIDAD_EPISODIO_MIN,CANTIDAD_EPISODIO_MAX,OBSERVACIONES,ID_TIPO_SERIE,ID_CASA_PRODUCTORA,ID_UBICACION,ESTADO) " +
-                    "VALUES( (SELECT ISNULL(MAX(ID_BACKUP_SERIE), 0) + 1 FROM BACKUPS_SERIES), @nom, GETDATE(), @canmin, @canmax, @obse, @tipo, @casa, @ubi, @estado)";
+                strSql = "INSERT INTO BACKUPS_SERIES(ID_BACKUP_SERIE, ID_NOMBRE_SERIE,FECHA_BACKUP,CANTIDAD_EPISODIO_MIN,CANTIDAD_EPISODIO_MAX,OBSERVACIONES,ID_TIPO_SERIE,ID_CASA_PRODUCTORA,ID_UBICACION,ESTADO) " +
+                    "VALUES((SELECT ISNULL(MAX(ID_BACKUP_SERIE), 0) + 1 FROM BACKUPS_SERIES), @nom, GETDATE(), @canmin, @canmax, @obse, @tipo, @casa, @ubi, @estado)";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
@@ -105,9 +97,8 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "UPDATE [BACKUPS_SERIES] SET [ID_NOMBRE] = @nom, [CANTIDAD_EPISODIO_MIN] = @canmin, " +
-                    "[CANTIDAD_EPISODIO_MAX] = @canmax, [OBSERVACIONES] = @obser, [ID_TIPO_SERIE] = @tipo, [ID_CASA_PRODUCTORA] =  @casa, " +
-                    "[ID_UBICACION] = @ubi, [ESTADO] = @estado  WHERE [ID_BACKUP_SERIE] = @id";
+                strSql = "UPDATE BACKUPS_SERIES SET ID_NOMBRE_SERIE = @nom, CANTIDAD_EPISODIO_MIN = @canmin, CANTIDAD_EPISODIO_MAX = @canmax, OBSERVACIONES = @obser, " +
+                    "ID_TIPO_SERIE = @tipo, ID_CASA_PRODUCTORA = @casa,ID_UBICACION = @ubi, ESTADO = @estado WHERE ID_BACKUP_SERIE = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();

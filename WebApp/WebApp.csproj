@@ -2054,7 +2054,8 @@
     <Content Include="plugins\uplot\uPlot.min.css" />
     <Content Include="Web.config" />
     <Content Include="WebForms\Programacion\WebCasa_productora.aspx" />
-    <Content Include="WebForms\Programacion\WebNombre_material.aspx" />
+    <Content Include="WebForms\Programacion\WebNombrePelicula.aspx" />
+    <Content Include="WebForms\Programacion\WebNombreSerie.aspx" />
     <Content Include="WebForms\Programacion\WebProgramacionPeliculas.aspx" />
     <Content Include="WebForms\Programacion\WebProgramacionSeries.aspx" />
     <Content Include="WebForms\Programacion\WebTipo_pelicula.aspx" />
@@ -2072,14 +2073,16 @@
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Backup_Pelicula.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Backup_Serie.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Casa_Productora.cs" />
-    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Nombre_Material.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Nombre_Pelicula.cs" />
+    <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Nombre_Serie.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Tipo_Pelicula.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Tipo_Serie.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Ubicacion.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Backup_peliculas.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Backup_series.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Casa_productoras.cs" />
-    <Compile Include="Modelo-Controlador\Model\Programacion\Nombre_material.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Nombre_pelicula.cs" />
+    <Compile Include="Modelo-Controlador\Model\Programacion\Nombre_serie.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Tipos_peliculas.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Tipos_series.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Ubicaciones.cs" />
@@ -2098,12 +2101,19 @@
     <Compile Include="WebForms\Programacion\WebCasa_productora.aspx.designer.cs">
       <DependentUpon>WebCasa_productora.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\Programacion\WebNombre_material.aspx.cs">
-      <DependentUpon>WebNombre_material.aspx</DependentUpon>
+    <Compile Include="WebForms\Programacion\WebNombrePelicula.aspx.cs">
+      <DependentUpon>WebNombrePelicula.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Programacion\WebNombre_material.aspx.designer.cs">
-      <DependentUpon>WebNombre_material.aspx</DependentUpon>
+    <Compile Include="WebForms\Programacion\WebNombrePelicula.aspx.designer.cs">
+      <DependentUpon>WebNombrePelicula.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebNombreSerie.aspx.cs">
+      <DependentUpon>WebNombreSerie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Programacion\WebNombreSerie.aspx.designer.cs">
+      <DependentUpon>WebNombreSerie.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Programacion\WebProgramacionPeliculas.aspx.cs">
       <DependentUpon>WebProgramacionPeliculas.aspx</DependentUpon>

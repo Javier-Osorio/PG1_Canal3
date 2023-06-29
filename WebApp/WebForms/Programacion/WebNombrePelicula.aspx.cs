@@ -10,68 +10,69 @@ using WebApp.Modelo_Controlador.Model.Programacion;
 
 namespace WebApp.WebForms.Programacion
 {
-    public partial class WebNombre_material : System.Web.UI.Page
+    public partial class WebNombrePelicula : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             try
             {
                 if (!IsPostBack)
-                    CargaNombreMaterial();
+                    CargaNombrePelicula();
                 else
-                    SetNombreMaterial();
+                    SetNombrePelicula();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
         }
-        Dao_Nombre_Material dao = new Dao_Nombre_Material();
-        Nombre_material mat = new Nombre_material();
 
-        void CargaNombreMaterial()
+        Dao_Nombre_Pelicula dao = new Dao_Nombre_Pelicula();
+        Nombre_pelicula pelicula = new Nombre_pelicula();
+
+        void CargaNombrePelicula()
         {
-            if (dao.GetNombre_Material())
+            if (dao.GetNombre_Pelicula())
             {
-                tabla_nombre_material.DataSource = dao.DsReturn.Tables["nombre_material"];
-                tabla_nombre_material.DataBind();
-                Session["material"] = dao.DsReturn;
+                tabla_nombre_pelicula.DataSource = dao.DsReturn.Tables["nombres_peliculas"];
+                tabla_nombre_pelicula.DataBind();
+                Session["nombre_peli"] = dao.DsReturn;
             }
         }
-        void SetNombreMaterial()
+        void SetNombrePelicula()
         {
-            tabla_nombre_material.DataSource = ((DataSet)Session["material"]);
-            tabla_nombre_material.DataBind();
+            tabla_nombre_pelicula.DataSource = ((DataSet)Session["nombre_peli"]);
+            tabla_nombre_pelicula.DataBind();
         }
-
-        protected void tabla_nombre_material_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            tabla_nombre_material.PageIndex = e.NewPageIndex;
-            tabla_nombre_material.DataBind();
-        }
-
         void LimpiarTexto()
         {
-            txtNombreRegister.Value = "";
             txtNombreEdit.Value = "";
+            txtNombreRegister.Value = "";
         }
 
-        protected void tabla_nombre_material_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void tabla_nombre_pelicula_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridViewRow row = tabla_nombre_material.Rows[e.NewEditIndex];
-            codMaterial.Value = row.Cells[0].Text;
+            tabla_nombre_pelicula.PageIndex = e.NewPageIndex;
+            tabla_nombre_pelicula.DataBind();
+        }
+
+        protected void tabla_nombre_pelicula_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = tabla_nombre_pelicula.Rows[e.NewEditIndex];
+            codNombre.Value = row.Cells[0].Text;
             txtNombreEdit.Value = row.Cells[1].Text;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "modalEditar", "$('#modalEditar').modal('show');", true);
             e.Cancel = true; // Cancelar la edición en el GridView
         }
 
-        protected void tabla_nombre_material_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void tabla_nombre_pelicula_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            mat.ID_Nombre1 = int.Parse(tabla_nombre_material.DataKeys[e.RowIndex].Value.ToString());
-            if (dao.EliminarNombreMaterial(mat))
+            pelicula.ID_Nombre_pelicula1 = int.Parse(tabla_nombre_pelicula.DataKeys[e.RowIndex].Value.ToString());
+            if (dao.EliminarNombrePelicula(pelicula))
             {
-                CargaNombreMaterial();
+                CargaNombrePelicula();
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro eliminado correctamente'); ";
                 StrQry += "</script>";
@@ -88,10 +89,10 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            mat.Nombre = txtNombreRegister.Value;
-            if (dao.InsertarNombreMaterial(mat))
+            pelicula.Nombre = txtNombreRegister.Value;
+            if (dao.InsertarNombrePelicula(pelicula))
             {
-                CargaNombreMaterial();
+                CargaNombrePelicula();
                 LimpiarTexto();
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro guardado correctamente'); ";
@@ -110,11 +111,11 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            mat.ID_Nombre1 = int.Parse(codMaterial.Value);
-            mat.Nombre = txtNombreEdit.Value;
-            if (dao.ModificarNombreMaterial(mat))
+            pelicula.ID_Nombre_pelicula1 = int.Parse(codNombre.Value);
+            pelicula.Nombre = txtNombreEdit.Value;
+            if (dao.ModificarNombrePelicula(pelicula))
             {
-                CargaNombreMaterial();
+                CargaNombrePelicula();
                 LimpiarTexto();
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro modificado correctamente'); ";
@@ -123,7 +124,6 @@ namespace WebApp.WebForms.Programacion
             }
             else
             {
-                LimpiarTexto();
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro no se modifico'); ";
                 StrQry += "</script>";

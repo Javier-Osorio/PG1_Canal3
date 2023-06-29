@@ -31,7 +31,7 @@ namespace WebApp.WebForms.Programacion
         }
         Dao_Backup_Serie dao = new Dao_Backup_Serie();
         Backup_series series = new Backup_series();
-        Dao_Nombre_Material dao_Nombre = new Dao_Nombre_Material();
+        Dao_Nombre_Serie dao_Nombre = new Dao_Nombre_Serie();
         Dao_Casa_Productora dao_Casa = new Dao_Casa_Productora();
         Dao_Tipo_Serie dao_Tipo_Serie = new Dao_Tipo_Serie();
         Dao_Ubicacion dao_Ubicacion = new Dao_Ubicacion();
@@ -53,11 +53,11 @@ namespace WebApp.WebForms.Programacion
 
         void LlenarListados()
         {
-            if (dao_Nombre.GetNombre_Material())
+            if (dao_Nombre.GetNombre_Serie())
             {
-                ddlNombreMaterial.DataSource = dao_Nombre.DsReturn.Tables["nombre_material"];                
-                ddlNombreMaterial.DataTextField = dao_Nombre.DsReturn.Tables["nombre_material"].Columns["NOMBRE"].ToString();
-                ddlNombreMaterial.DataValueField = dao_Nombre.DsReturn.Tables["nombre_material"].Columns["ID_NOMBRE"].ToString();
+                ddlNombreMaterial.DataSource = dao_Nombre.DsReturn.Tables["nombres_series"];                
+                ddlNombreMaterial.DataTextField = dao_Nombre.DsReturn.Tables["nombres_series"].Columns["NOMBRE"].ToString();
+                ddlNombreMaterial.DataValueField = dao_Nombre.DsReturn.Tables["nombres_series"].Columns["ID_NOMBRE_SERIE"].ToString();
                 ddlNombreMaterial.DataBind();
             }
             if (dao_Casa.GetCasa_Productora())
@@ -104,12 +104,12 @@ namespace WebApp.WebForms.Programacion
         }
         void LlenarDDLSEditar()
         {
-            if (dao_Nombre.GetNombre_Material())
+            if (dao_Nombre.GetNombre_Serie())
             {
                 ListItem item;
-                foreach (DataRow list in dao_Nombre.DsReturn.Tables["nombre_material"].Rows)
+                foreach (DataRow list in dao_Nombre.DsReturn.Tables["nombres_series"].Rows)
                 {
-                    string idnom = list["ID_NOMBRE"].ToString();
+                    string idnom = list["ID_NOMBRE_SERIE"].ToString();
                     string nom = list["NOMBRE"].ToString();
                     item = new ListItem(nom, idnom);
                     ddlNombreEditar.Items.Add(item);
@@ -151,7 +151,7 @@ namespace WebApp.WebForms.Programacion
             ListItem listItem;
             listItem = new ListItem("COMPLETO","1");
             ddlEstadoEditar.Items.Add(listItem);
-            listItem = new ListItem("EN BLOQUES", "2");
+            listItem = new ListItem("EN BLOQUES", "0");
             ddlEstadoEditar.Items.Add(listItem);
         }
 
@@ -170,8 +170,8 @@ namespace WebApp.WebForms.Programacion
             {
                 ListItem item;
                 codBackupSerie.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_BACKUP_SERIE"].ToString();
-                string idnom = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_NOMBRE"].ToString();
-                string nom = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["NOMBRE_MATERIAL"].ToString();
+                string idnom = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_NOMBRE_SERIE"].ToString();
+                string nom = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["NOMBRE_SERIE"].ToString();
                 item = new ListItem(nom, idnom);
                 ddlNombreEditar.Items.Add(item);
                 txtEpisodioMinEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["CANTIDAD_EPISODIO_MIN"].ToString();
@@ -186,11 +186,11 @@ namespace WebApp.WebForms.Programacion
                 item = new ListItem(casa, idcasa);
                 ddlCasaEditar.Items.Add(item);
                 string idubica = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_UBICACION"].ToString();
-                string ubica = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["UBICACION"].ToString();
+                string ubica = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["UBICACION_CINTA"].ToString();
                 item = new ListItem(ubica, idubica);
                 ddlUbicacionEditar.Items.Add(item);
-                string idestado = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ESTADO"].ToString();
-                string estado = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["NOMBRE_ESTADO"].ToString();
+                string idestado = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_ESTADO"].ToString();
+                string estado = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ESTADO"].ToString();
                 item = new ListItem(estado, idestado);
                 ddlEstadoEditar.Items.Add(item);
 

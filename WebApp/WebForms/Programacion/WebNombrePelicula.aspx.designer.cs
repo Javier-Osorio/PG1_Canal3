@@ -10,16 +10,16 @@
 namespace WebApp.WebForms.Programacion {
     
     
-    public partial class WebNombre_material {
+    public partial class WebNombrePelicula {
         
         /// <summary>
-        /// Control tabla_nombre_material.
+        /// Control tabla_nombre_pelicula.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView tabla_nombre_material;
+        protected global::System.Web.UI.WebControls.GridView tabla_nombre_pelicula;
         
         /// <summary>
         /// Control txtNombreRegister.
@@ -49,13 +49,13 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreEdit;
         
         /// <summary>
-        /// Control codMaterial.
+        /// Control codNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden codMaterial;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden codNombre;
         
         /// <summary>
         /// Control btnActualizar.
