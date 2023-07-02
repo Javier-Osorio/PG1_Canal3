@@ -2070,6 +2070,10 @@
     <Compile Include="Modelo-Controlador\Connection\Conexion.cs" />
     <Compile Include="Modelo-Controlador\Connection\DataLayer.cs" />
     <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Login.cs" />
+    <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Modulos.cs" />
+    <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Privilegios.cs" />
+    <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Roles.cs" />
+    <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Usuarios.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Backup_Pelicula.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Backup_Serie.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Casa_Productora.cs" />
