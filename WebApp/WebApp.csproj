@@ -2082,6 +2082,11 @@
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Tipo_Pelicula.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Tipo_Serie.cs" />
     <Compile Include="Modelo-Controlador\Dao\Programacion\Dao_Ubicacion.cs" />
+    <Compile Include="Modelo-Controlador\Model\Login\Modulos.cs" />
+    <Compile Include="Modelo-Controlador\Model\Login\Privilegios.cs" />
+    <Compile Include="Modelo-Controlador\Model\Login\Roles.cs" />
+    <Compile Include="Modelo-Controlador\Model\Login\Sesion.cs" />
+    <Compile Include="Modelo-Controlador\Model\Login\Usuarios.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Backup_peliculas.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Backup_series.cs" />
     <Compile Include="Modelo-Controlador\Model\Programacion\Casa_productoras.cs" />
@@ -2326,9 +2331,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modelo-Controlador\Model\Login\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

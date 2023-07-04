@@ -25,9 +25,9 @@
             <div class="card-body">
                 <p class="login-box-msg">Iniciar Sesión</p>
 
-                <form action="#" method="post">
+                <form id="frmLogin" runat="server">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="correo@gmail.com" />
+                        <input id="txtCorreo" runat="server" type="email" class="form-control" placeholder="correo@gmail.com" autocomplete="on" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="" />
+                        <input id="txtPass" type="password" runat="server" class="form-control" placeholder="" autocomplete="off" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -53,7 +53,7 @@
                         </div>--%>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                            <input id="btnIngresar" runat="server" class="btn btn-primary btn-block"  type="button" value="Ingresar" onserverclick="btnIngresar_Click" />
                         </div>
                         <!-- /.col -->
                     </div>
@@ -70,7 +70,7 @@
                 <!-- /.social-auth-links -->
                 <br />
                 <p class="mb-1">
-                    <a href="WebRecuperar.aspx">Olvide mi contraseña</a>
+                    <%--<a href="WebRecuperar.aspx">Olvide mi contraseña</a>--%>
                 </p>
             </div>
             <!-- /.card-body -->

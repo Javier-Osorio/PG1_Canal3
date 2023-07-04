@@ -40,7 +40,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-widget="" href="#" role="button"><i class="fas fa-sign-out-alt">Logout</i></a>
+                        <%--<a class="nav-link" data-widget="" href="#" role="button"><i class="fas fa-sign-out-alt">Logout</i></a>--%>
+                        <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link" OnClick="btnLogout_Click"><i class="fas fa-sign-out-alt">Logout</i></asp:LinkButton>
                     </li>
                 </ul>
             </nav>
@@ -62,23 +63,38 @@
                             <%--<img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">--%>
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">Usuario X</a>
+                            <a href="#" class="d-block">Usuario: <asp:Label ID="lblPrueba" runat="server"></asp:Label></a>
                         </div>
                     </div>
 
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
+                            <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hplPrueba" runat="server" NavigateUrl="~/WebForms/Programacion/WebProgramacionPeliculas.aspx" CssClass="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Programacion Peliculas
+               
+                                    <%--<span class="right badge badge-danger">New</span>--%>
+                                    </p></asp:HyperLink>
+                                <%--<a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Programacion Peliculas
+               
+                                    <span class="right badge badge-danger">New</span>
+                                    </p>
+                                </a>--%>
+                            </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Widgets
                
-                                    <span class="right badge badge-danger">New</span>
+                                    <%--<span class="right badge badge-danger">New</span>--%>
                                     </p>
                                 </a>
                             </li>
