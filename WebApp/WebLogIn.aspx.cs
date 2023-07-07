@@ -33,7 +33,7 @@ namespace WebApp
                     Session["logueado"] = usu.Usuario;
                     Session["rol"] = usu.ID_rol1;
                 }  
-                Response.Redirect(ResolveUrl("~/WebForms/Programacion/WebProgramacionSeries.aspx"));
+                Response.Redirect(ResolveUrl("~/WebForms/WebBienvenida.aspx"));
             }
             else
             {

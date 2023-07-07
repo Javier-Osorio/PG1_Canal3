@@ -2053,6 +2053,10 @@
     <Content Include="plugins\uplot\uPlot.iife.min.js" />
     <Content Include="plugins\uplot\uPlot.min.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\Login\WebModulos.aspx" />
+    <Content Include="WebForms\Login\WebPrivilegios.aspx" />
+    <Content Include="WebForms\Login\WebRoles.aspx" />
+    <Content Include="WebForms\Login\WebUsuarios.aspx" />
     <Content Include="WebForms\Programacion\WebCasa_productora.aspx" />
     <Content Include="WebForms\Programacion\WebNombrePelicula.aspx" />
     <Content Include="WebForms\Programacion\WebNombreSerie.aspx" />
@@ -2061,8 +2065,8 @@
     <Content Include="WebForms\Programacion\WebTipo_pelicula.aspx" />
     <Content Include="WebForms\Programacion\WebTipo_serie.aspx" />
     <Content Include="WebForms\Programacion\WebUbicacion.aspx" />
+    <Content Include="WebForms\WebBienvenida.aspx" />
     <Content Include="WebLogIn.aspx" />
-    <Content Include="WebForms\WebMasterPage.aspx" />
     <Content Include="WebNuevaContra.aspx" />
     <Content Include="WebRecuperar.aspx" />
   </ItemGroup>
@@ -2102,6 +2106,34 @@
     </Compile>
     <Compile Include="SitioWeb.Master.designer.cs">
       <DependentUpon>SitioWeb.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Login\WebModulos.aspx.cs">
+      <DependentUpon>WebModulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Login\WebModulos.aspx.designer.cs">
+      <DependentUpon>WebModulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Login\WebPrivilegios.aspx.cs">
+      <DependentUpon>WebPrivilegios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Login\WebPrivilegios.aspx.designer.cs">
+      <DependentUpon>WebPrivilegios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Login\WebRoles.aspx.cs">
+      <DependentUpon>WebRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Login\WebRoles.aspx.designer.cs">
+      <DependentUpon>WebRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Login\WebUsuarios.aspx.cs">
+      <DependentUpon>WebUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Login\WebUsuarios.aspx.designer.cs">
+      <DependentUpon>WebUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Programacion\WebCasa_productora.aspx.cs">
       <DependentUpon>WebCasa_productora.aspx</DependentUpon>
@@ -2159,19 +2191,19 @@
     <Compile Include="WebForms\Programacion\WebUbicacion.aspx.designer.cs">
       <DependentUpon>WebUbicacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\WebBienvenida.aspx.cs">
+      <DependentUpon>WebBienvenida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\WebBienvenida.aspx.designer.cs">
+      <DependentUpon>WebBienvenida.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebLogIn.aspx.cs">
       <DependentUpon>WebLogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebLogIn.aspx.designer.cs">
       <DependentUpon>WebLogIn.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForms\WebMasterPage.aspx.cs">
-      <DependentUpon>WebMasterPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\WebMasterPage.aspx.designer.cs">
-      <DependentUpon>WebMasterPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebNuevaContra.aspx.cs">
       <DependentUpon>WebNuevaContra.aspx</DependentUpon>
@@ -2331,9 +2363,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WebForms\Login\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

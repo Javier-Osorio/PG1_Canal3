@@ -58,11 +58,10 @@ namespace WebApp
         {
             foreach (Modulos modulo in modulos)
             {
-                if (modulo.ID_modulo1 == idModuloPadre)
+                if (modulo.ID_modulo_padre1 == idModuloPadre && modulo.ID_modulo1 != idModuloPadre)
                 {
-                    TreeNode nodoHijo = new TreeNode(modulo.Nombre, modulo.ID_modulo1.ToString(), modulo.Url_path);
+                    TreeNode nodoHijo = new TreeNode(modulo.Nombre, modulo.ID_modulo1.ToString(),"",modulo.Url_path,"_self");
                     NodoPadre.ChildNodes.Add(nodoHijo);
-                    //ConstruirArbol(modulo.ID_modulo1, nodoHijo, modulos);
                 }
             }
         }

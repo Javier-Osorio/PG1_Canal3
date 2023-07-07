@@ -68,7 +68,7 @@ namespace WebApp.Modelo_Controlador.Dao
         public List<Modulos> obtenerModulos(int rol)
         {
             List<Modulos> listModulos = new List<Modulos>();
-            Modulos mod = new Modulos();
+            
             try
             {
                 strSql = "SELECT M.ID_MODULO, M.NOMBRE, CASE WHEN M.PATH_URL IS NULL THEN '' " +
@@ -82,10 +82,12 @@ namespace WebApp.Modelo_Controlador.Dao
                 reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
+                    Modulos mod = new Modulos();
                     mod.ID_modulo1 = int.Parse(reader["ID_MODULO"].ToString());
                     mod.Nombre = reader["NOMBRE"].ToString();
                     mod.Url_path = reader["PATH_URL"].ToString();
                     mod.ID_modulo_padre1 = int.Parse(reader["ID_MODULO_PADRE"].ToString());
+
                     listModulos.Add(mod);
                 }
                 conectar.Close();
