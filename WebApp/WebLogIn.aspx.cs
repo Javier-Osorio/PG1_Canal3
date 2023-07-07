@@ -18,6 +18,7 @@ namespace WebApp
 
         Dao_Login dao = new Dao_Login();
         Sesion sesion = new Sesion();
+        Usuarios usu = new Usuarios();
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -26,10 +27,11 @@ namespace WebApp
 
             if (dao.ValidarUsuario(sesion))
             {
-                string usuario = dao.ObtenerUsuario(sesion);
-                if(usuario != "error")
+                usu = dao.ObtenerUsuario(sesion);
+                if(usu.Usuario != "")
                 {
-                    Session["logueado"] = usuario;
+                    Session["logueado"] = usu.Usuario;
+                    Session["rol"] = usu.ID_rol1;
                 }  
                 Response.Redirect(ResolveUrl("~/WebForms/Programacion/WebProgramacionSeries.aspx"));
             }

@@ -38,12 +38,12 @@ namespace WebApp.Modelo_Controlador.Dao
             }
         }
 
-        public string ObtenerUsuario(Sesion login)
+        public Usuarios ObtenerUsuario(Sesion login)
         {
+            Usuarios usu = new Usuarios();
             try
-            {
-                string usu = "";
-                strSql = "SELECT USUARIO FROM USUARIOS WHERE CORREO = @correo";
+            {              
+                strSql = "SELECT USUARIO, ID_ROL FROM USUARIOS WHERE CORREO = @correo";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
@@ -51,7 +51,9 @@ namespace WebApp.Modelo_Controlador.Dao
                 reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    usu = reader["USUARIO"].ToString();
+                    usu.Usuario = reader["USUARIO"].ToString();
+                    usu.ID_rol1 = int.Parse(reader["ID_ROL"].ToString());
+                   
                 }
                 conectar.Close();
                 return usu;
@@ -60,8 +62,14 @@ namespace WebApp.Modelo_Controlador.Dao
             {
                 Console.WriteLine(ex.StackTrace);
                 conectar.Close();
-                return "error";
+                return usu;
             }
+        }
+        public List<Modulos> obtenerModulos(int rol)
+        {
+            var listModulos = new List<Modulos>();
+
+            return listModulos;
         }
     }
 }
