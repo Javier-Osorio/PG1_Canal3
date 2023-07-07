@@ -24,6 +24,7 @@ namespace WebApp
 
                 if (!IsPostBack)
                 {
+                    LlenarTreeView();
                     // Deshabilitando el almacenamiento en caché de la página
                     Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     Response.Cache.SetNoStore();
@@ -41,16 +42,29 @@ namespace WebApp
             // Obtener los módulos desde la base de datos
             List<Modulos> modulos = login.obtenerModulos(int.Parse(Session["rol"].ToString()));
 
-        //    // Llamar al método recursivo para construir el árbol de nodos
-        //    foreach (Modulo modulo in modulos)
-        //    {
-        //        if (modulo.ID_MODULO_PADRE == 0)
-        //        {
-        //            TreeNode nodoPadre = new TreeNode(modulo.NOMBRE, modulo.ID_MODULO.ToString());
-        //            treeView.Nodes.Add(nodoPadre);
-        //            ConstruirArbol(modulo.ID_MODULO, nodoPadre, modulos);
-        //        }
-        //    }
+            // Llamar al método recursivo para construir el árbol de nodos
+            foreach (Modulos modulo in modulos)
+            {
+                if (modulo.ID_modulo1 == modulo.ID_modulo_padre1)
+                {
+                    TreeNode nodoPadre = new TreeNode(modulo.Nombre, modulo.ID_modulo1.ToString());
+                    treeListMenu.Nodes.Add(nodoPadre);
+                    ConstruirArbol(modulo.ID_modulo1, nodoPadre, modulos);
+                }
+            }
+        }
+
+        private void ConstruirArbol(int idModuloPadre, TreeNode NodoPadre, List<Modulos> modulos)
+        {
+            foreach (Modulos modulo in modulos)
+            {
+                if (modulo.ID_modulo1 == idModuloPadre)
+                {
+                    TreeNode nodoHijo = new TreeNode(modulo.Nombre, modulo.ID_modulo1.ToString(), modulo.Url_path);
+                    NodoPadre.ChildNodes.Add(nodoHijo);
+                    //ConstruirArbol(modulo.ID_modulo1, nodoHijo, modulos);
+                }
+            }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace WebApp.Modelo_Controlador.Dao
     {
         Conexion conexionDB = new Conexion();
         SqlConnection conectar;
-        SqlDataReader reader;
+        SqlDataReader reader;        
 
         string strSql;
 
@@ -67,7 +67,34 @@ namespace WebApp.Modelo_Controlador.Dao
         }
         public List<Modulos> obtenerModulos(int rol)
         {
-            var listModulos = new List<Modulos>();
+            List<Modulos> listModulos = new List<Modulos>();
+            Modulos mod = new Modulos();
+            try
+            {
+                strSql = "SELECT M.ID_MODULO, M.NOMBRE, CASE WHEN M.PATH_URL IS NULL THEN '' " +
+                    "ELSE M.PATH_URL END AS PATH_URL, M.ID_MODULO_PADRE FROM PRIVILEGIOS PR " +
+                    "INNER JOIN ROLES R ON R.ID_ROL = PR.ID_ROL INNER JOIN MODULOS M ON M.ID_MODULO = PR.ID_MODULO WHERE " +
+                    "PR.ID_ROL = @rol AND PR.ESTADO = 1";
+                conectar = conexionDB.OpenSQL();
+                SqlCommand comando = new SqlCommand(strSql, conectar);
+                comando.Prepare();
+                comando.Parameters.AddWithValue("@rol", rol);
+                reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    mod.ID_modulo1 = int.Parse(reader["ID_MODULO"].ToString());
+                    mod.Nombre = reader["NOMBRE"].ToString();
+                    mod.Url_path = reader["PATH_URL"].ToString();
+                    mod.ID_modulo_padre1 = int.Parse(reader["ID_MODULO_PADRE"].ToString());
+                    listModulos.Add(mod);
+                }
+                conectar.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                conectar.Close();
+            }
 
             return listModulos;
         }
