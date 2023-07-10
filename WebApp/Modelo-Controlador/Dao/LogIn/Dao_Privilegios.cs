@@ -32,6 +32,53 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             return true;
         }
 
+        public bool GetModuloPrivilegio()
+        {
+            try
+            {
+                strSql = "SELECT ID_MODULO, NOMBRE FROM MODULOS WHERE ESTADO = 1";
+                DsReturn = conexionDB.DataSQL(strSql, "modul_privi");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
+        public bool GetRolPrivilegio()
+        {
+            try
+            {
+                strSql = "SELECT ID_ROL, NOMBRE FROM ROLES WHERE ESTADO = 1";
+                DsReturn = conexionDB.DataSQL(strSql, "rol_privi");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
+        public bool GetListPrivilegio(int cod)
+        {
+            try
+            {
+                strSql = "SELECT M.ID_MODULO, M.NOMBRE AS MODULO, R.ID_ROL, R.NOMBRE AS ROL, P.ESTADO AS ID_ESTADO, " +
+                    "CASE WHEN P.ESTADO = 1 THEN 'ACTIVO' WHEN P.ESTADO = 0 THEN 'INACTIVO' END ESTADO " +
+                    "FROM PRIVILEGIOS P INNER JOIN MODULOS M ON P.ID_MODULO = M.ID_MODULO INNER JOIN ROLES R ON P.ID_ROL = R.ID_ROL WHERE P.ID_PRIVILEGIO = " + cod;
+                DsReturn = conexionDB.DataSQL(strSql, "edit_privi");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
         public bool InsertarPrivilegios(Privilegios privilegios)
         {
             try

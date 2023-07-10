@@ -32,6 +32,21 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             return true;
         }
 
+        public bool GetRoles()
+        {
+            try
+            {
+                strSql = "SELECT ID_ROL, NOMBRE FROM ROLES WHERE ESTADO = 1";
+                DsReturn = conexionDB.DataSQL(strSql, "usu_rol");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
         public bool InsertarUsuarios(Usuarios usuarios)
         {
             try
