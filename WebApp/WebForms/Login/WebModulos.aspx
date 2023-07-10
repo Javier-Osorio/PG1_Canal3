@@ -99,7 +99,7 @@
                     </div>
                     <div class="form-check">
                         <input runat="server" type="checkbox" class="form-check-input" id="chbModuloPropioRegister" /> 
-                        <label class="form-check-label" for="chModuloPropioRegister">Crear modulo propio</label>
+                        <label class="form-check-label" for="chModuloPropioRegister">Crear modulo propio (autoreferencial)</label>
                     </div>
                     <div class="form-group">
                         <label for="">Estado:</label>
@@ -145,13 +145,11 @@
                     </div>
                     <div class="form-check">
                         <input runat="server" type="checkbox" class="form-check-input" id="chModuloPropioEdit" /> 
-                        <label class="form-check-label" for="chModuloPropioEdit">Crear modulo propio</label>
+                        <label class="form-check-label" for="chModuloPropioEdit">Usar el mismo modulo propio (autoreferencial)</label>
                     </div>
                     <div class="form-group">
                         <label for="">Estado:</label>
                         <asp:DropDownList ID="ddlEstadoEdit" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="1" Text="ACTIVO"></asp:ListItem>
-                            <asp:ListItem Value="0" Text="INACTIVO"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <input runat="server" id="codModulo" type="hidden" />

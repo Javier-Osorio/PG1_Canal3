@@ -11,6 +11,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
     public class Dao_Modulos : DataLayer
     {
         Conexion conexionDB = new Conexion();
+        ManejoError error = new ManejoError();
         SqlConnection conectar;
 
         string strSql;
@@ -25,7 +26,38 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
+        public bool GetModulosDDL()
+        {
+            try
+            {
+                strSql = "SELECT ID_MODULO, NOMBRE FROM MODULOS";
+                DsReturn = conexionDB.DataSQL(strSql, "ddlmodulos");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
+        public bool GetModulosList(int id)
+        {
+            try
+            {
+                strSql = "SELECT ID_MODULO_PADRE, ESTADO AS ID_ESTADO, CASE WHEN ESTADO = 1 THEN 'ACTIVO' " +
+                    "WHEN ESTADO = 0 THEN 'INACTIVO' END ESTADO  FROM MODULOS WHERE ID_MODULO = " + id;
+                DsReturn = conexionDB.DataSQL(strSql, "ddlmodulosedit");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
                 return false;
             }
             return true;
@@ -51,7 +83,32 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
+                conectar.Close();
+                return false;
+            }
+        }
+
+        public bool InsertarModuloPropio(Modulos modulo)
+        {
+            try
+            {
+                strSql = "INSERT INTO MODULOS(ID_MODULO, NOMBRE, PATH_URL, ID_MODULO_PADRE, ESTADO, FECHA_CREACION, USUARIO_CREACION) " +
+                    "VALUES ((SELECT ISNULL(MAX(ID_MODULO), 0) + 1 FROM MODULOS), @nom, @url, (SELECT ISNULL(MAX(ID_MODULO), 0) + 1 FROM MODULOS), @estado, GETDATE(), @usuario)";
+                conectar = conexionDB.OpenSQL();
+                SqlCommand comando = new SqlCommand(strSql, conectar);
+                comando.Prepare();
+                comando.Parameters.AddWithValue("@nom", modulo.Nombre);
+                comando.Parameters.AddWithValue("@url", modulo.Url_path);
+                comando.Parameters.AddWithValue("@estado", modulo.Estado);
+                comando.Parameters.AddWithValue("@usuario", modulo.Usuario_creacion);
+                comando.ExecuteNonQuery();
+                conectar.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }
@@ -78,7 +135,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }
@@ -99,7 +156,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }

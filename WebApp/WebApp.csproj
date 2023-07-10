@@ -2073,6 +2073,7 @@
   <ItemGroup>
     <Compile Include="Modelo-Controlador\Connection\Conexion.cs" />
     <Compile Include="Modelo-Controlador\Connection\DataLayer.cs" />
+    <Compile Include="Modelo-Controlador\Connection\ManejoError.cs" />
     <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Login.cs" />
     <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Modulos.cs" />
     <Compile Include="Modelo-Controlador\Dao\LogIn\Dao_Privilegios.cs" />
@@ -2380,6 +2381,8 @@
           <DevelopmentServerPort>49962</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:49962/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:49962/WebLogIn.aspx</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

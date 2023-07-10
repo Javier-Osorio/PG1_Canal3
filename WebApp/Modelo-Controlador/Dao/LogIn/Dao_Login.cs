@@ -11,6 +11,7 @@ namespace WebApp.Modelo_Controlador.Dao
     public class Dao_Login : DataLayer
     {
         Conexion conexionDB = new Conexion();
+        ManejoError error = new ManejoError();
         SqlConnection conectar;
         SqlDataReader reader;        
 
@@ -32,7 +33,7 @@ namespace WebApp.Modelo_Controlador.Dao
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }
@@ -60,7 +61,7 @@ namespace WebApp.Modelo_Controlador.Dao
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return usu;
             }
@@ -94,7 +95,7 @@ namespace WebApp.Modelo_Controlador.Dao
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
             }
 

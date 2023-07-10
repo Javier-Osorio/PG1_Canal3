@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApp.Modelo_Controlador.Connection;
 using WebApp.Modelo_Controlador.Dao.Programacion;
 using WebApp.Modelo_Controlador.Model.Programacion;
 
@@ -23,11 +24,12 @@ namespace WebApp.WebForms.Programacion
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
             }
         }
         Dao_Nombre_Serie dao = new Dao_Nombre_Serie();
         Nombre_serie serie = new Nombre_serie();
+        ManejoError error = new ManejoError();
 
         void CargaNombreSerie()
         {

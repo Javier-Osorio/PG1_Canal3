@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApp.Modelo_Controlador.Connection;
 using WebApp.Modelo_Controlador.Dao.Programacion;
 using WebApp.Modelo_Controlador.Model.Programacion;
 
@@ -26,7 +27,7 @@ namespace WebApp.WebForms.Programacion
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
             }
         }
         Dao_Backup_Serie dao = new Dao_Backup_Serie();
@@ -35,6 +36,7 @@ namespace WebApp.WebForms.Programacion
         Dao_Casa_Productora dao_Casa = new Dao_Casa_Productora();
         Dao_Tipo_Serie dao_Tipo_Serie = new Dao_Tipo_Serie();
         Dao_Ubicacion dao_Ubicacion = new Dao_Ubicacion();
+        ManejoError error = new ManejoError();
 
         void CargaBackupSerie()
         {

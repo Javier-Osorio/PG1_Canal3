@@ -11,6 +11,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
     public class Dao_Privilegios : DataLayer
     {
         Conexion conexionDB = new Conexion();
+        ManejoError error = new ManejoError();
         SqlConnection conectar;
 
         string strSql;
@@ -25,7 +26,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 return false;
             }
             return true;
@@ -50,7 +51,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }
@@ -76,7 +77,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }
@@ -97,7 +98,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }

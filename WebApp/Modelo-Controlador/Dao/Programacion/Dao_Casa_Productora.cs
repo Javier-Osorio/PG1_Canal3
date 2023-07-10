@@ -11,7 +11,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
     public class Dao_Casa_Productora : DataLayer
     {
         Conexion conexionDB = new Conexion();
-        //Casa_productoras casa = new Casa_productoras();
+        ManejoError error = new ManejoError();
         SqlConnection conectar;
 
         string strSql;
@@ -26,7 +26,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 return false;
             }
             return true;
@@ -48,7 +48,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }
@@ -70,7 +70,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }
@@ -91,7 +91,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                error.LogError(ex.ToString(), ex.StackTrace);
                 conectar.Close();
                 return false;
             }
