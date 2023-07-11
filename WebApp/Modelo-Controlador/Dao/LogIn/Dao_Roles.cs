@@ -31,6 +31,22 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             return true;
         }
 
+        public bool GetEstadoRol(int cod)
+        {
+            try
+            {
+                strSql = "SELECT ESTADO AS ID_ESTADO, CASE WHEN ESTADO = 1 THEN 'ACTIVO' WHEN ESTADO = 0 THEN 'INACTIVO' END ESTADO FROM ROLES" +
+                    " WHERE ID_ROL = " + cod;
+                DsReturn = conexionDB.DataSQL(strSql, "estado_rol_edit");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
         public bool InsertarRoles(Roles roles)
         {
             try

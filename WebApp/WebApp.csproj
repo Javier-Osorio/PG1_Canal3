@@ -2068,6 +2068,7 @@
     <Content Include="WebForms\WebBienvenida.aspx" />
     <Content Include="WebLogIn.aspx" />
     <Content Include="WebNuevaContra.aspx" />
+    <Content Include="WebNuevoUsuario.aspx" />
     <Content Include="WebRecuperar.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -2212,6 +2213,13 @@
     </Compile>
     <Compile Include="WebNuevaContra.aspx.designer.cs">
       <DependentUpon>WebNuevaContra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebNuevoUsuario.aspx.cs">
+      <DependentUpon>WebNuevoUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebNuevoUsuario.aspx.designer.cs">
+      <DependentUpon>WebNuevoUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebRecuperar.aspx.cs">
       <DependentUpon>WebRecuperar.aspx</DependentUpon>

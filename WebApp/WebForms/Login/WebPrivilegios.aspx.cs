@@ -127,9 +127,10 @@ namespace WebApp.WebForms.Login
         {
             LimpiarDDLsEdit();
             GridViewRow row = tabla_privilegios.Rows[e.NewEditIndex];
-            int cod = int.Parse(row.Cells[0].ToString());
+            int cod = int.Parse(row.Cells[0].Text);
             if (dao.GetListPrivilegio(cod))
             {
+                codPrivilegio.Value = cod.ToString();
                 ListItem item;
                 string idmod = dao.DsReturn.Tables["edit_privi"].Rows[0]["ID_MODULO"].ToString();
                 string mod = dao.DsReturn.Tables["edit_privi"].Rows[0]["MODULO"].ToString();
@@ -206,7 +207,7 @@ namespace WebApp.WebForms.Login
             privilegios.ID_rol1 = int.Parse(ddlRolRegister.SelectedValue);
             privilegios.Estado = int.Parse(ddlEstadoRegister.SelectedValue);
             privilegios.Usuario_modificacion = Session["logueado"].ToString();
-            privilegios.ID_rol1 = int.Parse(codPrivilegio.Value);
+            privilegios.ID_privilegio1 = int.Parse(codPrivilegio.Value);
 
             if (dao.ModificarPrivilegios(privilegios))
             {

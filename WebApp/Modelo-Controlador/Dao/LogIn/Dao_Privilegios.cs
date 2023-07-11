@@ -20,7 +20,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
         {
             try
             {
-                strSql = "SELECT P.ID_PRIVILEGIO, M.NOMBRE, R.NOMBRE, CASE WHEN P.ESTADO = 1 THEN 'ACTIVO' WHEN P.ESTADO = 0 THEN 'INACTIVO' END ESTADO " +
+                strSql = "SELECT P.ID_PRIVILEGIO, M.NOMBRE AS MODULO, R.NOMBRE AS ROL, CASE WHEN P.ESTADO = 1 THEN 'ACTIVO' WHEN P.ESTADO = 0 THEN 'INACTIVO' END ESTADO " +
                     "FROM PRIVILEGIOS P INNER JOIN MODULOS M ON P.ID_MODULO = M.ID_MODULO INNER JOIN ROLES R ON P.ID_ROL = R.ID_ROL";
                 DsReturn = conexionDB.DataSQL(strSql, "privilegios");
             }

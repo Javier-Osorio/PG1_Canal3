@@ -46,7 +46,7 @@ namespace WebApp.WebForms.Login {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCorreoRegister;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtCorreoRegister;
         
         /// <summary>
         /// Control txtContraRegister.
@@ -118,25 +118,7 @@ namespace WebApp.WebForms.Login {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCorreoEdit;
-        
-        /// <summary>
-        /// Control txtContraEdit.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtContraEdit;
-        
-        /// <summary>
-        /// Control txtContraConfirmEdit.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtContraConfirmEdit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtCorreoEdit;
         
         /// <summary>
         /// Control ddlRolEdit.

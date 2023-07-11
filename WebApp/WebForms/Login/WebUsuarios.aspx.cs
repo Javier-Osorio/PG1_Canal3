@@ -82,5 +82,158 @@ namespace WebApp.WebForms.Login
             item = new ListItem("INACTIVO", "0");
             ddlEstadoEdit.Items.Add(item);
         }
+
+        void limpiarDDLsRegister()
+        {
+            ddlEstadoRegister.SelectedIndex = 0;
+            ddlRolRegister.SelectedIndex = 0;
+        }
+        void limpiarDDLsEdit()
+        {
+            ddlRolEdit.Items.Clear();
+            ddlEstadoEdit.Items.Clear();
+        }
+
+        void limpiartextos()
+        {
+            txtNombreRegister.Value = "";
+            txtApellidoRegister.Value = "";
+            txtCorreoRegister.Value = "";
+            txtContraRegister.Value = "";
+            txtContraConfirmRegister.Value = "";
+            ddlEstadoRegister.SelectedIndex = 0;
+            ddlRolRegister.SelectedIndex = 0;
+        }
+
+        protected void tabla_usuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            tabla_usuarios.PageIndex = e.NewPageIndex;
+            tabla_usuarios.DataBind();
+        }
+
+        protected void tabla_usuarios_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            limpiarDDLsEdit();
+            GridViewRow row = tabla_usuarios.Rows[e.NewEditIndex];
+            codUsuario.Value = row.Cells[0].Text;
+            txtNombreEdit.Value = row.Cells[1].Text;
+            txtApellidoEdit.Value = row.Cells[2].Text;
+            txtCorreoEdit.Value = row.Cells[4].Text;
+
+            ListItem item;
+            if (dao.GetListUsuarios(int.Parse(row.Cells[0].Text)))
+            {
+                foreach (DataRow list in dao.DsReturn.Tables["list_usuario_edit"].Rows)
+                {
+                    string idrol = list["ID_ROL"].ToString();
+                    string rol = list["ROL"].ToString();
+                    string idesta = list["ID_ESTADO"].ToString();
+                    string estado = list["ESTADO"].ToString();
+
+                    item = new ListItem(rol, idrol);
+                    ddlRolEdit.Items.Add(item);
+                    item = new ListItem(estado, idesta);
+                    ddlEstadoEdit.Items.Add(item);
+                }
+            }
+
+            LlenarEdits();
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "modalEditar", "$('#modalEditar').modal('show');", true);
+            e.Cancel = true; // Cancelar la edición en el GridView
+        }
+
+        protected void tabla_usuarios_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            usuarios.ID_usuario1 = int.Parse(tabla_usuarios.DataKeys[e.RowIndex].Value.ToString());
+
+            if (dao.EliminarUsuarios(usuarios))
+            {
+                CargaUsuarios();
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro eliminado correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no se elimino'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+        }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            string ver1 = txtContraConfirmRegister.Value;
+            string ver2 = txtContraRegister.Value;
+            if (ver1.Equals(ver2))
+            {
+                usuarios.Nombre = txtNombreRegister.Value;
+                usuarios.Apellido = txtApellidoRegister.Value;
+                usuarios.Usuario = dao.ObtenerUsuario(usuarios);
+                usuarios.Contra = txtContraRegister.Value;
+                usuarios.Correo = txtCorreoRegister.Value;
+                usuarios.Estado = int.Parse(ddlEstadoRegister.SelectedValue);
+                usuarios.ID_rol1 = int.Parse(ddlRolRegister.SelectedValue);
+                usuarios.Usuario_creacion = Session["logueado"].ToString();
+
+                if (dao.InsertarUsuarios(usuarios))
+                {
+                    CargaUsuarios();
+                    limpiartextos();
+                    string StrQry = "<script language='javascript'>";
+                    StrQry += "alert('Se registro correctamente'); ";
+                    StrQry += "</script>";
+                    ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                }
+                else
+                {
+                    limpiartextos();
+                    string StrQry = "<script language='javascript'>";
+                    StrQry += "alert('Registro no se guardo'); ";
+                    StrQry += "</script>";
+                    ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                }
+            }
+            else
+            {
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('No ingreso correctamente la contraseña'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            usuarios.Nombre = txtNombreEdit.Value;
+            usuarios.Apellido = txtApellidoEdit.Value;
+            usuarios.Usuario = dao.ObtenerUsuario(usuarios);
+            usuarios.Correo = txtCorreoEdit.Value;
+            usuarios.Estado = int.Parse(ddlEstadoEdit.SelectedValue);
+            usuarios.ID_rol1 = int.Parse(ddlRolEdit.SelectedValue);
+            usuarios.Usuario_modificacion = Session["logueado"].ToString();
+            usuarios.ID_usuario1 = int.Parse(codUsuario.Value);
+
+            if (dao.ModificarUsuarios(usuarios))
+            {
+                CargaUsuarios();
+ 
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro modificado correctamente'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+            else
+            {               
+                string StrQry = "<script language='javascript'>";
+                StrQry += "alert('Registro no se modifico'); ";
+                StrQry += "</script>";
+                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+            }
+        }
     }
 }

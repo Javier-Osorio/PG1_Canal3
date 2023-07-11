@@ -41,12 +41,12 @@ namespace WebApp.WebForms.Login
             {
                 tabla_roles.DataSource = dao.DsReturn.Tables["roles"];
                 tabla_roles.DataBind();
-                Session["rol"] = dao.DsReturn;
+                Session["tabla_rol"] = dao.DsReturn;
             }
         }
         void SetRoles()
         {
-            tabla_roles.DataSource = ((DataSet)Session["rol"]);
+            tabla_roles.DataSource = ((DataSet)Session["tabla_rol"]);
             tabla_roles.DataBind();
         }
 
@@ -63,17 +63,17 @@ namespace WebApp.WebForms.Login
             GridViewRow row = tabla_roles.Rows[e.NewEditIndex];
             codRol.Value = row.Cells[0].Text;
             txtNombreEdit.Value = row.Cells[1].Text;
-            string verEstado = row.Cells[2].Text;
             ListItem listItem;
-            if (verEstado == "ACTIVO")
+            ListItem item;
+            if (dao.GetEstadoRol(int.Parse(row.Cells[0].Text)))
             {
-                listItem = new ListItem("ACTIVO", "1");
-                ddlEstadoEdit.Items.Add(listItem);
-            }
-            else
-            {
-                listItem = new ListItem("INACTIVO", "0");
-                ddlEstadoEdit.Items.Add(listItem);
+                foreach (DataRow list in dao.DsReturn.Tables["estado_rol_edit"].Rows)
+                {
+                    string idesta = list["ID_ESTADO"].ToString();
+                    string estado = list["ESTADO"].ToString();
+                    item = new ListItem(estado, idesta);
+                    ddlEstadoEdit.Items.Add(item);
+                }
             }
 
             
@@ -134,14 +134,14 @@ namespace WebApp.WebForms.Login
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            rol.Nombre = txtNombreRegister.Value;
-            rol.Estado = int.Parse(ddlEstadoRegister.SelectedValue);
+            rol.Nombre = txtNombreEdit.Value;
+            rol.Estado = int.Parse(ddlEstadoEdit.SelectedValue);
             rol.Usuario_modificacion = Session["logueado"].ToString();
+            rol.ID_rol1 = int.Parse(codRol.Value);
 
             if (dao.ModificarRoles(rol))
             {
                 CargaRoles();
-                txtNombreRegister.Value = "";
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro modificado correctamente'); ";
                 StrQry += "</script>";
@@ -149,7 +149,6 @@ namespace WebApp.WebForms.Login
             }
             else
             {
-                txtNombreRegister.Value = "";
                 string StrQry = "<script language='javascript'>";
                 StrQry += "alert('Registro no se modifico'); ";
                 StrQry += "</script>";

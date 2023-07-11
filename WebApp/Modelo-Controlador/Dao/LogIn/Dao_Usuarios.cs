@@ -21,8 +21,25 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
             try
             {
                 strSql = "SELECT U.ID_USUARIO, U.NOMBRE, U.APELLIDO, U.USUARIO, U.CORREO, '********' as CONTRA, CASE WHEN U.ESTADO = 1 THEN 'ACTIVO' " +
-                    "WHEN U.ESTADO = 0 THEN 'INACTIVO' END ESTADO, R.NOMBRE FROM USUARIOS U INNER JOIN ROLES R ON R.ID_ROL = U.ID_ROL";
-                DsReturn = conexionDB.DataSQL(strSql, "usuario");
+                    "WHEN U.ESTADO = 0 THEN 'INACTIVO' END ESTADO, R.NOMBRE AS ROL FROM USUARIOS U INNER JOIN ROLES R ON R.ID_ROL = U.ID_ROL";
+                DsReturn = conexionDB.DataSQL(strSql, "usuarios");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
+        public bool GetListUsuarios(int cod)
+        {
+            try
+            {
+                strSql = "SELECT U.ESTADO AS ID_ESTADO, CASE WHEN U.ESTADO = 1 THEN 'ACTIVO' " +
+                    "WHEN U.ESTADO = 0 THEN 'INACTIVO' END ESTADO, R.ID_ROL, R.NOMBRE AS ROL FROM USUARIOS U " +
+                    "INNER JOIN ROLES R ON R.ID_ROL = U.ID_ROL WHERE U.ID_USUARIO = " + cod;
+                DsReturn = conexionDB.DataSQL(strSql, "list_usuario_edit");
             }
             catch (Exception ex)
             {
@@ -45,6 +62,21 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
                 return false;
             }
             return true;
+        }
+
+        public string ObtenerUsuario(Usuarios usu)
+        {
+            string resul = "";
+            try
+            {
+                char firstNom = usu.Nombre.FirstOrDefault();
+                resul = firstNom + usu.Apellido;
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+            }
+            return resul;
         }
 
         public bool InsertarUsuarios(Usuarios usuarios)
@@ -80,7 +112,7 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
         {
             try
             {
-                strSql = "UPDATE USUARIOS SET NOMBRE = @nombre, APELLIDO = @apellido, USUARIO = @usuario, CORREO = @correo, CONTRA = ENCRYPTBYPASSPHRASE('password', @contra), " +
+                strSql = "UPDATE USUARIOS SET NOMBRE = @nombre, APELLIDO = @apellido, USUARIO = @usuario, CORREO = @correo, " +
                     "ESTADO = @estado, ID_ROL = @rol, FECHA_MODIFICACION = GETDATE(), USUARIO_MODIFICACION = @usuario_admin WHERE ID_USUARIO = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
@@ -89,7 +121,6 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
                 comando.Parameters.AddWithValue("@apellido", usuarios.Apellido);
                 comando.Parameters.AddWithValue("@usuario", usuarios.Usuario);
                 comando.Parameters.AddWithValue("@correo", usuarios.Correo);
-                comando.Parameters.AddWithValue("@contra", usuarios.Contra);
                 comando.Parameters.AddWithValue("@estado", usuarios.Estado);
                 comando.Parameters.AddWithValue("@rol", usuarios.ID_rol1);
                 comando.Parameters.AddWithValue("@usuario_admin", usuarios.Usuario_modificacion);
