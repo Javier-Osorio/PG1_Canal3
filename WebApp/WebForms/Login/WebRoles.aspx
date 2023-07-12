@@ -84,6 +84,7 @@
                     <div class="form-group">
                         <label for="txtNombreRegister">Nombre:</label>
                         <input runat="server" type="text" name="" class="form-control" id="txtNombreRegister" placeholder="" />
+                        <asp:Label ID="lblMensajeRegistro" runat="server" ForeColor="Red"></asp:Label>
                     </div>
                     <div class="form-group">
                         <label for="">Estado:</label>
@@ -91,11 +92,11 @@
                             <asp:ListItem Value="1" Text="ACTIVO"></asp:ListItem>
                             <asp:ListItem Value="0" Text="INACTIVO"></asp:ListItem>
                         </asp:DropDownList>
-                    </div>
+                    </div>                    
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click"  />
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
                 </div>
             </div>
 

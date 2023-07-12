@@ -50,6 +50,29 @@ namespace WebApp.WebForms.Login
             tabla_roles.DataBind();
         }
 
+        void limpiarTextos()
+        {
+            txtNombreRegister.Value = "";
+            ddlEstadoRegister.SelectedIndex = 0;
+        }
+
+        bool ValidarCampos()
+        {
+            if (string.IsNullOrEmpty(txtNombreRegister.Value))
+            {
+                lblMensajeRegistro.Text = "Llenar el campo";
+                return false;
+            }
+            else
+            {
+                return true;
+            }           
+        }
+        void LimpiarValidaciones()
+        {
+            lblMensajeRegistro.Text = "";
+        }
+
         protected void tabla_roles_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             tabla_roles.PageIndex = e.NewPageIndex;
@@ -109,27 +132,37 @@ namespace WebApp.WebForms.Login
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            rol.Nombre = txtNombreRegister.Value;
-            rol.Estado = int.Parse(ddlEstadoRegister.SelectedValue);
-            rol.Usuario_creacion = Session["logueado"].ToString();
-
-            if (dao.InsertarRoles(rol))
+            if (ValidarCampos())
             {
-                CargaRoles();
-                txtNombreRegister.Value = "";
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Se registro correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                rol.Nombre = txtNombreRegister.Value;
+                rol.Estado = int.Parse(ddlEstadoRegister.SelectedValue);
+                rol.Usuario_creacion = Session["logueado"].ToString();
+
+                if (dao.InsertarRoles(rol))
+                {
+                    CargaRoles();
+                    limpiarTextos();
+                    LimpiarValidaciones();
+                    string StrQry = "<script language='javascript'>";
+                    StrQry += "alert('Se registro correctamente'); ";
+                    StrQry += "</script>";
+                    ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                }
+                else
+                {
+                    limpiarTextos();
+                    LimpiarValidaciones();
+                    string StrQry = "<script language='javascript'>";
+                    StrQry += "alert('Registro no se guardo'); ";
+                    StrQry += "</script>";
+                    ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                }
             }
             else
             {
-                txtNombreRegister.Value = "";
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se guardo'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "modalRegistrar", "$('#modalRegistrar').modal('show');", true);
             }
+                       
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)

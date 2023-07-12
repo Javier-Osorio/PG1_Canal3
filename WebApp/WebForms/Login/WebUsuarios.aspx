@@ -19,6 +19,8 @@
                 return false;
             }
         }
+
+
     </script> 
     <div class="row">
         <div class="col-12">
@@ -100,11 +102,11 @@
                     </div>
                     <div class="form-group">
                         <label for="txtContraRegister">Contraseña:</label>
-                        <input runat="server" type="password" name="" class="form-control" id="txtContraRegister" placeholder="" />
+                        <input runat="server" type="password" name="" class="form-control" id="txtContraRegister" placeholder="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="La contraseña debe tener al menos 7 caracteres con al menos 1 letra minuscula, 1 mayuscula y 1 numero" />
                     </div>
                     <div class="form-group">
                         <label for="txtContraConfirmRegister">Confirmar Contraseña:</label>
-                        <input runat="server" type="password" name="" class="form-control" id="txtContraConfirmRegister" placeholder="" />
+                        <input runat="server" type="password" name="" class="form-control" id="txtContraConfirmRegister" placeholder="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="Ingrese la misma contraseña" />
                     </div>
                     <div class="form-group">
                         <label for="">Rol:</label>

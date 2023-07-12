@@ -50,7 +50,12 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input runat="server" type="password" class="form-control" title="Password must contain at least 7 characters, including UPPER/lowercase and numbers" placeholder="Contraseña" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" id="txtPassword" />
+                        <input runat="server" type="password" class="form-control" title="La contraseña debe tener al menos 7 caracteres con al menos 1 letra minuscula, 1 mayuscula y 1 numero" 
+                            placeholder="Contraseña" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" id="txtPassword" onchange="
+                            this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+    if(this.checkValidity()) {
+      form.txtPasswordConfirm.pattern = RegExp.escape(this.value);
+    }" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -58,7 +63,9 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input runat="server" type="password" class="form-control" title="Please enter the same Password as above." placeholder="Confirmar contraseña" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" id="txtPasswordConfirm" />
+                        <input runat="server" type="password" class="form-control" title="Ingrese la misma contraseña" 
+                            placeholder="Confirmar contraseña" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" id="txtPasswordConfirm" onchange="
+                             this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -96,39 +103,10 @@
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
+    
     <script>
-        function checkPassword(str)
-        {
-             var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-             return re.test(str);
-        }
-
-  function checkForm(form)
-  {
-
-      if (form.txtPassword.value != "" && form.txtPassword.value == form.txtPasswordConfirm.value) {
-          if (form.txtPassword.value.length < 6) {
-              alert("Error: Password must contain at least six characters!");
-              form.txtPassword.focus();
-              return false;
-          }
-          
-      }
-      if (form.txtPassword.value != "" && form.txtPassword.value == form.txtPasswordConfirm.value) {
-          if (!checkPassword(form.txtPassword.value)) {
-              alert("The password you have entered is not valid!");
-              form.txtPassword.focus();
-                return false;
-          }
-      } else {
-          alert("Error: Please check that you've entered and confirmed your password!");
-          form.txtPassword.focus();
-              return false;
-        }
-    return true;
-  }
-
-</script>
+    
+    </script>
 
 </body>
 </html>
