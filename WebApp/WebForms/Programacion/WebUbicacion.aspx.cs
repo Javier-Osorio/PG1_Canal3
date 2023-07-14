@@ -1,6 +1,10 @@
-﻿using System;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -139,6 +143,47 @@ namespace WebApp.WebForms.Programacion
                 StrQry += "</script>";
                 ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
             }
+        }
+
+        protected void btnPruebaPDF_Click(object sender, EventArgs e)
+        {
+            DataTable dt_ubi = Session["ubicacion"] as DataTable;
+            if (dao.GetUbicaciones())
+            {
+               dt_ubi = dao.DsReturn.Tables["ubicacion"];
+            }
+
+            // Crear el documento PDF
+            var memoryStream = new MemoryStream();
+            var writer = new PdfWriter(memoryStream);
+            var pdfDocument = new PdfDocument(writer);
+            var document = new Document(pdfDocument);
+
+            // Agregar los datos al documento PDF
+            var table = new iText.Layout.Element.Table(dt_ubi.Columns.Count);
+            foreach (DataColumn column in dt_ubi.Columns)
+            {
+                table.AddHeaderCell(new Cell().Add(new Paragraph(column.ColumnName)));
+            }
+
+            foreach (DataRow row in dt_ubi.Rows)
+            {
+                foreach (var item in row.ItemArray)
+                {
+                    table.AddCell(new Cell().Add(new Paragraph(item.ToString())));
+                }
+            }
+
+            document.Add(table);
+            document.Close();
+
+            // Descargar el archivo PDF generado
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment;filename=reporteUbicaciones.pdf");
+            Response.OutputStream.Write(memoryStream.GetBuffer(), 0, memoryStream.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.OutputStream.Close();
+            Response.End();
         }
     }
 }

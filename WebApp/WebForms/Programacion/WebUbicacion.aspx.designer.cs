@@ -13,6 +13,15 @@ namespace WebApp.WebForms.Programacion {
     public partial class WebUbicacion {
         
         /// <summary>
+        /// Control btnPruebaPDF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPruebaPDF;
+        
+        /// <summary>
         /// Control tabla_ubicaciones.
         /// </summary>
         /// <remarks>

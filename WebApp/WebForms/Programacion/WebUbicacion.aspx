@@ -32,13 +32,15 @@
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 200px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
+                            
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
                         </div>
+                        <br />
+                        <asp:Button ID="btnPruebaPDF" runat="server" Text="Generar PDF Prueba" OnClick="btnPruebaPDF_Click" CssClass="btn btn-block btn-outline-primary" />
                     </div>
                 </div>
                 <!-- /.card-header -->
