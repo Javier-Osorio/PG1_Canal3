@@ -81,17 +81,23 @@ namespace WebApp.WebForms.Programacion
             if (dao.EliminarUbicaciones(ubi))
             {
                 CargaUbicaciones();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro eliminado correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro eliminado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se elimino'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000
+                        title: 'El registro no se elimino',
+                        icon: 'warning'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
@@ -105,19 +111,24 @@ namespace WebApp.WebForms.Programacion
             {
                 CargaUbicaciones();
                 limpiarTextos();
-                //ClientScript.RegisterStartupScript(GetType(), "modalEditar", "$('#modalEditar').modal('hide');", true);
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro modificado correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro modificado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
                 limpiarTextos();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se modifico'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000
+                        title: 'El registro no se modifico',
+                        icon: 'warning'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
@@ -130,18 +141,25 @@ namespace WebApp.WebForms.Programacion
             {
                 CargaUbicaciones();
                 limpiarTextos();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Se registro correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro guardado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+
             }
             else
             {
                 limpiarTextos();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se guardo'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000
+                        title: 'El registro no se guardo',
+                        icon: 'warning'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
@@ -150,7 +168,7 @@ namespace WebApp.WebForms.Programacion
             DataTable dt_ubi = Session["ubicacion"] as DataTable;
             if (dao.GetUbicaciones())
             {
-               dt_ubi = dao.DsReturn.Tables["ubicacion"];
+                dt_ubi = dao.DsReturn.Tables["ubicacion"];
             }
 
             // Crear el documento PDF
@@ -184,6 +202,6 @@ namespace WebApp.WebForms.Programacion
             Response.OutputStream.Flush();
             Response.OutputStream.Close();
             Response.End();
-        }
+        }      
     }
 }
