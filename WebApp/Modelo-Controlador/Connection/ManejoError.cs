@@ -13,7 +13,7 @@ namespace WebApp.Modelo_Controlador.Connection
             try
             {
 
-                string Path = string.Format("~/Eventos/Log/{0}.txt", DateTime.Now.ToString("dd-MM-yyyy"));
+                string Path = string.Format("~/Excepciones/Log/{0}.txt", DateTime.Now.ToString("dd-MM-yyyy"));
 
                 if (!File.Exists(HttpContext.Current.Server.MapPath(Path)))
                 {
@@ -33,7 +33,7 @@ namespace WebApp.Modelo_Controlador.Connection
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.ToString());
             }
         }
     }
