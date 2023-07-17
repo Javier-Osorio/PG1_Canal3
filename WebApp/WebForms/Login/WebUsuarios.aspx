@@ -6,6 +6,7 @@
     <link rel="stylesheet" runat="server" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" />
     <link rel="stylesheet" runat="server" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="../../dist/js/validacionForms.js"></script>
 
     <script = "text/javascript" >        
 
@@ -19,7 +20,139 @@
             }
         }
 
+        function verificarMismaContra(contra, contra2) {
 
+        }
+
+        function validarFormularioRegisterUsuarios() {
+            var nombre = document.getElementById('<%=txtNombreRegister.ClientID%>').value;
+            var apellido = document.getElementById('<%=txtApellidoRegister.ClientID%>').value;
+            var correo = document.getElementById('<%=txtCorreoRegister.ClientID%>').value;
+            var contra = document.getElementById('<%=txtContraRegister.ClientID%>').value;
+            var conContra = document.getElementById('<%=txtContraConfirmRegister.ClientID%>').value;
+            var cambiarNombre = document.getElementById('<%=txtNombreRegister.ClientID%>');
+            var cambiarApellido = document.getElementById('<%=txtApellidoRegister.ClientID%>');
+            var cambiarCorreo = document.getElementById('<%=txtCorreoRegister.ClientID%>');
+            var cambiarPass = document.getElementById('<%=txtContraRegister.ClientID%>');
+            var cambiarconContra = document.getElementById('<%=txtContraConfirmRegister.ClientID%>');
+
+            var regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+            var regexContra = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+[\]{}|;:,.<>/?]).{7,15}$';
+
+
+            if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim === '' && conContra.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarApellido.classList.add('is-invalid');
+                cambiarCorreo.classList.add('is-invalid');
+                cambiarPass.classList.add('is-invalid');
+                cambiarconContra.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            } else if (nombre.trim() != '' && apellido.trim() === '' && correo.trim() === '' && contra.trim === '' && conContra.trim() === '') {
+                cambiarNombre.classList.remove('is-invalid');
+                cambiarApellido.classList.add('is-invalid');
+                cambiarCorreo.classList.add('is-invalid');
+                cambiarPass.classList.add('is-invalid');
+                cambiarconContra.classList.add('is-invalid');
+                return false;
+            } else if (nombre.trim() === '' && apellido.trim() != '' && correo.trim() === '' && contra.trim === '' && conContra.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarApellido.classList.remove('is-invalid');
+                cambiarCorreo.classList.add('is-invalid');
+                cambiarPass.classList.add('is-invalid');
+                cambiarconContra.classList.add('is-invalid');
+                return false;
+            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() != '' && contra.trim === '' && conContra.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarApellido.classList.add('is-invalid');
+                cambiarCorreo.classList.remove('is-invalid');
+                cambiarPass.classList.add('is-invalid');
+                cambiarconContra.classList.add('is-invalid');
+                return false;
+            }else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim != '' && conContra.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarApellido.classList.add('is-invalid');
+                cambiarCorreo.classList.add('is-invalid');
+                cambiarPass.classList.remove('is-invalid');
+                cambiarconContra.classList.add('is-invalid');
+                return false;
+            }else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim === '' && conContra.trim() != '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarApellido.classList.add('is-invalid');
+                cambiarCorreo.classList.add('is-invalid');
+                cambiarPass.classList.add('is-invalid');
+                cambiarconContra.classList.remove('is-invalid');
+                return false;
+            } else if (nombre.trim() != '' && apellido.trim() != '' && correo.trim() === '' && contra.trim === '' && conContra.trim() === '') {
+                cambiarNombre.classList.remove('is-invalid');
+                cambiarApellido.classList.remove('is-invalid');
+                cambiarCorreo.classList.add('is-invalid');
+                cambiarPass.classList.add('is-invalid');
+                cambiarconContra.classList.add('is-invalid');
+                return false;
+            }else if (nombre.trim() === '' && apellido.trim() != '' && correo.trim() != '' && contra.trim === '' && conContra.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarApellido.classList.remove('is-invalid');
+                cambiarCorreo.classList.remove('is-invalid');
+                cambiarPass.classList.add('is-invalid');
+                cambiarconContra.classList.add('is-invalid');
+                return false;
+            }else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() != '' && contra.trim != '' && conContra.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarApellido.classList.add('is-invalid');
+                cambiarCorreo.classList.remove('is-invalid');
+                cambiarPass.classList.remove('is-invalid');
+                cambiarconContra.classList.add('is-invalid');
+                return false;
+            }else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim != '' && conContra.trim() != '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarApellido.classList.add('is-invalid');
+                cambiarCorreo.classList.add('is-invalid');
+                cambiarPass.classList.remove('is-invalid');
+                cambiarconContra.classList.remove('is-invalid');
+                return false;
+            } else if (nombre.trim() != '' && apellido.trim() != '' && correo.trim() != '' && contra.trim != '' && conContra.trim() != '') {
+                cambiarNombre.classList.remove('is-invalid');
+                cambiarApellido.classList.remove('is-invalid');
+                cambiarCorreo.classList.remove('is-invalid');
+                cambiarPass.classList.remove('is-invalid');
+                cambiarconContra.classList.remove('is-invalid');
+                if (!regexContra.test(contra)) {
+                    alert('La contraseña debe tener entre 7 a 15 caracteres con al menos 1 letra minuscula, 1 mayuscula, 1 numero y 1 caracter especial (@,!,*...)');
+                    return false;
+                } else {
+                    if (!regexContra.test(conContra)) {
+                        alert('La contraseña debe tener entre 7 a 15 caracteres con al menos 1 letra minuscula, 1 mayuscula, 1 numero y 1 caracter especial (@,!,*...)');
+                        return false;
+                    } else {
+                        if (contra == conContra) {
+                            return true;
+                        } else {
+                            alert('Ingrese la misma contraseña');
+                            return false;
+                        }
+                    }
+                }
+            }
+            
+            //return true;
+        }
+
+        function validarFormularioEditUsuarios() {
+            var nombre = document.getElementById('<%=txtNombreEdit.ClientID%>').value;
+            var apellido = document.getElementById('<%=txtApellidoEdit.ClientID%>').value;
+            var correo = document.getElementById('<%=txtCorreoEdit.ClientID%>').value;
+            var cambiarNombre = document.getElementById('<%=txtNombreEdit.ClientID%>');
+            var cambiarApellido = document.getElementById('<%=txtApellidoEdit.ClientID%>');
+            var cambiarCorreo = document.getElementById('<%=txtCorreoEdit.ClientID%>');
+
+            if (nombre.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+            cambiarNombre.classList.remove('is-invalid');
+            return true;
+        }
     </script> 
     <div class="row">
         <div class="col-12">
@@ -103,11 +236,11 @@
                     </div>
                     <div class="form-group">
                         <label for="txtContraRegister">Contraseña:</label>
-                        <input runat="server" type="password" name="" class="form-control" id="txtContraRegister" placeholder="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+[\]{}|;:',.<>/?]).{7,15}$" title="La contraseña debe tener entre 7 a 15 caracteres con al menos 1 letra minuscula, 1 mayuscula, 1 numero y 1 caracter especial (@,!,*...)" />
+                        <input runat="server" type="password" name="" class="form-control" id="txtContraRegister" placeholder="" />
                     </div>
                     <div class="form-group">
                         <label for="txtContraConfirmRegister">Confirmar Contraseña:</label>
-                        <input runat="server" type="password" name="" class="form-control" id="txtContraConfirmRegister" placeholder="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+[\]{}|;:',.<>/?]).{7,15}$" title="Ingrese la misma contraseña" />
+                        <input runat="server" type="password" name="" class="form-control" id="txtContraConfirmRegister" placeholder="" />
                     </div>
                     <div class="form-group">
                         <label for="">Rol:</label>
@@ -124,7 +257,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegisterUsuarios();" />
                 </div>
                 </asp:Panel>
                 
@@ -183,7 +316,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" />
+                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" OnClientClick="return validarFormularioEditUsuarios();" />
                 </div>
                 </asp:Panel>
                 

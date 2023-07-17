@@ -265,12 +265,12 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            peliculas.ID_nombre1 = int.Parse(ddlNombreMaterial.SelectedValue);
-            peliculas.Observaciones = txtObservaciones.Value;
-            peliculas.ID_tipo_pelicula1 = int.Parse(ddlTipoSerie.SelectedValue);
-            peliculas.ID_casa_productora1 = int.Parse(ddlCasaProductora.SelectedValue);
-            peliculas.ID_ubicacion1 = int.Parse(ddlUbicacion.SelectedValue);
-            peliculas.Estado = int.Parse(ddlEstado.SelectedValue);
+            peliculas.ID_nombre1 = int.Parse(ddlNombreEditar.SelectedValue);
+            peliculas.Observaciones = txtObserEditar.Value;
+            peliculas.ID_tipo_pelicula1 = int.Parse(ddlTipoEditar.SelectedValue);
+            peliculas.ID_casa_productora1 = int.Parse(ddlCasaEditar.SelectedValue);
+            peliculas.ID_ubicacion1 = int.Parse(ddlUbicacionEditar.SelectedValue);
+            peliculas.Estado = int.Parse(ddlEstadoEditar.SelectedValue);
             peliculas.ID_backup_pelicula1 = int.Parse(codBackupPelicula.Value);
 
             if (dao.ModificarBackupPelicula(peliculas))

@@ -50,12 +50,12 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input runat="server" type="password" class="form-control" title="La contraseña debe tener al menos 7 caracteres con al menos 1 letra minuscula, 1 mayuscula y 1 numero" 
+                        <input runat="server" type="password" class="form-control" title="La contraseña debe tener entre 7 a 15 caracteres con al menos 1 letra minuscula, 1 mayuscula, 1 numero y 1 caracter especial (@,!,*...)" 
                             placeholder="Contraseña" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" id="txtPassword" onchange="
                             this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
-    if(this.checkValidity()) {
-      form.txtPasswordConfirm.pattern = RegExp.escape(this.value);
-    }" />
+                            if(this.checkValidity()) {
+                              form.txtPasswordConfirm.pattern = RegExp.escape(this.value);
+                            }" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -65,7 +65,12 @@
                     <div class="input-group mb-3">
                         <input runat="server" type="password" class="form-control" title="Ingrese la misma contraseña" 
                             placeholder="Confirmar contraseña" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" id="txtPasswordConfirm" onchange="
-                             this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" />
+                             this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+                            if(this.checkValidity()) {
+                              form.txtPasswordConfirm.pattern = RegExp.escape(this.value);
+                            }else if(form.txtPassword.value != form.txtPasswordConfirm.value) {
+                              alert('Las contraseñas deben coincidar');
+                            }" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

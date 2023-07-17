@@ -133,7 +133,7 @@ namespace WebApp.WebForms.Login
                         showConfirmButton: false,
                         timer: 3000,
                         title: 'Registro guardado correctamente',
-                        icon: 'error'
+                        icon: 'success'
                     });";
                     ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
                 }

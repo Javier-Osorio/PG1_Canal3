@@ -19,6 +19,32 @@
                 return false;
             }
         }
+
+        function validarFormularioRegister() {
+            var nombre = document.getElementById('<%=txtNombreRegister.ClientID%>').value;
+            var cambiarNombre = document.getElementById('<%=txtNombreRegister.ClientID%>');
+
+            if (nombre.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+            cambiarNombre.classList.remove('is-invalid');
+            return true;
+        }
+
+        function validarFormularioEdit() {
+            var nombre = document.getElementById('<%=txtNombreEdit.ClientID%>').value;
+            var cambiarNombre = document.getElementById('<%=txtNombreEdit.ClientID%>');
+
+            if (nombre.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+            cambiarNombre.classList.remove('is-invalid');
+            return true;
+        }
     </script> 
     <div class="row">
         <div class="col-12">
@@ -112,7 +138,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegister();" />
                 </div>
                 </asp:Panel>
                 
@@ -137,11 +163,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="txtNombreEdit">Nombre:</label>
-                        <input runat="server" type="text" name="" class="form-control" id="txtNombreEdit" placeholder="" required />
+                        <input runat="server" type="text" name="" class="form-control" id="txtNombreEdit" placeholder="" />
                     </div>
                     <div class="form-group">
                         <label for="txtPathEdit">Direccion URL:</label>
-                        <input runat="server" type="text" name="" class="form-control" id="txtPathEdit" placeholder="~/WebForms/..." required />
+                        <input runat="server" type="text" name="" class="form-control" id="txtPathEdit" placeholder="~/WebForms/..." />
                     </div>
                     <div class="form-group">
                         <label for="">Modulo Padre:</label>
@@ -161,7 +187,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" />
+                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" OnClientClick="return validarFormularioEdit();" />
                 </div>
                 </asp:Panel>
                 

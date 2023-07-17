@@ -12,3 +12,30 @@ Error en: http://localhost:49962/WebLogIn.aspx | Mensaje de Error: System.Invali
    en System.Data.SqlClient.SqlCommand.ExecuteScalar()
    en WebApp.Modelo_Controlador.Dao.Dao_Login.ValidarUsuario(Sesion login) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\Modelo-Controlador\Dao\LogIn\Dao_Login.cs:línea 30
 __________________________
+
+Log del Error: 
+17/07/2023 16:07:24
+Error en: http://localhost:49962/WebForms/Login/WebPrivilegios.aspx | Mensaje de Error: System.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UNIQ_PRIVILEGIOS'. Cannot insert duplicate key in object 'dbo.PRIVILEGIOS'. The duplicate key value is (1, 1).
+The statement has been terminated.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en WebApp.Modelo_Controlador.Dao.LogIn.Dao_Privilegios.InsertarPrivilegios(Privilegios privilegios) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\Modelo-Controlador\Dao\LogIn\Dao_Privilegios.cs:línea 95
+ClientConnectionId:6d8a1038-3b0a-4204-8388-75b05f315f04
+Error Number:2627,State:1,Class:14 | Stack:    en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en WebApp.Modelo_Controlador.Dao.LogIn.Dao_Privilegios.InsertarPrivilegios(Privilegios privilegios) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\Modelo-Controlador\Dao\LogIn\Dao_Privilegios.cs:línea 95
+__________________________

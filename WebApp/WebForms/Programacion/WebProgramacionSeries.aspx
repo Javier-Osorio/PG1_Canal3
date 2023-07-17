@@ -18,6 +18,58 @@
                 return false;
             }
         }
+
+        function validarFormularioRegister() {
+            var epi_min = document.getElementById('<%=txtEpisodioMin.ClientID%>').value;
+            var cambiarEpi_min = document.getElementById('<%=txtEpisodioMin.ClientID%>');
+            var epi_max = document.getElementById('<%=txtEpisodioMax.ClientID%>').value;
+            var cambiarEpi_max = document.getElementById('<%=txtEpisodioMax.ClientID%>');
+
+
+            if (epi_min.trim() === '' && epi_max.trim() === '') {
+                cambiarEpi_min.classList.add('is-invalid');
+                cambiarEpi_max.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            } else if (epi_min.trim() != '' && epi_max.trim() === '') {
+                cambiarEpi_min.classList.remove('is-invalid');
+                cambiarEpi_max.classList.add('is-invalid');
+                return false;
+            } else if (epi_min.trim() === '' && epi_max.trim() != '') {
+                cambiarEpi_min.classList.add('is-invalid');
+                cambiarEpi_max.classList.remove('is-invalid');
+                return false;
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+            cambiarEpi_min.classList.remove('is-invalid');
+            cambiarEpi_max.classList.remove('is-invalid');
+            return true;
+        }
+
+        function validarFormularioEdit() {
+            var epi_min = document.getElementById('<%=txtEpisodioMinEditar.ClientID%>').value;
+            var cambiarEpi_min = document.getElementById('<%=txtEpisodioMinEditar.ClientID%>');
+            var epi_max = document.getElementById('<%=txtEpisodioMaxEditar.ClientID%>').value;
+            var cambiarEpi_max = document.getElementById('<%=txtEpisodioMaxEditar.ClientID%>');
+
+
+            if (epi_min.trim() === '' && epi_max.trim() === '') {
+                cambiarEpi_min.classList.add('is-invalid');
+                cambiarEpi_max.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            } else if (epi_min.trim() != '' && epi_max.trim() === '') {
+                cambiarEpi_min.classList.remove('is-invalid');
+                cambiarEpi_max.classList.add('is-invalid');
+                return false;
+            } else if (epi_min.trim() === '' && epi_max.trim() != '') {
+                cambiarEpi_min.classList.add('is-invalid');
+                cambiarEpi_max.classList.remove('is-invalid');
+                return false;
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+            cambiarEpi_min.classList.remove('is-invalid');
+            cambiarEpi_max.classList.remove('is-invalid');
+            return true;
+        }
         //$(function() {
         //    $('#select2').select2({});
         //});
@@ -144,7 +196,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegister();" />
                 </div>
                 </asp:Panel>
                 
@@ -177,13 +229,13 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="txtEpiMin">Episodio Min:</label>
-                                <input runat="server" type="number" class="form-control" id="txtEpisodioMinEditar" placeholder="" min="1" required />
+                                <input runat="server" type="number" class="form-control" id="txtEpisodioMinEditar" placeholder="" min="1" />
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="txtEpiMax">Episodio Max:</label>
-                                <input runat="server" type="number" class="form-control" id="txtEpisodioMaxEditar" placeholder="" min="1" required />
+                                <input runat="server" type="number" class="form-control" id="txtEpisodioMaxEditar" placeholder="" min="1" />
                             </div>
                         </div>
                     </div>
@@ -219,7 +271,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" />
+                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" OnClientClick="return validarFormularioEdit();" />
                 </div>
                 </asp:Panel>
                 
