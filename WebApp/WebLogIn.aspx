@@ -14,6 +14,9 @@
     <link href="plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet" />
     <!-- Theme style -->
     <link href="dist/css/adminlte.min.css" rel="stylesheet" />
+    <!-- SweetAlert2 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
@@ -27,7 +30,7 @@
 
                 <form id="frmLogin" runat="server">
                     <div class="input-group mb-3">
-                        <input id="txtCorreo" runat="server" type="email" class="form-control" placeholder="correo@gmail.com" autocomplete="on" />
+                        <input id="txtCorreo" runat="server" type="email" class="form-control" placeholder="correo@gmail.com" autocomplete="on" required="required" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -35,7 +38,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input id="txtPass" type="password" runat="server" class="form-control" placeholder="" autocomplete="off" />
+                        <input id="txtPass" type="password" runat="server" class="form-control" placeholder="" autocomplete="off" required="required" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -53,7 +56,7 @@
                         </div>--%>
                         <!-- /.col -->
                         <div class="col-4">
-                            <input id="btnIngresar" runat="server" class="btn btn-primary btn-block"  type="button" value="Ingresar" onserverclick="btnIngresar_Click" />
+                            <input id="btnIngresar" runat="server" class="btn btn-primary btn-block"  type="submit" value="Ingresar" onserverclick="btnIngresar_Click" />
                         </div>
                         <!-- /.col -->
                     </div>
@@ -78,6 +81,8 @@
         <!-- /.card -->
     </div>
     <!-- /.login-box -->
+
+    <!-- SweetAlert2 -->
 
 </body>
 </html>

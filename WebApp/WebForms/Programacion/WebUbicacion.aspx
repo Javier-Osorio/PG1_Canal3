@@ -19,6 +19,58 @@
                 return false;
             }
         }
+
+        function validarFormularioRegister() {
+            var nombre = document.getElementById('<%=txtNombreRegister.ClientID%>').value;
+            var ubicar = document.getElementById('<%=txtUbicacionRegister.ClientID%>').value;
+            var cambiarNombre = document.getElementById('<%=txtNombreRegister.ClientID%>');
+            var cambiarUbi = document.getElementById('<%=txtUbicacionRegister.ClientID%>');
+
+            if (nombre.trim() === '' && ubicar.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarUbi.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            } else if (nombre.trim() != '' && ubicar.trim() === '') {
+                cambiarNombre.classList.remove('is-invalid');
+                cambiarUbi.classList.add('is-invalid');
+                return false;
+            } else if (nombre.trim() === '' && ubicar.trim() != '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarUbi.classList.remove('is-invalid');
+                return false;
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+
+            cambiarUbi.classList.remove('is-invalid');
+            cambiarNombre.classList.remove('is-invalid');
+            return true;
+        }
+
+        function validarFormularioEdit() {
+            var nombre = document.getElementById('<%=txtNombreEdit.ClientID%>').value;
+            var ubicar = document.getElementById('<%=txtUbicacionEdit.ClientID%>').value;
+            var cambiarNombre = document.getElementById('<%=txtNombreEdit.ClientID%>');
+            var cambiarUbi = document.getElementById('<%=txtUbicacionEdit.ClientID%>');
+
+            if (nombre.trim() === '' && ubicar.trim() === '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarUbi.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            } else if (nombre.trim() != '' && ubicar.trim() === '') {
+                cambiarNombre.classList.remove('is-invalid');
+                cambiarUbi.classList.add('is-invalid');
+                return false;
+            } else if (nombre.trim() === '' && ubicar.trim() != '') {
+                cambiarNombre.classList.add('is-invalid');
+                cambiarUbi.classList.remove('is-invalid');
+                return false;
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+
+            cambiarUbi.classList.remove('is-invalid');
+            cambiarNombre.classList.remove('is-invalid');
+            return true;
+        }
     </script> 
     <div class="row">
         <div class="col-12">
@@ -71,7 +123,9 @@
     <div class="modal fade" id="modalRegistrar" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+
+                <asp:Panel ID="pnlUbicacionRegister" runat="server" DefaultButton="btnRegistrar">
+                    <div class="modal-header">
                     <h4 class="modal-title">Nuevo Registro</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -89,8 +143,10 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegister();" />
                 </div>
+                </asp:Panel>
+                
             </div>
             
         </div>
@@ -101,7 +157,9 @@
     <div class="modal fade" id="modalEditar" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+
+                <asp:Panel ID="pnlUbicacionEdit" runat="server" DefaultButton="btnActualizar">
+                    <div class="modal-header">
                     <h4 class="modal-title">Editar Registro</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -120,8 +178,10 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" />
+                    <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" OnClientClick="return validarFormularioEdit();" />
                 </div>
+                </asp:Panel>
+                
             </div>
             
         </div>

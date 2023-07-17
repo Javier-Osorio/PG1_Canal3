@@ -31,6 +31,15 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.GridView tabla_ubicaciones;
         
         /// <summary>
+        /// Control pnlUbicacionRegister.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlUbicacionRegister;
+        
+        /// <summary>
         /// Control txtNombreRegister.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace WebApp.WebForms.Programacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
+        
+        /// <summary>
+        /// Control pnlUbicacionEdit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlUbicacionEdit;
         
         /// <summary>
         /// Control txtNombreEdit.

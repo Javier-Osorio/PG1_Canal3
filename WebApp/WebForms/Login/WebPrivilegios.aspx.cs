@@ -161,17 +161,23 @@ namespace WebApp.WebForms.Login
             if (dao.EliminarPrivilegios(privilegios))
             {
                 CargaPrivilegios();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro eliminado correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro eliminado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se elimino'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se elimino',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
@@ -186,26 +192,32 @@ namespace WebApp.WebForms.Login
             {
                 CargaPrivilegios();
                 limpiarDDLsRegistro();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Se registro correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro guardado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
                 limpiarDDLsRegistro();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se guardo'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se guardo',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            privilegios.ID_modulo1 = int.Parse(ddlModuloRegister.SelectedValue);
-            privilegios.ID_rol1 = int.Parse(ddlRolRegister.SelectedValue);
-            privilegios.Estado = int.Parse(ddlEstadoRegister.SelectedValue);
+            privilegios.ID_modulo1 = int.Parse(ddlModuloEdit.SelectedValue);
+            privilegios.ID_rol1 = int.Parse(ddlRolEdit.SelectedValue);
+            privilegios.Estado = int.Parse(ddlEstadoEdit.SelectedValue);
             privilegios.Usuario_modificacion = Session["logueado"].ToString();
             privilegios.ID_privilegio1 = int.Parse(codPrivilegio.Value);
 
@@ -213,18 +225,24 @@ namespace WebApp.WebForms.Login
             {
                 CargaPrivilegios();
                 LimpiarDDLsEdit();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Se registro correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro modificado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
                 LimpiarDDLsEdit();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se guardo'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se modifico',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert2", script, true);
             }
         }
     }

@@ -22,6 +22,15 @@ namespace WebApp.WebForms.Login {
         protected global::System.Web.UI.WebControls.GridView tabla_modulos;
         
         /// <summary>
+        /// Control pnlModuloRegister.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlModuloRegister;
+        
+        /// <summary>
         /// Control txtNombreRegister.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace WebApp.WebForms.Login {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
+        
+        /// <summary>
+        /// Control pnlModulosEdit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlModulosEdit;
         
         /// <summary>
         /// Control txtNombreEdit.

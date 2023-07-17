@@ -19,7 +19,7 @@ namespace WebApp.WebForms.Login
             {
                 if (!IsPostBack)
                 {
-                    CargaRoles();                   
+                    CargaRoles();
                 }
 
                 else
@@ -54,23 +54,6 @@ namespace WebApp.WebForms.Login
         {
             txtNombreRegister.Value = "";
             ddlEstadoRegister.SelectedIndex = 0;
-        }
-
-        bool ValidarCampos()
-        {
-            if (string.IsNullOrEmpty(txtNombreRegister.Value))
-            {
-                lblMensajeRegistro.Text = "Llenar el campo";
-                return false;
-            }
-            else
-            {
-                return true;
-            }           
-        }
-        void LimpiarValidaciones()
-        {
-            lblMensajeRegistro.Text = "";
         }
 
         protected void tabla_roles_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -116,24 +99,28 @@ namespace WebApp.WebForms.Login
             if (dao.EliminarRoles(rol))
             {
                 CargaRoles();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro eliminado correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro eliminado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se elimino'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se elimino',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos())
-            {
                 rol.Nombre = txtNombreRegister.Value;
                 rol.Estado = int.Parse(ddlEstadoRegister.SelectedValue);
                 rol.Usuario_creacion = Session["logueado"].ToString();
@@ -142,26 +129,25 @@ namespace WebApp.WebForms.Login
                 {
                     CargaRoles();
                     limpiarTextos();
-                    LimpiarValidaciones();
-                    string StrQry = "<script language='javascript'>";
-                    StrQry += "alert('Se registro correctamente'); ";
-                    StrQry += "</script>";
-                    ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                    string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro guardado correctamente',
+                        icon: 'error'
+                    });";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
                 }
                 else
                 {
                     limpiarTextos();
-                    LimpiarValidaciones();
-                    string StrQry = "<script language='javascript'>";
-                    StrQry += "alert('Registro no se guardo'); ";
-                    StrQry += "</script>";
-                    ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
-                }
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "modalRegistrar", "$('#modalRegistrar').modal('show');", true);
-            }
+                    string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se guardo',
+                        icon: 'error'                        
+                    });";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+                }            
                        
         }
 
@@ -175,17 +161,23 @@ namespace WebApp.WebForms.Login
             if (dao.ModificarRoles(rol))
             {
                 CargaRoles();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro modificado correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro modificado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se modifico'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se modifico',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
     }

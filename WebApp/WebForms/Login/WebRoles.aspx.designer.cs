@@ -22,6 +22,15 @@ namespace WebApp.WebForms.Login {
         protected global::System.Web.UI.WebControls.GridView tabla_roles;
         
         /// <summary>
+        /// Control pnlRolRegister.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRolRegister;
+        
+        /// <summary>
         /// Control txtNombreRegister.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace WebApp.WebForms.Login {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreRegister;
-        
-        /// <summary>
-        /// Control lblMensajeRegistro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeRegistro;
         
         /// <summary>
         /// Control ddlEstadoRegister.
@@ -56,6 +56,15 @@ namespace WebApp.WebForms.Login {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
+        
+        /// <summary>
+        /// Control pnlRolEdit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRolEdit;
         
         /// <summary>
         /// Control txtNombreEdit.

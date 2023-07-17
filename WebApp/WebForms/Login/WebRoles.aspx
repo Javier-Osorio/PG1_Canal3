@@ -5,7 +5,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" runat="server" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
     <script = "text/javascript" >        
 
         function confirmarEliminar() {
@@ -72,7 +71,9 @@
     <div class="modal fade" id="modalRegistrar" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+
+                <asp:Panel ID="pnlRolRegister" runat="server" DefaultButton="btnRegistrar">
+                    <div class="modal-header">
                     <h4 class="modal-title">Nuevo Registro</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -82,7 +83,6 @@
                     <div class="form-group">
                         <label for="txtNombreRegister">Nombre:</label>
                         <input runat="server" type="text" name="" class="form-control" id="txtNombreRegister" placeholder="" />
-                        <asp:Label ID="lblMensajeRegistro" runat="server" ForeColor="Red"></asp:Label>
                     </div>
                     <div class="form-group">
                         <label for="">Estado:</label>
@@ -96,6 +96,8 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
                 </div>
+                </asp:Panel>
+                
             </div>
 
         </div>
@@ -106,7 +108,9 @@
     <div class="modal fade" id="modalEditar" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                
+                <asp:Panel ID="pnlRolEdit" runat="server" DefaultButton="btnActualizar">
+                    <div class="modal-header">
                     <h4 class="modal-title">Editar Registro</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -128,6 +132,8 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     <asp:Button ID="btnActualizar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnActualizar_Click" />
                 </div>
+                </asp:Panel>
+                
             </div>
 
         </div>

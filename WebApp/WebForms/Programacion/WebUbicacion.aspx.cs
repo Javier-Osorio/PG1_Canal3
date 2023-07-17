@@ -22,7 +22,10 @@ namespace WebApp.WebForms.Programacion
             try
             {
                 if (!IsPostBack)
-                    CargaUbicaciones();
+                {
+                    CargaUbicaciones();                   
+                }
+                    
                 else
                     SetUbicaciones();
             }
@@ -93,9 +96,9 @@ namespace WebApp.WebForms.Programacion
             {
                 string script = @"Swal.fire({
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 3000,
                         title: 'El registro no se elimino',
-                        icon: 'warning'                        
+                        icon: 'error'                        
                     });";
                 ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
@@ -124,9 +127,9 @@ namespace WebApp.WebForms.Programacion
                 limpiarTextos();
                 string script = @"Swal.fire({
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 3000,
                         title: 'El registro no se modifico',
-                        icon: 'warning'                        
+                        icon: 'error'                        
                     });";
                 ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
@@ -155,9 +158,9 @@ namespace WebApp.WebForms.Programacion
                 limpiarTextos();
                 string script = @"Swal.fire({
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 3000,
                         title: 'El registro no se guardo',
-                        icon: 'warning'                        
+                        icon: 'error'                        
                     });";
                 ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }

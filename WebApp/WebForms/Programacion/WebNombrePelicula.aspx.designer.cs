@@ -22,6 +22,15 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.GridView tabla_nombre_pelicula;
         
         /// <summary>
+        /// Control pnlPeliculaRegister.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlPeliculaRegister;
+        
+        /// <summary>
         /// Control txtNombreRegister.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace WebApp.WebForms.Programacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
+        
+        /// <summary>
+        /// Control pnlPeliculaEdit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlPeliculaEdit;
         
         /// <summary>
         /// Control txtNombreEdit.

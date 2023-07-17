@@ -18,7 +18,9 @@ namespace WebApp.WebForms.Programacion
             try
             {
                 if (!IsPostBack)
+                {
                     CargaCasaProductora();
+                }
                 else
                     SetCasaProductora();
             }
@@ -74,17 +76,23 @@ namespace WebApp.WebForms.Programacion
             if (dao.EliminarCasaProductora(casa))
             {
                 CargaCasaProductora();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro eliminado correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro eliminado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se elimino'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se elimino',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
@@ -95,18 +103,24 @@ namespace WebApp.WebForms.Programacion
             {
                 CargaCasaProductora();
                 LimpiarTextos();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro guardado correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro guardado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
                 LimpiarTextos();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se guardo'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se guardo',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
@@ -118,17 +132,23 @@ namespace WebApp.WebForms.Programacion
             {
                 CargaCasaProductora();
                 LimpiarTextos();
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro modificado correctamente'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({                        
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'Registro modificado correctamente',
+                        icon: 'success'
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
             else
             {
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Registro no se modifico'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'El registro no se modifico',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
     }

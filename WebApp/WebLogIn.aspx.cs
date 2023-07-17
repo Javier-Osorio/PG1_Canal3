@@ -37,10 +37,15 @@ namespace WebApp
             }
             else
             {
-                string StrQry = "<script language='javascript'>";
-                StrQry += "alert('Correo o contraseña incorrecto'); ";
-                StrQry += "</script>";
-                ClientScript.RegisterStartupScript(GetType(), "mensaje", StrQry, false);
+                //string script = @"Swal.fire({
+                //        showConfirmButton: false,
+                //        timer: 3000
+                //        title: 'Correo y/o contraseña incorrecto',
+                //        icon: 'warning'                        
+                //    });";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+                string mensaje_alerta = "swal({title: 'Correo y/o contraseña incorrecto',icon: 'error',buttons: false}); ";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alerta", mensaje_alerta, true);
             }
 
         }
