@@ -20,8 +20,8 @@ namespace WebApp.Modelo_Controlador.Dao.LogIn
         {
             try
             {
-                strSql = "SELECT MH.ID_MODULO, MH.NOMBRE AS MODULO, MH.PATH_URL, MP.NOMBRE AS MODULO_PADRE,CASE WHEN MP.ESTADO = 1 THEN 'ACTIVO' " +
-                    "WHEN MP.ESTADO = 0 THEN 'INACTIVO' END ESTADO FROM MODULOS MP INNER JOIN MODULOS MH ON MP.ID_MODULO = MH.ID_MODULO_PADRE";
+                strSql = "SELECT MH.ID_MODULO, MH.NOMBRE AS MODULO, MH.PATH_URL, MP.NOMBRE AS MODULO_PADRE,CASE WHEN MH.ESTADO = 1 THEN 'ACTIVO' " +
+                    "WHEN MH.ESTADO = 0 THEN 'INACTIVO' END ESTADO FROM MODULOS MP INNER JOIN MODULOS MH ON MP.ID_MODULO = MH.ID_MODULO_PADRE";
                 DsReturn = conexionDB.DataSQL(strSql, "modulos");
             }
             catch (Exception ex)

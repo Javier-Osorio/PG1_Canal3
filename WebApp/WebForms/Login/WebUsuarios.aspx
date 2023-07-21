@@ -68,7 +68,7 @@
                 cambiarPass.classList.add('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false;
-            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim() != '' && conContra.trim() === '') { //retorna este
+            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim() != '' && conContra.trim() === '') { 
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.add('is-invalid');
                 cambiarCorreo.classList.add('is-invalid');
@@ -120,7 +120,7 @@
                 
             //}
             
-            return true;
+            //return true;
         }
 
         function validarFormularioEditUsuarios() {
@@ -243,7 +243,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return vertxtContra()" />
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegisterUsuarios();" />
                 </div>
                 </asp:Panel>
                 

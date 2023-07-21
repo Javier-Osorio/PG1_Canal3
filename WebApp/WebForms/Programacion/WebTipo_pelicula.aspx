@@ -45,6 +45,12 @@
             return true;
         }
 
+        function limpiarInputsR() {
+            document.getElementById('<%=txtNombreRegister.ClientID%>').value = '';
+
+           $('#modalRegistrar').modal('hide');
+        }
+
     </script> 
     <div class="row">
         <div class="col-12">
@@ -109,7 +115,7 @@
                         </div>                        
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarInputsR()">Cancelar</button>
                     <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegister();" />
                 </div>
                 </asp:Panel>

@@ -61,7 +61,7 @@ namespace WebApp
                 if (modulo.ID_modulo_padre1 == idModuloPadre && modulo.ID_modulo1 != idModuloPadre)
                 {
                     TreeNode nodoHijo = new TreeNode(modulo.Nombre, modulo.ID_modulo1.ToString(),"",modulo.Url_path,"_self");
-                    NodoPadre.ChildNodes.Add(nodoHijo);
+                    NodoPadre.ChildNodes.Add(nodoHijo);                    
                 }
             }
         }

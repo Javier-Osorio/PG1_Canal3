@@ -18,6 +18,12 @@
                 return false;
             }
         }
+
+        function limpiarInputsR() {
+            document.getElementById('<%=txtObservaciones.ClientID%>').value = '';
+
+           $('#modalRegistrar').modal('hide');
+        }
         //$(function() {
         //    $('#select2').select2({});
         //});
@@ -125,7 +131,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarInputsR()">Cancelar</button>
                     <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
                 </div>
                 </asp:Panel>
