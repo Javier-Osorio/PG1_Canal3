@@ -20,8 +20,8 @@
             }
         }
 
-        function verificarMismaContra(contra, contra2) {
-
+        function veificarContra(con, con2) {
+            
         }
 
         function validarFormularioRegisterUsuarios() {
@@ -40,101 +40,87 @@
             var regexContra = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+[\]{}|;:,.<>/?]).{7,15}$';
 
 
-            if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim === '' && conContra.trim() === '') {
+            if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim() === '' && conContra.trim() === '') {
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.add('is-invalid');
                 cambiarCorreo.classList.add('is-invalid');
                 cambiarPass.classList.add('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false; // Evita que se envíe el formulario
-            } else if (nombre.trim() != '' && apellido.trim() === '' && correo.trim() === '' && contra.trim === '' && conContra.trim() === '') {
+            } else if (nombre.trim() != '' && apellido.trim() === '' && correo.trim() === '' && contra.trim() === '' && conContra.trim() === '') {
                 cambiarNombre.classList.remove('is-invalid');
                 cambiarApellido.classList.add('is-invalid');
                 cambiarCorreo.classList.add('is-invalid');
                 cambiarPass.classList.add('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false;
-            } else if (nombre.trim() === '' && apellido.trim() != '' && correo.trim() === '' && contra.trim === '' && conContra.trim() === '') {
+            } else if (nombre.trim() === '' && apellido.trim() != '' && correo.trim() === '' && contra.trim() === '' && conContra.trim() === '') {
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.remove('is-invalid');
                 cambiarCorreo.classList.add('is-invalid');
                 cambiarPass.classList.add('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false;
-            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() != '' && contra.trim === '' && conContra.trim() === '') {
+            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() != '' && contra.trim() === '' && conContra.trim() === '') {
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.add('is-invalid');
                 cambiarCorreo.classList.remove('is-invalid');
                 cambiarPass.classList.add('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false;
-            }else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim != '' && conContra.trim() === '') {
+            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim() != '' && conContra.trim() === '') { //retorna este
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.add('is-invalid');
                 cambiarCorreo.classList.add('is-invalid');
                 cambiarPass.classList.remove('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false;
-            }else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim === '' && conContra.trim() != '') {
+            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim() === '' && conContra.trim() != '') {
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.add('is-invalid');
                 cambiarCorreo.classList.add('is-invalid');
                 cambiarPass.classList.add('is-invalid');
                 cambiarconContra.classList.remove('is-invalid');
                 return false;
-            } else if (nombre.trim() != '' && apellido.trim() != '' && correo.trim() === '' && contra.trim === '' && conContra.trim() === '') {
+            } else if (nombre.trim() != '' && apellido.trim() != '' && correo.trim() === '' && contra.trim() === '' && conContra.trim() === '') {
                 cambiarNombre.classList.remove('is-invalid');
                 cambiarApellido.classList.remove('is-invalid');
                 cambiarCorreo.classList.add('is-invalid');
                 cambiarPass.classList.add('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false;
-            }else if (nombre.trim() === '' && apellido.trim() != '' && correo.trim() != '' && contra.trim === '' && conContra.trim() === '') {
+            } else if (nombre.trim() === '' && apellido.trim() != '' && correo.trim() != '' && contra.trim() === '' && conContra.trim() === '') {
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.remove('is-invalid');
                 cambiarCorreo.classList.remove('is-invalid');
                 cambiarPass.classList.add('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false;
-            }else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() != '' && contra.trim != '' && conContra.trim() === '') {
+            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() != '' && contra.trim() != '' && conContra.trim() === '') {
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.add('is-invalid');
                 cambiarCorreo.classList.remove('is-invalid');
                 cambiarPass.classList.remove('is-invalid');
                 cambiarconContra.classList.add('is-invalid');
                 return false;
-            }else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim != '' && conContra.trim() != '') {
+            } else if (nombre.trim() === '' && apellido.trim() === '' && correo.trim() === '' && contra.trim() != '' && conContra.trim() != '') {
                 cambiarNombre.classList.add('is-invalid');
                 cambiarApellido.classList.add('is-invalid');
                 cambiarCorreo.classList.add('is-invalid');
                 cambiarPass.classList.remove('is-invalid');
                 cambiarconContra.classList.remove('is-invalid');
                 return false;
-            } else if (nombre.trim() != '' && apellido.trim() != '' && correo.trim() != '' && contra.trim != '' && conContra.trim() != '') {
-                cambiarNombre.classList.remove('is-invalid');
-                cambiarApellido.classList.remove('is-invalid');
-                cambiarCorreo.classList.remove('is-invalid');
-                cambiarPass.classList.remove('is-invalid');
-                cambiarconContra.classList.remove('is-invalid');
-                if (!regexContra.test(contra)) {
-                    alert('La contraseña debe tener entre 7 a 15 caracteres con al menos 1 letra minuscula, 1 mayuscula, 1 numero y 1 caracter especial (@,!,*...)');
-                    return false;
-                } else {
-                    if (!regexContra.test(conContra)) {
-                        alert('La contraseña debe tener entre 7 a 15 caracteres con al menos 1 letra minuscula, 1 mayuscula, 1 numero y 1 caracter especial (@,!,*...)');
-                        return false;
-                    } else {
-                        if (contra == conContra) {
-                            return true;
-                        } else {
-                            alert('Ingrese la misma contraseña');
-                            return false;
-                        }
-                    }
-                }
             }
+            //} else if (nombre.trim() != '' && apellido.trim() != '' && correo.trim() != '' && contra.trim() != '' && conContra.trim() != '') {
+            //    cambiarNombre.classList.remove('is-invalid');
+            //    cambiarApellido.classList.remove('is-invalid');
+            //    cambiarCorreo.classList.remove('is-invalid');
+            //    cambiarPass.classList.remove('is-invalid');
+            //    cambiarconContra.classList.remove('is-invalid');
+                
+            //}
             
-            //return true;
+            return true;
         }
 
         function validarFormularioEditUsuarios() {
@@ -257,7 +243,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegisterUsuarios();" />
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return vertxtContra()" />
                 </div>
                 </asp:Panel>
                 
