@@ -37,15 +37,17 @@ namespace WebApp
             }
             else
             {
-                //string script = @"Swal.fire({
-                //        showConfirmButton: false,
-                //        timer: 3000
-                //        title: 'Correo y/o contraseña incorrecto',
-                //        icon: 'warning'                        
-                //    });";
-                //ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
-                string mensaje_alerta = "swal({title: 'Correo y/o contraseña incorrecto',icon: 'error',buttons: false}); ";
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "alerta", mensaje_alerta, true);
+                string script = @"<script>
+                            Swal.fire({
+                                showConfirmButton: false,
+                                timer: 3000,
+                                title: 'Correo y/o contraseña incorrecto',
+                                icon: 'error'
+                            });
+                          </script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", script);
+                //string mensaje_alerta = "swal({title: 'Correo y/o contraseña incorrecto',icon: 'error',buttons: false}); ";
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "alerta", mensaje_alerta, true);
             }
 
         }

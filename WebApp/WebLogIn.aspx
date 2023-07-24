@@ -9,14 +9,14 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <!-- icheck bootstrap -->
     <link href="plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet" />
     <!-- Theme style -->
     <link href="dist/css/adminlte.min.css" rel="stylesheet" />
     <!-- SweetAlert2 -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css" />
+    
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
@@ -45,31 +45,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <%--<div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember" />
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>--%>
+                    <div class="row">                        
                         <!-- /.col -->
                         <div class="col-4">
                             <input id="btnIngresar" runat="server" class="btn btn-primary btn-block"  type="submit" value="Ingresar" onserverclick="btnIngresar_Click" />
                         </div>
                         <!-- /.col -->
                     </div>
+                      <!-- SweetAlert2 -->
+                    <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
                 </form>
-
-                <%--<div class="social-auth-links text-center mt-2 mb-3">
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i>Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i>Sign in using Google+
-                    </a>
-                </div>--%>
                 <!-- /.social-auth-links -->
                 <br />
                 <p class="mb-1">
@@ -80,9 +65,6 @@
         </div>
         <!-- /.card -->
     </div>
-    <!-- /.login-box -->
-
-    <!-- SweetAlert2 -->
-
+    <!-- /.login-box -->    
 </body>
 </html>
