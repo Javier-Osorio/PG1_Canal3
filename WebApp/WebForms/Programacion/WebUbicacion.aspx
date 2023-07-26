@@ -107,7 +107,7 @@
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="ID_UBICACION" ReadOnly="true" />
                             <asp:BoundField HeaderText="Nombre" DataField="NOMBRE" />
-                            <asp:BoundField HeaderText="Ubicacion" DataField="PATH_UBICACION" />
+                            <asp:BoundField HeaderText="Ubicacion" DataField="DESCRIPCION" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" CommandName="Edit" CssClass="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Editar</asp:LinkButton>

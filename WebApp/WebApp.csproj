@@ -2101,6 +2101,8 @@
     <Content Include="WebForms\Programacion\WebTipo_pelicula.aspx" />
     <Content Include="WebForms\Programacion\WebTipo_serie.aspx" />
     <Content Include="WebForms\Programacion\WebUbicacion.aspx" />
+    <Content Include="WebForms\Reportes\WebReportePeliculas.aspx" />
+    <Content Include="WebForms\Reportes\WebReporteSerie.aspx" />
     <Content Include="WebForms\WebBienvenida.aspx" />
     <Content Include="WebLogIn.aspx" />
     <Content Include="WebNuevaContra.aspx" />
@@ -2228,6 +2230,20 @@
     </Compile>
     <Compile Include="WebForms\Programacion\WebUbicacion.aspx.designer.cs">
       <DependentUpon>WebUbicacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Reportes\WebReportePeliculas.aspx.cs">
+      <DependentUpon>WebReportePeliculas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Reportes\WebReportePeliculas.aspx.designer.cs">
+      <DependentUpon>WebReportePeliculas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Reportes\WebReporteSerie.aspx.cs">
+      <DependentUpon>WebReporteSerie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Reportes\WebReporteSerie.aspx.designer.cs">
+      <DependentUpon>WebReporteSerie.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\WebBienvenida.aspx.cs">
       <DependentUpon>WebBienvenida.aspx</DependentUpon>

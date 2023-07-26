@@ -159,6 +159,7 @@ namespace WebApp.WebForms.Login
             if (dao.EliminarModulo(modulo))
             {
                 CargaModulos();
+                LlenarListados();
                 string script = @"Swal.fire({                        
                         showConfirmButton: false,
                         timer: 3000,
@@ -192,6 +193,7 @@ namespace WebApp.WebForms.Login
                 {
                     CargaModulos();
                     limpiartextos();
+                    LlenarListados();
                     string script = @"Swal.fire({                        
                         showConfirmButton: false,
                         timer: 3000,
@@ -224,6 +226,7 @@ namespace WebApp.WebForms.Login
                 {
                     CargaModulos();
                     limpiartextos();
+                    LlenarListados();
                     string script = @"Swal.fire({                        
                         showConfirmButton: false,
                         timer: 3000,
@@ -271,6 +274,7 @@ namespace WebApp.WebForms.Login
             {
                 CargaModulos();
                 limpiartextos();
+                LlenarListados();
                 string script = @"Swal.fire({                        
                         showConfirmButton: false,
                         timer: 3000,
