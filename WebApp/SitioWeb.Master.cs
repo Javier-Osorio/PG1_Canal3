@@ -30,6 +30,10 @@ namespace WebApp
                     Response.Cache.SetNoStore();
 
                 }
+                //else
+                //{
+                //    Session.Timeout = 30;
+                //}
             }
             
         }
