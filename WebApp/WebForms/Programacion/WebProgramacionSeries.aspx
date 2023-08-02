@@ -214,7 +214,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarInputsR()">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="limpiarInputsR()">Cancelar</button>
                     <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegister();" />
                 </div>
                 </asp:Panel>
@@ -329,7 +329,7 @@
                     </div>                    
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarFormBusqueda()">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="limpiarFormBusqueda()" data-dismiss="modal">Cancelar</button>
                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" />
                 </div>
             </div>

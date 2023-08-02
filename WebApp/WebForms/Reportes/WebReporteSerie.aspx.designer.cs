@@ -49,6 +49,15 @@ namespace WebApp.WebForms.Reportes {
         protected global::System.Web.UI.WebControls.LinkButton btnIcono;
         
         /// <summary>
+        /// Control pnlBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlBuscar;
+        
+        /// <summary>
         /// Control NomBusqueda.
         /// </summary>
         /// <remarks>

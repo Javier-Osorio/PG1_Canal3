@@ -151,5 +151,10 @@ namespace WebApp.WebForms.Programacion
                 ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

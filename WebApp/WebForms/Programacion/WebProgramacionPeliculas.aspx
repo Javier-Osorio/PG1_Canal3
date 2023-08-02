@@ -26,10 +26,10 @@
         }
 
         function limpiarFormBusqueda() {
-            document.getElementById('<%= NomBusqueda.Value %>').value = '';
-            document.getElementById('<%= FechaBusqueda.Value %>').value = '';
-            document.getElementById('<%= CasaBusqueda.Value %>').value = '';
-            document.getElementById('<%= UbicacionBusqueda.Value %>').value = '';
+            document.getElementById('<%=NomBusqueda.Value%>').value = '';
+            document.getElementById('<%=FechaBusqueda.Value%>').value = '';
+            document.getElementById('<%=CasaBusqueda.Value%>').value = '';
+            document.getElementById('<%=UbicacionBusqueda.Value%>').value = '';
 
             $('#modalBuscar').modal('hide');
         }
@@ -240,7 +240,7 @@
                     </div>                    
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarFormBusqueda()">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="limpiarFormBusqueda()" data-dismiss="modal">Cancelar</button>
                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" />
                 </div>
             </div>

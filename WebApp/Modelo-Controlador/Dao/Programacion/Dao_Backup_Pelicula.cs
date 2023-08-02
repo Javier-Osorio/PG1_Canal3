@@ -145,7 +145,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
                     "INNER JOIN TIPOS_PELICULAS TP ON TP.ID_TIPO_PELICULA = BP.ID_TIPO_PELICULA " +
                     "INNER JOIN CASAS_PRODUCTORAS CP ON CP.ID_CASA_PRODUCTORA = BP.ID_CASA_PRODUCTORA " +
                     "INNER JOIN UBICACIONES_CINTAS U ON U.ID_UBICACION = BP.ID_UBICACION " + parametros;
-                DsReturn = conexionDB.DataSQL(strSql, "buscar_backup_pelicula");
+                DsReturn = conexionDB.DataSQL(strSql, "backup_pelicula");
             }
             catch (Exception ex)
             {

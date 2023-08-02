@@ -61,12 +61,12 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistrar">Registrar</button>
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 200px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                            <input id="txtBuscar" type="text" class="form-control float-right" placeholder="Buscar nombre" runat="server">
 
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                                <asp:LinkButton ID="btnBuscar" runat="server" CssClass="btn btn-default" OnClick="btnBuscar_Click">
+                                    <i class="fas fa-search"></i></asp:LinkButton>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                         </div>                        
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarInputsR()">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="limpiarInputsR()">Cancelar</button>
                     <asp:Button ID="btnRegistrar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" OnClientClick="return validarFormularioRegister();" />
                 </div>
                 </asp:Panel>

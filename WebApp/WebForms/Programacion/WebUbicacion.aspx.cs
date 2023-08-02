@@ -67,6 +67,12 @@ namespace WebApp.WebForms.Programacion
             txtUbicacionEdit.Value = "";
         }
 
+        void LimpiarFormBuscar()
+        {
+            NomBusqueda.Value = "";
+            DescripcionBusqueda.Value = "";
+        }
+
         protected void tabla_ubicaciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewRow row = tabla_ubicaciones.Rows[e.NewEditIndex];
@@ -168,43 +174,42 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnPruebaPDF_Click(object sender, EventArgs e)
         {
-            DataTable dt_ubi = Session["ubicacion"] as DataTable;
-            if (dao.GetUbicaciones())
+            
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string nombre = NomBusqueda.Value;
+            string descripcion = DescripcionBusqueda.Value;           
+
+            string parametros = "WHERE 1=1";
+            if (!string.IsNullOrEmpty(nombre))
             {
-                dt_ubi = dao.DsReturn.Tables["ubicacion"];
+                parametros += " AND NOMBRE LIKE '%" + nombre + "%'";
             }
-
-            // Crear el documento PDF
-            var memoryStream = new MemoryStream();
-            var writer = new PdfWriter(memoryStream);
-            var pdfDocument = new PdfDocument(writer);
-            var document = new Document(pdfDocument);
-
-            // Agregar los datos al documento PDF
-            var table = new iText.Layout.Element.Table(dt_ubi.Columns.Count);
-            foreach (DataColumn column in dt_ubi.Columns)
+            if (!string.IsNullOrEmpty(descripcion))
             {
-                table.AddHeaderCell(new Cell().Add(new Paragraph(column.ColumnName)));
+                parametros += " AND PATH_UBICACION LIKE '%" + descripcion + "%'";
             }
+            
 
-            foreach (DataRow row in dt_ubi.Rows)
+            if (dao.UbicacionBuscar(parametros))
             {
-                foreach (var item in row.ItemArray)
-                {
-                    table.AddCell(new Cell().Add(new Paragraph(item.ToString())));
-                }
+                tabla_ubicaciones.DataSource = dao.DsReturn.Tables["ubicacion"];
+                tabla_ubicaciones.DataBind();
+                Session["ubicacion"] = dao.DsReturn;
+                LimpiarFormBuscar();
             }
-
-            document.Add(table);
-            document.Close();
-
-            // Descargar el archivo PDF generado
-            Response.ContentType = "application/pdf";
-            Response.AddHeader("Content-Disposition", "attachment;filename=reporteUbicaciones.pdf");
-            Response.OutputStream.Write(memoryStream.GetBuffer(), 0, memoryStream.GetBuffer().Length);
-            Response.OutputStream.Flush();
-            Response.OutputStream.Close();
-            Response.End();
-        }      
+            else
+            {
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'No se encontro los registros de la busqueda',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+            }
+        }
     }
 }

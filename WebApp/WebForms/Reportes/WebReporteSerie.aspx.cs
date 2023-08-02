@@ -54,13 +54,7 @@ namespace WebApp.WebForms.Reportes
         {
             tabla_reporte_programacion_serie.DataSource = ((DataSet)Session["backup_s"]);
             tabla_reporte_programacion_serie.DataBind();
-        }
-
-        void Limpiardatos()
-        {
-            txtArchivopdf.Text = "";
-            txtTituloReporte.Text = "";
-        }
+        }       
 
         void LimpiarFormBuscar()
         {
@@ -245,7 +239,6 @@ namespace WebApp.WebForms.Reportes
                     Response.End();
                 }
             }
-            Limpiardatos();
         }
     }
 }

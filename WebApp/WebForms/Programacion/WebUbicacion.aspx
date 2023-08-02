@@ -86,14 +86,9 @@
                     <br /><br />
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistrar">Registrar</button>
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 200px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                            
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
+                        <div class="input-group input-group-sm">
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalBuscar">
+                                <i class="fas fa-search"></i> Buscar</button>
                         </div>
                         <%--<br />
                         <asp:Button ID="btnPruebaPDF" runat="server" Text="Generar PDF Prueba" OnClick="btnPruebaPDF_Click" CssClass="btn btn-block btn-outline-primary" />--%>
@@ -193,4 +188,32 @@
     </div>
     <!-- /.modal-content -->
 
+    <!--modal-content -->
+    <div class="modal fade" id="modalBuscar" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Buscar Registros</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="NomBusqueda">Nombre:</label>
+                        <input runat="server" type="text" class="form-control" id="NomBusqueda" placeholder=""/>
+                    </div>                    
+                    <div class="form-group">
+                        <label for="DescripcionBusqueda">Descripcion:</label>
+                        <input runat="server" type="text" class="form-control" id="DescripcionBusqueda" placeholder=""/>
+                    </div>                                                        
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" onclick="limpiarFormBusqueda()" data-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
 </asp:Content>
