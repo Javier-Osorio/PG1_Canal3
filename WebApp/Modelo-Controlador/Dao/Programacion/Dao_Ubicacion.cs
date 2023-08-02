@@ -98,5 +98,20 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
                 return false;
             }
         }
+
+        public bool UbicacionBuscar(string parametros)
+        {
+            try
+            {
+                strSql = "SELECT ID_UBICACION, NOMBRE, PATH_UBICACION FROM UBICACIONES_CINTAS " + parametros;
+                DsReturn = conexionDB.DataSQL(strSql, "busqueda_ubicacion_nombre");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }       
     }
 }

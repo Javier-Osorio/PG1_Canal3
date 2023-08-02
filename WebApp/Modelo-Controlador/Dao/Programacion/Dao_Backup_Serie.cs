@@ -144,5 +144,34 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
                 return false;
             }
         }
+
+        public bool GetBusqueda_Backup_Serie(string parametros)
+        {
+            try
+            {
+                strSql = "SELECT ID_BACKUP_SERIE," +
+                    "NS.NOMBRE AS NOMBRE_SERIE," +
+                    "CASE WHEN FECHA_BACKUP IS NULL THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
+                    "CANTIDAD_EPISODIO_MIN," +
+                    "CANTIDAD_EPISODIO_MAX," +
+                    "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES," +
+                    "TS.NOMBRE AS TIPO_SERIE," +
+                    "CP.NOMBRE AS CASA_PRODUCTORA," +
+                    "U.NOMBRE AS UBICACION_CINTA,CASE WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 0 THEN 'EN BLOQUES' END ESTADO " +
+                    "FROM BACKUPS_SERIES BS " +
+                    "INNER JOIN NOMBRES_SERIES NS ON NS.ID_NOMBRE_SERIE = BS.ID_NOMBRE_SERIE " +
+                    "INNER JOIN TIPOS_SERIES TS ON TS.ID_TIPO_SERIE = BS.ID_TIPO_SERIE INNER JOIN CASAS_PRODUCTORAS CP ON CP.ID_CASA_PRODUCTORA = BS.ID_CASA_PRODUCTORA " +
+                    "INNER JOIN UBICACIONES_CINTAS U ON U.ID_UBICACION = BS.ID_UBICACION "
+                    + parametros;
+
+                DsReturn = conexionDB.DataSQL(strSql, "backup_serie");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
     }
 }

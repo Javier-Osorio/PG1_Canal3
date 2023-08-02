@@ -97,5 +97,19 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             }
         }
 
+        public bool GetBuscarCasa_Productora(Casa_productoras casa)
+        {
+            try
+            {
+                strSql = "SELECT ID_CASA_PRODUCTORA, NOMBRE FROM CASAS_PRODUCTORAS WHERE NOMBRE LIKE '%" + casa.Nombre+ "%'";
+                DsReturn = conexionDB.DataSQL(strSql, "buscar_casa_productora");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
     }
 }

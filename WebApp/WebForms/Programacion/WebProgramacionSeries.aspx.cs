@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -157,6 +158,14 @@ namespace WebApp.WebForms.Programacion
             ddlEstadoEditar.Items.Add(listItem);
         }
 
+        void LimpiarFormBuscar()
+        {
+            NomBusqueda.Value = "";
+            FechaBusqueda.Value = "";
+            CasaBusqueda.Value = "";
+            UbicacionBusqueda.Value = "";
+        }
+
         protected void tabla_programacion_serie_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             tabla_programacion_serie.PageIndex = e.NewPageIndex;
@@ -298,6 +307,52 @@ namespace WebApp.WebForms.Programacion
                         showConfirmButton: false,
                         timer: 3000,
                         title: 'El registro no se modifico',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string nombre = NomBusqueda.Value;
+            string fecha = FechaBusqueda.Value;
+            string casa = CasaBusqueda.Value;
+            string ubicacion = UbicacionBusqueda.Value;
+
+            string parametros = "WHERE 1=1";
+            if (!string.IsNullOrEmpty(nombre))
+            {
+                parametros += " AND NS.NOMBRE LIKE '%"+ nombre+"%'";
+            }
+            if (!string.IsNullOrEmpty(fecha))
+            {
+                DateTime fechaConvertida = DateTime.ParseExact(fecha, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                string fechaForm = fechaConvertida.ToString("dd/MM/yyyy");
+                parametros += " AND CONVERT(varchar,FECHA_BACKUP, 103) = '" + fechaForm + "'";                            
+            }
+            if (!string.IsNullOrEmpty(casa))
+            {
+                parametros += " AND CP.NOMBRE LIKE '%" + casa + "%'";
+            }
+            if (!string.IsNullOrEmpty(ubicacion))
+            {
+                parametros += " AND U.NOMBRE LIKE '%" + ubicacion + "%'";
+            }
+
+            if (dao.GetBusqueda_Backup_Serie(parametros))
+            {
+                tabla_programacion_serie.DataSource = dao.DsReturn.Tables["backup_serie"];
+                tabla_programacion_serie.DataBind();
+                Session["backup_s"] = dao.DsReturn;
+                LimpiarFormBuscar();
+            }
+            else
+            {
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'No se encontro los registros de la busqueda',
                         icon: 'error'                        
                     });";
                 ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);

@@ -78,6 +78,15 @@
 
            $('#modalRegistrar').modal('hide');
         }
+
+        function limpiarFormBusqueda() {
+            document.getElementById('<%= NomBusqueda.Value %>').value = '';
+            document.getElementById('<%= FechaBusqueda.Value %>').value = '';
+            document.getElementById('<%= CasaBusqueda.Value %>').value = '';
+            document.getElementById('<%= UbicacionBusqueda.Value %>').value = '';
+
+            $('#modalBuscar').modal('hide');
+        }
         //$(function() {
         //    $('#select2').select2({});
         //});
@@ -91,14 +100,16 @@
                     <br />
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistrar">Registrar</button>
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 200px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group input-group-sm" style="width: 100px;">
+                            <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default">
                                     <i class="fas fa-search"></i>
                                 </button>
-                            </div>
+                            </div>--%>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalBuscar">
+                                <i class="fas fa-search"></i> Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -285,6 +296,43 @@
                 
             </div>
             
+        </div>
+    </div>
+    <!-- /.modal-content -->
+
+    <!--modal-content -->
+    <div class="modal fade" id="modalBuscar" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Buscar Registros</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="NomBusqueda">Nombre Serie:</label>
+                        <input runat="server" type="text" class="form-control" id="NomBusqueda" placeholder=""/>
+                    </div>
+                    <div class="form-group">
+                        <label for="FechaBusqueda">Fecha:</label>
+                        <input runat="server" type="date" class="form-control" id="FechaBusqueda" data-inputmask-alias="date" data-inputmask-inputformat="dd/mm/yyyy"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="CasaBusqueda">Casa Productora:</label>
+                        <input runat="server" type="text" class="form-control" id="CasaBusqueda" placeholder=""/>
+                    </div>                  
+                    <div class="form-group">
+                        <label for="UbicacionBusqueda">Ubicacion Cinta:</label>
+                        <input runat="server" type="text" class="form-control" id="UbicacionBusqueda" placeholder=""/>
+                    </div>                    
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarFormBusqueda()">Cancelar</button>
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" />
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.modal-content -->

@@ -95,8 +95,8 @@
                                 </button>
                             </div>
                         </div>
-                        <br />
-                        <asp:Button ID="btnPruebaPDF" runat="server" Text="Generar PDF Prueba" OnClick="btnPruebaPDF_Click" CssClass="btn btn-block btn-outline-primary" />
+                        <%--<br />
+                        <asp:Button ID="btnPruebaPDF" runat="server" Text="Generar PDF Prueba" OnClick="btnPruebaPDF_Click" CssClass="btn btn-block btn-outline-primary" />--%>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -107,7 +107,7 @@
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="ID_UBICACION" ReadOnly="true" />
                             <asp:BoundField HeaderText="Nombre" DataField="NOMBRE" />
-                            <asp:BoundField HeaderText="Ubicacion" DataField="DESCRIPCION" />
+                            <asp:BoundField HeaderText="Descripcion" DataField="PATH_UBICACION" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" CommandName="Edit" CssClass="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Editar</asp:LinkButton>

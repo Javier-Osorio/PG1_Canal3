@@ -21,6 +21,9 @@ namespace WebApp.Modelo_Controlador.Model.Programacion
         private int ID_ubicacion;
         private string ubicacion;
         private int estado;
+        private string fecha_min;
+        private string fecha_max;
+        private string fecha_busqueda;
 
         public int ID_backup_serie1 { get => ID_backup_serie; set => ID_backup_serie = value; }
         public int ID_nombre1 { get => ID_nombre; set => ID_nombre = value; }
@@ -36,5 +39,8 @@ namespace WebApp.Modelo_Controlador.Model.Programacion
         public int ID_ubicacion1 { get => ID_ubicacion; set => ID_ubicacion = value; }
         public string Ubicacion { get => ubicacion; set => ubicacion = value; }
         public int Estado { get => estado; set => estado = value; }
+        public string Fecha_min { get => fecha_min; set => fecha_min = value; }
+        public string Fecha_max { get => fecha_max; set => fecha_max = value; }
+        public string Fecha_busqueda { get => fecha_busqueda; set => fecha_busqueda = value; }
     }
 }

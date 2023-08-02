@@ -95,5 +95,20 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
                 return false;
             }
         }
+
+        public bool GetBuscarNombre_Serie(Nombre_serie serie)
+        {
+            try
+            {
+                strSql = "SELECT ID_NOMBRE_SERIE, NOMBRE FROM NOMBRES_SERIES WHERE NOMBRE LIKE '%" +serie.Nombre+"%'";
+                DsReturn = conexionDB.DataSQL(strSql, "buscar_nombres_series");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
     }
 }

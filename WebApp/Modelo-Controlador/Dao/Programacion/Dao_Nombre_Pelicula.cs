@@ -95,5 +95,20 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
                 return false;
             }
         }
+
+        public bool GetBuscarNombre_Pelicula(Nombre_pelicula pelicula)
+        {
+            try
+            {
+                strSql = "SELECT ID_NOMBRE_PELICULA, NOMBRE FROM NOMBRES_PELICULAS WHERE NOMBRE LIKE '%" + pelicula.Nombre+ "%'";
+                DsReturn = conexionDB.DataSQL(strSql, "buscar_nombres_peliculas");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
     }
 }
