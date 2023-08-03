@@ -104,7 +104,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             try
             {
                 strSql = "SELECT ID_UBICACION, NOMBRE, PATH_UBICACION FROM UBICACIONES_CINTAS " + parametros;
-                DsReturn = conexionDB.DataSQL(strSql, "busqueda_ubicacion_nombre");
+                DsReturn = conexionDB.DataSQL(strSql, "ubicacion");
             }
             catch (Exception ex)
             {

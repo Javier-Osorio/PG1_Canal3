@@ -102,7 +102,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             try
             {
                 strSql = "SELECT ID_CASA_PRODUCTORA, NOMBRE FROM CASAS_PRODUCTORAS WHERE NOMBRE LIKE '%" + casa.Nombre+ "%'";
-                DsReturn = conexionDB.DataSQL(strSql, "buscar_casa_productora");
+                DsReturn = conexionDB.DataSQL(strSql, "casa_productora");
             }
             catch (Exception ex)
             {

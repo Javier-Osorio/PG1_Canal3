@@ -31,6 +31,21 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             return true;
         }
 
+        public bool GetBuscar_Tipo_Pelicula(Tipos_peliculas p)
+        {
+            try
+            {
+                strSql = "SELECT ID_TIPO_PELICULA, NOMBRE FROM TIPOS_PELICULAS WHERE NOMBRE LIKE '%" + p.Nombre + "%'";
+                DsReturn = conexionDB.DataSQL(strSql, "tipos_peliculas");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
         public bool InsertarTipoPelicula(Tipos_peliculas p)
         {
             try

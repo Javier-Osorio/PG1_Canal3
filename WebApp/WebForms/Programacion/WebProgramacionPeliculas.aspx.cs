@@ -317,7 +317,7 @@ namespace WebApp.WebForms.Programacion
             string parametros = "WHERE 1=1";
             if (!string.IsNullOrEmpty(nombre))
             {
-                parametros += " AND NS.NOMBRE LIKE '%" + nombre + "%'";
+                parametros += " AND NP.NOMBRE LIKE '%" + nombre + "%'";
             }
             if (!string.IsNullOrEmpty(fecha))
             {
@@ -336,7 +336,7 @@ namespace WebApp.WebForms.Programacion
 
             if (dao.GetBuscar_Backup_Pelicula(parametros))
             {
-                tabla_programacion_pelicula.DataSource = dao.DsReturn.Tables["buscar_backup_pelicula"];
+                tabla_programacion_pelicula.DataSource = dao.DsReturn.Tables["backup_pelicula"];
                 tabla_programacion_pelicula.DataBind();
                 Session["backup_p"] = dao.DsReturn;
                 LimpiarFormBuscar();

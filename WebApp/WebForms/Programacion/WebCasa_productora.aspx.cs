@@ -154,7 +154,24 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            casa.Nombre = txtBuscar.Value;
+            if (dao.GetBuscarCasa_Productora(casa))
+            {
+                tabla_casa_productora.DataSource = dao.DsReturn.Tables["casa_productora"];
+                tabla_casa_productora.DataBind();
+                Session["casa"] = dao.DsReturn;
+                txtBuscar.Value = "";
+            }
+            else
+            {
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'No se encontro los registros de la busqueda',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+            }
         }
     }
 }

@@ -31,6 +31,21 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             return true;
         }
 
+        public bool GetBuscar_Tipo_Serie(Tipos_series s)
+        {
+            try
+            {
+                strSql = "SELECT ID_TIPO_SERIE, NOMBRE FROM TIPOS_SERIES WHERE NOMBRE LIKE '%" + s.Nombre + "%'";
+                DsReturn = conexionDB.DataSQL(strSql, "tipos_series");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
         public bool InsertarTipoSerie(Tipos_series s)
         {
             try

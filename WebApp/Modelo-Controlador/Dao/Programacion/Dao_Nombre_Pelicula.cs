@@ -101,7 +101,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             try
             {
                 strSql = "SELECT ID_NOMBRE_PELICULA, NOMBRE FROM NOMBRES_PELICULAS WHERE NOMBRE LIKE '%" + pelicula.Nombre+ "%'";
-                DsReturn = conexionDB.DataSQL(strSql, "buscar_nombres_peliculas");
+                DsReturn = conexionDB.DataSQL(strSql, "nombres_peliculas");
             }
             catch (Exception ex)
             {

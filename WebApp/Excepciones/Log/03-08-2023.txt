@@ -1,0 +1,22 @@
+
+Log del Error: 
+3/08/2023 11:02:03
+Error en: http://localhost:49962/WebForms/Programacion/WebProgramacionPeliculas.aspx | Mensaje de Error: System.Web.HttpException (0x80004005): IListSource no contiene ningún origen de datos.
+   en System.Web.UI.DataSourceHelper.GetResolvedDataSource(Object dataSource, String dataMember)
+   en System.Web.UI.WebControls.ReadOnlyDataSource.System.Web.UI.IDataSource.GetView(String viewName)
+   en System.Web.UI.WebControls.DataBoundControl.ConnectToDataSourceView()
+   en System.Web.UI.WebControls.DataBoundControl.GetData()
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Programacion.WebProgramacionPeliculas.SetBackupPelicula() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebProgramacionPeliculas.aspx.cs:línea 57
+   en WebApp.WebForms.Programacion.WebProgramacionPeliculas.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebProgramacionPeliculas.aspx.cs:línea 28 | Stack:    en System.Web.UI.DataSourceHelper.GetResolvedDataSource(Object dataSource, String dataMember)
+   en System.Web.UI.WebControls.ReadOnlyDataSource.System.Web.UI.IDataSource.GetView(String viewName)
+   en System.Web.UI.WebControls.DataBoundControl.ConnectToDataSourceView()
+   en System.Web.UI.WebControls.DataBoundControl.GetData()
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Programacion.WebProgramacionPeliculas.SetBackupPelicula() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebProgramacionPeliculas.aspx.cs:línea 57
+   en WebApp.WebForms.Programacion.WebProgramacionPeliculas.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebProgramacionPeliculas.aspx.cs:línea 28
+__________________________

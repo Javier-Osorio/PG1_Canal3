@@ -154,7 +154,24 @@ namespace WebApp.WebForms.Programacion
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            pelicula.Nombre = txtBuscar.Value;
+            if (dao.GetBuscarNombre_Pelicula(pelicula))
+            {
+                tabla_nombre_pelicula.DataSource = dao.DsReturn.Tables["nombres_peliculas"];
+                tabla_nombre_pelicula.DataBind();
+                Session["nombre_peli"] = dao.DsReturn;
+                txtBuscar.Value = "";
+            }
+            else
+            {
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'No se encontro los registros de la busqueda',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+            }
         }
     }
 }
