@@ -67,15 +67,6 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtObservaciones;
         
         /// <summary>
-        /// Control ddlTipoSerie.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoSerie;
-        
-        /// <summary>
         /// Control ddlCasaProductora.
         /// </summary>
         /// <remarks>
@@ -155,15 +146,6 @@ namespace WebApp.WebForms.Programacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtObserEditar;
-        
-        /// <summary>
-        /// Control ddlTipoEditar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEditar;
         
         /// <summary>
         /// Control ddlCasaEditar.

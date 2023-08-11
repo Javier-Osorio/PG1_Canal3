@@ -125,7 +125,6 @@
                             <asp:BoundField HeaderText="Episodio Minimo" DataField="CANTIDAD_EPISODIO_MIN" />
                             <asp:BoundField HeaderText="Episodio Maximo" DataField="CANTIDAD_EPISODIO_MAX" />
                             <asp:BoundField HeaderText="Observaciones" DataField="OBSERVACIONES" />
-                            <asp:BoundField HeaderText="Tipo de Serie" DataField="TIPO_SERIE" />
                             <asp:BoundField HeaderText="Casa Productora" DataField="CASA_PRODUCTORA" />
                             <asp:BoundField HeaderText="Ubicacion Cinta " DataField="UBICACION_CINTA" />
                             <asp:TemplateField HeaderText="Estado">
@@ -187,12 +186,12 @@
                         <label for="txtObservaciones">Observacion:</label>
                         <textarea runat="server" id="txtObservaciones" cols="20" rows="3" class="form-control"></textarea>
                     </div>
-                    <div class="form-group">
+                    <%--<div class="form-group">
                         <label for="">Tipo de Serie:</label>
                         <asp:DropDownList ID="ddlTipoSerie" runat="server" CssClass="form-control">
                             
                         </asp:DropDownList>
-                    </div>
+                    </div>--%>
                     <div class="form-group">
                         <label for="">Casa Productora:</label>
                         <asp:DropDownList ID="ddlCasaProductora" runat="server" CssClass="form-control">
@@ -263,12 +262,12 @@
                         <label for="txtObserEditar">Observacion:</label>
                         <textarea runat="server" id="txtObserEditar" cols="20" rows="3" class="form-control"></textarea>
                     </div>
-                    <div class="form-group">
+                    <%--<div class="form-group">
                         <label for="">Tipo de Serie:</label>
                         <asp:DropDownList ID="ddlTipoEditar" runat="server" CssClass="form-control">
                             
                         </asp:DropDownList>
-                    </div>
+                    </div>--%>
                     <div class="form-group">
                         <label for="">Casa Productora:</label>
                         <asp:DropDownList ID="ddlCasaEditar" runat="server" CssClass="form-control">

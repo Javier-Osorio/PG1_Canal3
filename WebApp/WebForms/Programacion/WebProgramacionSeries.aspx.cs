@@ -35,7 +35,6 @@ namespace WebApp.WebForms.Programacion
         Backup_series series = new Backup_series();
         Dao_Nombre_Serie dao_Nombre = new Dao_Nombre_Serie();
         Dao_Casa_Productora dao_Casa = new Dao_Casa_Productora();
-        Dao_Tipo_Serie dao_Tipo_Serie = new Dao_Tipo_Serie();
         Dao_Ubicacion dao_Ubicacion = new Dao_Ubicacion();
         ManejoError error = new ManejoError();
 
@@ -70,13 +69,7 @@ namespace WebApp.WebForms.Programacion
                 ddlCasaProductora.DataValueField = dao_Casa.DsReturn.Tables["casa_productora"].Columns["ID_CASA_PRODUCTORA"].ToString();
                 ddlCasaProductora.DataBind();
             }
-            if (dao_Tipo_Serie.GetTipo_Serie())
-            {
-                ddlTipoSerie.DataSource = dao_Tipo_Serie.DsReturn.Tables["tipos_series"];
-                ddlTipoSerie.DataTextField = dao_Tipo_Serie.DsReturn.Tables["tipos_series"].Columns["NOMBRE"].ToString();
-                ddlTipoSerie.DataValueField = dao_Tipo_Serie.DsReturn.Tables["tipos_series"].Columns["ID_TIPO_SERIE"].ToString();
-                ddlTipoSerie.DataBind();
-            }
+            
             if (dao_Ubicacion.GetUbicaciones())
             {
                 ddlUbicacion.DataSource = dao_Ubicacion.DsReturn.Tables["ubicacion"];
@@ -94,7 +87,7 @@ namespace WebApp.WebForms.Programacion
             ddlEstado.SelectedIndex = 0;
             ddlCasaProductora.SelectedIndex = 0;
             ddlNombreMaterial.SelectedIndex = 0;
-            ddlTipoSerie.SelectedIndex = 0;
+            
             ddlUbicacion.SelectedIndex = 0;
         }
         void limpiarDDLS()
@@ -102,7 +95,7 @@ namespace WebApp.WebForms.Programacion
             ddlEstadoEditar.Items.Clear();
             ddlCasaEditar.Items.Clear();
             ddlNombreEditar.Items.Clear();
-            ddlTipoEditar.Items.Clear();
+            
             ddlUbicacionEditar.Items.Clear();
         }
         void LlenarDDLSEditar()
@@ -129,17 +122,7 @@ namespace WebApp.WebForms.Programacion
                     ddlCasaEditar.Items.Add(item);
                 }
             }
-            if (dao_Tipo_Serie.GetTipo_Serie())
-            {
-                ListItem item;
-                foreach (DataRow list in dao_Tipo_Serie.DsReturn.Tables["tipos_series"].Rows)
-                {
-                    string idtipo = list["ID_TIPO_SERIE"].ToString();
-                    string tipo = list["NOMBRE"].ToString();
-                    item = new ListItem(tipo, idtipo);
-                    ddlTipoEditar.Items.Add(item);
-                }
-            }
+            
             if (dao_Ubicacion.GetUbicaciones())
             {
                 ListItem item;
@@ -187,11 +170,7 @@ namespace WebApp.WebForms.Programacion
                 ddlNombreEditar.Items.Add(item);
                 txtEpisodioMinEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["CANTIDAD_EPISODIO_MIN"].ToString();
                 txtEpisodioMaxEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["CANTIDAD_EPISODIO_MAX"].ToString();
-                txtObserEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["OBSERVACIONES"].ToString();
-                string idtipo = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_TIPO_SERIE"].ToString();
-                string tipo = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["TIPO_SERIE"].ToString();
-                item = new ListItem(tipo, idtipo);
-                ddlTipoEditar.Items.Add(item);
+                txtObserEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["OBSERVACIONES"].ToString();                
                 string idcasa = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ID_CASA_PRODUCTORA"].ToString();
                 string casa = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["CASA_PRODUCTORA"].ToString();
                 item = new ListItem(casa, idcasa);
@@ -246,7 +225,7 @@ namespace WebApp.WebForms.Programacion
             series.Cantidad_episodio_min = int.Parse(txtEpisodioMin.Value);
             series.Cantidad_episodio_max = int.Parse(txtEpisodioMax.Value);
             series.Observaciones = txtObservaciones.Value;
-            series.ID_tipo_serie1 = int.Parse(ddlTipoSerie.SelectedValue);
+            
             series.ID_casa_productora1 = int.Parse(ddlCasaProductora.SelectedValue);
             series.ID_ubicacion1 = int.Parse(ddlUbicacion.SelectedValue);
             series.Estado = int.Parse(ddlEstado.SelectedValue);
@@ -282,7 +261,7 @@ namespace WebApp.WebForms.Programacion
             series.Cantidad_episodio_min = int.Parse(txtEpisodioMinEditar.Value);
             series.Cantidad_episodio_max = int.Parse(txtEpisodioMaxEditar.Value);
             series.Observaciones = txtObserEditar.Value;
-            series.ID_tipo_serie1 = int.Parse(ddlTipoEditar.SelectedValue);
+           
             series.ID_casa_productora1 = int.Parse(ddlCasaEditar.SelectedValue);
             series.ID_ubicacion1 = int.Parse(ddlUbicacionEditar.SelectedValue);
             series.Estado = int.Parse(ddlEstadoEditar.SelectedValue);
