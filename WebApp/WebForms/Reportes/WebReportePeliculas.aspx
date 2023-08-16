@@ -39,11 +39,15 @@
             return true;
         }
 
-         function limpiarCampos() {
-            setTimeout(function () {
-                document.getElementById('<%= txtTituloReporte.ClientID %>').value = '';
-                document.getElementById('<%= txtArchivopdf.ClientID %>').value = '';
-            }, 1000);
+        function limpiarCampos() {
+             var tituloVer = document.getElementById('<%=txtTituloReporte.ClientID%>').value;
+            var archivoVer = document.getElementById('<%=txtArchivopdf.ClientID%>').value;
+            if (tituloVer.trim() != '' && archivoVer.trim() != '') {
+                setTimeout(function () {
+                    document.getElementById('<%= txtTituloReporte.ClientID %>').value = '';
+                    document.getElementById('<%= txtArchivopdf.ClientID %>').value = '';
+                }, 1000);
+            }            
          }
      </script> 
     <div class="row">

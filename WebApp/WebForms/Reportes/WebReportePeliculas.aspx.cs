@@ -83,111 +83,124 @@ namespace WebApp.WebForms.Reportes
             // Obtener el DataSet almacenado en Session
             DataSet dataSet = Session["backup_p"] as DataSet;
 
-            if (dataSet != null)
+            // Obtener el título y nombre del archivo proporcionados por el usuario
+            string title = txtTituloReporte.Text.Trim();
+            string fileName = txtArchivopdf.Text.Trim();
+
+            if (fileName != "" && title != "")
             {
-                // Obtener el título y nombre del archivo proporcionados por el usuario
-                string title = txtTituloReporte.Text.Trim();
-                string fileName = txtArchivopdf.Text.Trim();
-
-                // Obtener el usuario actual
-                string currentUser = Session["logueado"].ToString();
-
-                // Obtener la fecha actual
-                string currentDate = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
-
-                // Crear el documento PDF en memoria
-                using (MemoryStream ms = new MemoryStream())
+                if (dataSet != null)
                 {
-                    // Crear el documento PDF
-                    PdfWriter pdfWriter = new PdfWriter(ms);
-                    PdfDocument pdfDocument = new PdfDocument(pdfWriter);
-                    Document document = new Document(pdfDocument, iText.Kernel.Geom.PageSize.LETTER);
+                    // Obtener el usuario actual
+                    string currentUser = Session["logueado"].ToString();
 
-                    try
+                    // Obtener la fecha actual
+                    string currentDate = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
+
+                    // Crear el documento PDF en memoria
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        // Agregar encabezado con información del usuario y fecha
-                        Paragraph headerParagraph = new Paragraph("Generado por: " + currentUser + " - Fecha: " + currentDate)
-                            .SetTextAlignment(TextAlignment.RIGHT)
-                            .SetFontSize(12)
-                            .SetFontColor(DeviceRgb.BLACK);
-                        document.Add(headerParagraph);
+                        // Crear el documento PDF
+                        PdfWriter pdfWriter = new PdfWriter(ms);
+                        PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+                        Document document = new Document(pdfDocument, iText.Kernel.Geom.PageSize.LETTER);
 
-                        // Agregar título al reporte
-                        Paragraph titleParagraph = new Paragraph(title)
-                            .SetTextAlignment(TextAlignment.CENTER)
-                            .SetFontSize(18)
-                            .SetBold();
-                        document.Add(titleParagraph);
-
-                        // Agregar contenido de la tabla al reporte
-                        DataTable dt = dataSet.Tables["backup_pelicula"];
-
-                        // Crear una tabla con la misma cantidad de columnas que la DataTable
-                        iText.Layout.Element.Table table = new iText.Layout.Element.Table(dt.Columns.Count);
-
-                        // Configurar el diseño automático de la tabla según el contenido
-                        table.SetAutoLayout();
-
-                        // Agregar encabezados de columnas                                               
-                        Cell headerCell = new Cell().Add(new Paragraph("ID"));
-                        headerCell.SetBackgroundColor(DeviceRgb.BLACK);
-                        headerCell.SetFontColor(DeviceRgb.WHITE);
-                        table.AddHeaderCell(headerCell);
-                        headerCell = new Cell().Add(new Paragraph("Nombre"));
-                        headerCell.SetBackgroundColor(DeviceRgb.BLACK);
-                        headerCell.SetFontColor(DeviceRgb.WHITE);
-                        table.AddHeaderCell(headerCell);
-                        headerCell = new Cell().Add(new Paragraph("Fecha Guardada"));
-                        headerCell.SetBackgroundColor(DeviceRgb.BLACK);
-                        headerCell.SetFontColor(DeviceRgb.WHITE);
-                        table.AddHeaderCell(headerCell);
-                        headerCell = new Cell().Add(new Paragraph("Observaciones"));
-                        headerCell.SetBackgroundColor(DeviceRgb.BLACK);
-                        headerCell.SetFontColor(DeviceRgb.WHITE);
-                        table.AddHeaderCell(headerCell);
-                        headerCell = new Cell().Add(new Paragraph("Casa Productora"));
-                        headerCell.SetBackgroundColor(DeviceRgb.BLACK);
-                        headerCell.SetFontColor(DeviceRgb.WHITE);
-                        table.AddHeaderCell(headerCell);
-                        headerCell = new Cell().Add(new Paragraph("Ubicacion Cinta"));
-                        headerCell.SetBackgroundColor(DeviceRgb.BLACK);
-                        headerCell.SetFontColor(DeviceRgb.WHITE);
-                        table.AddHeaderCell(headerCell);
-                        headerCell = new Cell().Add(new Paragraph("Estado"));
-                        headerCell.SetBackgroundColor(DeviceRgb.BLACK);
-                        headerCell.SetFontColor(DeviceRgb.WHITE);
-                        table.AddHeaderCell(headerCell);
-
-                        // Agregar filas y celdas de datos
-                        foreach (DataRow row in dt.Rows)
+                        try
                         {
-                            foreach (var item in row.ItemArray)
+                            // Agregar encabezado con información del usuario y fecha
+                            Paragraph headerParagraph = new Paragraph("Generado por: " + currentUser + " - Fecha: " + currentDate)
+                                .SetTextAlignment(TextAlignment.RIGHT)
+                                .SetFontSize(12)
+                                .SetFontColor(DeviceRgb.BLACK);
+                            document.Add(headerParagraph);
+
+                            // Agregar título al reporte
+                            Paragraph titleParagraph = new Paragraph(title)
+                                .SetTextAlignment(TextAlignment.CENTER)
+                                .SetFontSize(18)
+                                .SetBold();
+                            document.Add(titleParagraph);
+
+                            // Agregar contenido de la tabla al reporte
+                            DataTable dt = dataSet.Tables["backup_pelicula"];
+
+                            // Crear una tabla con la misma cantidad de columnas que la DataTable
+                            iText.Layout.Element.Table table = new iText.Layout.Element.Table(dt.Columns.Count);
+
+                            // Configurar el diseño automático de la tabla según el contenido
+                            table.SetAutoLayout();
+
+                            // Agregar encabezados de columnas                                               
+                            Cell headerCell = new Cell().Add(new Paragraph("ID"));
+                            headerCell.SetBackgroundColor(DeviceRgb.BLACK);
+                            headerCell.SetFontColor(DeviceRgb.WHITE);
+                            table.AddHeaderCell(headerCell);
+                            headerCell = new Cell().Add(new Paragraph("Nombre"));
+                            headerCell.SetBackgroundColor(DeviceRgb.BLACK);
+                            headerCell.SetFontColor(DeviceRgb.WHITE);
+                            table.AddHeaderCell(headerCell);
+                            headerCell = new Cell().Add(new Paragraph("Fecha Guardada"));
+                            headerCell.SetBackgroundColor(DeviceRgb.BLACK);
+                            headerCell.SetFontColor(DeviceRgb.WHITE);
+                            table.AddHeaderCell(headerCell);
+                            headerCell = new Cell().Add(new Paragraph("Observaciones"));
+                            headerCell.SetBackgroundColor(DeviceRgb.BLACK);
+                            headerCell.SetFontColor(DeviceRgb.WHITE);
+                            table.AddHeaderCell(headerCell);
+                            headerCell = new Cell().Add(new Paragraph("Casa Productora"));
+                            headerCell.SetBackgroundColor(DeviceRgb.BLACK);
+                            headerCell.SetFontColor(DeviceRgb.WHITE);
+                            table.AddHeaderCell(headerCell);
+                            headerCell = new Cell().Add(new Paragraph("Ubicacion Cinta"));
+                            headerCell.SetBackgroundColor(DeviceRgb.BLACK);
+                            headerCell.SetFontColor(DeviceRgb.WHITE);
+                            table.AddHeaderCell(headerCell);
+                            headerCell = new Cell().Add(new Paragraph("Estado"));
+                            headerCell.SetBackgroundColor(DeviceRgb.BLACK);
+                            headerCell.SetFontColor(DeviceRgb.WHITE);
+                            table.AddHeaderCell(headerCell);
+
+                            // Agregar filas y celdas de datos
+                            foreach (DataRow row in dt.Rows)
                             {
-                                Cell cell = new Cell().Add(new Paragraph(item.ToString()));
-                                table.AddCell(cell);
+                                foreach (var item in row.ItemArray)
+                                {
+                                    Cell cell = new Cell().Add(new Paragraph(item.ToString()));
+                                    table.AddCell(cell);
+                                }
                             }
+
+                            // Agregar la tabla al documento
+                            document.Add(table);
+                        }
+                        catch (Exception ex)
+                        {
+                            error.LogError(ex.ToString(), ex.StackTrace);
+                        }
+                        finally
+                        {
+                            // Cerrar el documento
+                            document.Close();
                         }
 
-                        // Agregar la tabla al documento
-                        document.Add(table);
+                        // Enviar el archivo PDF al navegador como una descarga
+                        Response.ContentType = "application/pdf";
+                        Response.AddHeader("content-disposition", "attachment;filename=" + fileName + ".pdf");
+                        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                        Response.BinaryWrite(ms.ToArray());
+                        Response.End();
                     }
-                    catch (Exception ex)
-                    {
-                        error.LogError(ex.ToString(), ex.StackTrace);
-                    }
-                    finally
-                    {
-                        // Cerrar el documento
-                        document.Close();
-                    }
-
-                    // Enviar el archivo PDF al navegador como una descarga
-                    Response.ContentType = "application/pdf";
-                    Response.AddHeader("content-disposition", "attachment;filename=" + fileName + ".pdf");
-                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                    Response.BinaryWrite(ms.ToArray());
-                    Response.End();
                 }
+            }
+            else
+            {
+                string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 4000,
+                        title: 'Ingrese un titulo y/o nombre de archivo',
+                        icon: 'error'                        
+                    });";
+                ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
             }
         }
 
