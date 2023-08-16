@@ -189,7 +189,7 @@ namespace WebApp.WebForms.Programacion
             }
             if (!string.IsNullOrEmpty(descripcion))
             {
-                parametros += " AND PATH_UBICACION LIKE '%" + descripcion + "%'";
+                parametros += " AND DESCRIPCION LIKE '%" + descripcion + "%'";
             }
             
 

@@ -5,6 +5,6 @@
     <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Bienvenido (a)</h1>
-          </div>          
+          </div>        
         </div>
 </asp:Content>

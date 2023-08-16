@@ -20,7 +20,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT ID_TIPO_PELICULA, NOMBRE FROM TIPOS_PELICULAS";
+                strSql = "SELECT TOP 100 ID_TIPO_PELICULA, NOMBRE FROM TIPOS_PELICULAS ORDER BY ID_TIPO_PELICULA";
                 DsReturn = conexionDB.DataSQL(strSql, "tipos_peliculas");
             }
             catch (Exception ex)

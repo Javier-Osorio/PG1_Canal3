@@ -1,0 +1,132 @@
+
+Log del Error: 
+15/08/2023 16:40:28
+Error en: http://localhost:49962/WebForms/Programacion/WebProgramacionPeliculas.aspx | Mensaje de Error: System.Web.HttpException (0x80004005): IListSource no contiene ningún origen de datos.
+   en System.Web.UI.DataSourceHelper.GetResolvedDataSource(Object dataSource, String dataMember)
+   en System.Web.UI.WebControls.ReadOnlyDataSource.System.Web.UI.IDataSource.GetView(String viewName)
+   en System.Web.UI.WebControls.DataBoundControl.ConnectToDataSourceView()
+   en System.Web.UI.WebControls.DataBoundControl.GetData()
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Programacion.WebProgramacionPeliculas.SetBackupPelicula() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebProgramacionPeliculas.aspx.cs:línea 56
+   en WebApp.WebForms.Programacion.WebProgramacionPeliculas.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebProgramacionPeliculas.aspx.cs:línea 28 | Stack:    en System.Web.UI.DataSourceHelper.GetResolvedDataSource(Object dataSource, String dataMember)
+   en System.Web.UI.WebControls.ReadOnlyDataSource.System.Web.UI.IDataSource.GetView(String viewName)
+   en System.Web.UI.WebControls.DataBoundControl.ConnectToDataSourceView()
+   en System.Web.UI.WebControls.DataBoundControl.GetData()
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Programacion.WebProgramacionPeliculas.SetBackupPelicula() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebProgramacionPeliculas.aspx.cs:línea 56
+   en WebApp.WebForms.Programacion.WebProgramacionPeliculas.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebProgramacionPeliculas.aspx.cs:línea 28
+__________________________
+
+Log del Error: 
+15/08/2023 17:42:51
+Error en: http://localhost:49962/WebForms/Reportes/WebReporteSerie.aspx | Mensaje de Error: System.Web.HttpException (0x80004005): No se encontró ningún campo o propiedad 'TIPO_SERIE' en el origen de datos seleccionado.
+   en System.Web.UI.WebControls.BoundField.TryGetSimplePropertyValue(Object dataItem, Object& data)
+   en System.Web.UI.WebControls.BoundField.GetValue(Control controlContainer)
+   en System.Web.UI.WebControls.BoundField.OnDataBindField(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnDataBinding(EventArgs e)
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Reportes.WebReporteSerie.CargaBackupSerie() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Reportes\WebReporteSerie.aspx.cs:línea 49
+   en WebApp.WebForms.Reportes.WebReporteSerie.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Reportes\WebReporteSerie.aspx.cs:línea 30 | Stack:    en System.Web.UI.WebControls.BoundField.TryGetSimplePropertyValue(Object dataItem, Object& data)
+   en System.Web.UI.WebControls.BoundField.GetValue(Control controlContainer)
+   en System.Web.UI.WebControls.BoundField.OnDataBindField(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnDataBinding(EventArgs e)
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Reportes.WebReporteSerie.CargaBackupSerie() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Reportes\WebReporteSerie.aspx.cs:línea 49
+   en WebApp.WebForms.Reportes.WebReporteSerie.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Reportes\WebReporteSerie.aspx.cs:línea 30
+__________________________
+
+Log del Error: 
+15/08/2023 17:42:55
+Error en: http://localhost:49962/WebForms/Reportes/WebReporteSerie.aspx | Mensaje de Error: System.Web.HttpException (0x80004005): No se encontró ningún campo o propiedad 'TIPO_SERIE' en el origen de datos seleccionado.
+   en System.Web.UI.WebControls.BoundField.TryGetSimplePropertyValue(Object dataItem, Object& data)
+   en System.Web.UI.WebControls.BoundField.GetValue(Control controlContainer)
+   en System.Web.UI.WebControls.BoundField.OnDataBindField(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnDataBinding(EventArgs e)
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Reportes.WebReporteSerie.SetBackupSerie() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Reportes\WebReporteSerie.aspx.cs:línea 56
+   en WebApp.WebForms.Reportes.WebReporteSerie.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Reportes\WebReporteSerie.aspx.cs:línea 33 | Stack:    en System.Web.UI.WebControls.BoundField.TryGetSimplePropertyValue(Object dataItem, Object& data)
+   en System.Web.UI.WebControls.BoundField.GetValue(Control controlContainer)
+   en System.Web.UI.WebControls.BoundField.OnDataBindField(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnDataBinding(EventArgs e)
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Reportes.WebReporteSerie.SetBackupSerie() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Reportes\WebReporteSerie.aspx.cs:línea 56
+   en WebApp.WebForms.Reportes.WebReporteSerie.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Reportes\WebReporteSerie.aspx.cs:línea 33
+__________________________
+
+Log del Error: 
+15/08/2023 18:58:48
+Error en: http://localhost:49962/WebForms/Programacion/WebUbicacion.aspx | Mensaje de Error: System.Web.HttpException (0x80004005): IListSource no contiene ningún origen de datos.
+   en System.Web.UI.DataSourceHelper.GetResolvedDataSource(Object dataSource, String dataMember)
+   en System.Web.UI.WebControls.ReadOnlyDataSource.System.Web.UI.IDataSource.GetView(String viewName)
+   en System.Web.UI.WebControls.DataBoundControl.ConnectToDataSourceView()
+   en System.Web.UI.WebControls.DataBoundControl.GetData()
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Programacion.WebUbicacion.SetUbicaciones() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebUbicacion.aspx.cs:línea 53
+   en WebApp.WebForms.Programacion.WebUbicacion.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebUbicacion.aspx.cs:línea 30 | Stack:    en System.Web.UI.DataSourceHelper.GetResolvedDataSource(Object dataSource, String dataMember)
+   en System.Web.UI.WebControls.ReadOnlyDataSource.System.Web.UI.IDataSource.GetView(String viewName)
+   en System.Web.UI.WebControls.DataBoundControl.ConnectToDataSourceView()
+   en System.Web.UI.WebControls.DataBoundControl.GetData()
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en WebApp.WebForms.Programacion.WebUbicacion.SetUbicaciones() en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebUbicacion.aspx.cs:línea 53
+   en WebApp.WebForms.Programacion.WebUbicacion.Page_Load(Object sender, EventArgs e) en C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\WebForms\Programacion\WebUbicacion.aspx.cs:línea 30
+__________________________

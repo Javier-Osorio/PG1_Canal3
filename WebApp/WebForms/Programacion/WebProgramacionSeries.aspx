@@ -3,10 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
     <link rel="stylesheet" runat="server" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" />
-    <link rel="stylesheet" runat="server" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"/>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
 
     <script = "text/javascript" >        
         function confirmarEliminar() {
@@ -87,9 +89,13 @@
 
             $('#modalBuscar').modal('hide');
         }
-        //$(function() {
-        //    $('#select2').select2({});
-        //});
+        //Initialize Select2 Elements
+        $(document).ready(function () {
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            });
+        });
+
     </script> 
     <div class="row">
         <div class="col-12">
@@ -163,7 +169,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nombre de Serie:</label>
-                        <asp:DropDownList ID="ddlNombreMaterial" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="ddlNombreMaterial" runat="server" CssClass="select2bs4">
                             
                         </asp:DropDownList>
                     </div>
@@ -194,13 +200,13 @@
                     </div>--%>
                     <div class="form-group">
                         <label for="">Casa Productora:</label>
-                        <asp:DropDownList ID="ddlCasaProductora" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="ddlCasaProductora" runat="server" CssClass="select2bs4">
                             
                         </asp:DropDownList>
                     </div>
                     <div class="form-group">
                         <label for="">Ubicacion Cinta:</label>
-                        <asp:DropDownList ID="ddlUbicacion" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="ddlUbicacion" runat="server" CssClass="select2bs4">
                             
                         </asp:DropDownList>
                     </div>
@@ -239,7 +245,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nombre de Serie:</label>
-                        <asp:DropDownList ID="ddlNombreEditar" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="ddlNombreEditar" runat="server" CssClass="select2bs4">
                             
                         </asp:DropDownList>
                     </div>
@@ -270,13 +276,13 @@
                     </div>--%>
                     <div class="form-group">
                         <label for="">Casa Productora:</label>
-                        <asp:DropDownList ID="ddlCasaEditar" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="ddlCasaEditar" runat="server" CssClass="select2bs4">
                             
                         </asp:DropDownList>
                     </div>
                     <div class="form-group">
                         <label for="">Ubicacion Cinta:</label>
-                        <asp:DropDownList ID="ddlUbicacionEditar" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="ddlUbicacionEditar" runat="server" CssClass="select2bs4">
                             
                         </asp:DropDownList>
                     </div>

@@ -21,7 +21,7 @@ namespace WebApp.Modelo_Controlador.Dao
         {
             try
             {
-                strSql = "SELECT COUNT(1) FROM USUARIOS WHERE CORREO = @correo AND CONVERT(varchar(50), DECRYPTBYPASSPHRASE('password', CONTRA)) = @contra";
+                strSql = "SELECT COUNT(1) FROM USUARIOS WHERE CORREO = @correo AND CONVERT(varchar(50), DECRYPTBYPASSPHRASE('password', CONTRA)) = @contra AND ESTADO = 1";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();

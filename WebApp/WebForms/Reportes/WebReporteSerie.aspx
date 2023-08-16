@@ -15,6 +15,32 @@
             $('#modalBuscar').modal('hide');
          }
 
+         function validarFormulario() {
+            var titulo = document.getElementById('<%=txtTituloReporte.ClientID%>').value;
+            var cambiarTitulo = document.getElementById('<%=txtTituloReporte.ClientID%>');
+            var archivo = document.getElementById('<%=txtArchivopdf.ClientID%>').value;
+            var cambiarArchivo = document.getElementById('<%=txtArchivopdf.ClientID%>');
+
+
+            if (titulo.trim() === '' && archivo.trim() === '') {
+                cambiarTitulo.classList.add('is-invalid');
+                cambiarArchivo.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            } else if (titulo.trim() != '' && archivo.trim() === '') {
+                cambiarTitulo.classList.remove('is-invalid');
+                cambiarArchivo.classList.add('is-invalid');
+                return false;
+            } else if (titulo.trim() === '' && archivo.trim() != '') {
+                cambiarTitulo.classList.add('is-invalid');
+                cambiarArchivo.classList.remove('is-invalid');
+                return false;
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+            cambiarTitulo.classList.remove('is-invalid');
+            cambiarArchivo.classList.remove('is-invalid');
+            return true;
+        }
+
          function limpiarCampos() {
             setTimeout(function () {
                 document.getElementById('<%= txtTituloReporte.ClientID %>').value = '';
@@ -56,7 +82,6 @@
                             <asp:BoundField HeaderText="Episodio Minimo" DataField="CANTIDAD_EPISODIO_MIN" ReadOnly="true" />
                             <asp:BoundField HeaderText="Episodio Maximo" DataField="CANTIDAD_EPISODIO_MAX" ReadOnly="true" />
                             <asp:BoundField HeaderText="Observaciones" DataField="OBSERVACIONES" ReadOnly="true" />
-                            <asp:BoundField HeaderText="Tipo de Serie" DataField="TIPO_SERIE" ReadOnly="true" />
                             <asp:BoundField HeaderText="Casa Productora" DataField="CASA_PRODUCTORA" ReadOnly="true" />
                             <asp:BoundField HeaderText="Ubicacion Cinta " DataField="UBICACION_CINTA" ReadOnly="true"/>
                             <asp:TemplateField HeaderText="Estado">
@@ -69,7 +94,7 @@
                     </asp:GridView>
                     </div>
                     <br />
-                    <asp:LinkButton ID="btnIcono" runat="server" CssClass="btn btn-block btn-outline-primary" OnClick="btnGenerarPDF_Click" OnClientClick="limpiarCampos();">
+                    <asp:LinkButton ID="btnIcono" runat="server" CssClass="btn btn-block btn-outline-primary" OnClick="btnGenerarPDF_Click" OnClientClick="limpiarCampos()">
                          <i class="fa fa-download"></i> Descargar PDF
                     </asp:LinkButton>
                     

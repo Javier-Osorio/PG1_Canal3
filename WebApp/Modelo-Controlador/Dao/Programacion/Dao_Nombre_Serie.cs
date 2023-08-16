@@ -20,7 +20,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT ID_NOMBRE_SERIE, NOMBRE FROM NOMBRES_SERIES";
+                strSql = "SELECT TOP 100 ID_NOMBRE_SERIE, NOMBRE FROM NOMBRES_SERIES ORDER BY ID_NOMBRE_SERIE DESC";
                 DsReturn = conexionDB.DataSQL(strSql, "nombres_series");
             }
             catch (Exception ex)
@@ -100,7 +100,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT ID_NOMBRE_SERIE, NOMBRE FROM NOMBRES_SERIES WHERE NOMBRE LIKE '%" +serie.Nombre+"%'";
+                strSql = "SELECT ID_NOMBRE_SERIE, NOMBRE FROM NOMBRES_SERIES WHERE NOMBRE LIKE '%" +serie.Nombre+ "%' ORDER BY ID_NOMBRE_SERIE DESC";
                 DsReturn = conexionDB.DataSQL(strSql, "nombres_series");
             }
             catch (Exception ex)

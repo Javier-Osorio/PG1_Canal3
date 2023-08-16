@@ -145,10 +145,6 @@ namespace WebApp.WebForms.Reportes
                         headerCell.SetBackgroundColor(DeviceRgb.BLACK);
                         headerCell.SetFontColor(DeviceRgb.WHITE);
                         table.AddHeaderCell(headerCell);
-                        headerCell = new Cell().Add(new Paragraph("Tipo de Pelicula"));
-                        headerCell.SetBackgroundColor(DeviceRgb.BLACK);
-                        headerCell.SetFontColor(DeviceRgb.WHITE);
-                        table.AddHeaderCell(headerCell);
                         headerCell = new Cell().Add(new Paragraph("Casa Productora"));
                         headerCell.SetBackgroundColor(DeviceRgb.BLACK);
                         headerCell.SetFontColor(DeviceRgb.WHITE);

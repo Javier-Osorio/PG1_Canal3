@@ -70,7 +70,7 @@ namespace WebApp.WebForms.Programacion
                 ddlCasaProductora.DataBind();
             }
             
-            if (dao_Ubicacion.GetUbicaciones())
+            if (dao_Ubicacion.GetUbicacionesOpcion())
             {
                 ddlUbicacion.DataSource = dao_Ubicacion.DsReturn.Tables["ubicacion"];
                 ddlUbicacion.DataTextField = dao_Ubicacion.DsReturn.Tables["ubicacion"].Columns["NOMBRE"].ToString();
@@ -123,7 +123,7 @@ namespace WebApp.WebForms.Programacion
                 }
             }
             
-            if (dao_Ubicacion.GetUbicaciones())
+            if (dao_Ubicacion.GetUbicacionesOpcion())
             {
                 ListItem item;
                 foreach (DataRow list in dao_Ubicacion.DsReturn.Tables["ubicacion"].Rows)

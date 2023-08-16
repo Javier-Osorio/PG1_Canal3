@@ -102,7 +102,7 @@
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="ID_UBICACION" ReadOnly="true" />
                             <asp:BoundField HeaderText="Nombre" DataField="NOMBRE" />
-                            <asp:BoundField HeaderText="Descripcion" DataField="PATH_UBICACION" />
+                            <asp:BoundField HeaderText="Descripcion" DataField="DESCRIPCION" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" CommandName="Edit" CssClass="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Editar</asp:LinkButton>
@@ -137,7 +137,7 @@
                             <input runat="server" type="text" name="" class="form-control" id="txtNombreRegister" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label for="txtUbicacionRegister">Ubicacion:</label>
+                            <label for="txtUbicacionRegister">Descripcion:</label>
                             <input runat="server" type="text" name="" class="form-control" id="txtUbicacionRegister" placeholder="" />
                         </div>
                 </div>
@@ -171,7 +171,7 @@
                             <input runat="server" type="text" name="" class="form-control" id="txtNombreEdit" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label for="txtUbicacionEdit">Ubicacion:</label>
+                            <label for="txtUbicacionEdit">Descripcion:</label>
                             <input runat="server" type="text" name="" class="form-control" id="txtUbicacionEdit" placeholder="" />
                         </div>
                         <input runat="server" id="codUbi" type="hidden"/>

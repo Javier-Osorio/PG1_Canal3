@@ -21,7 +21,22 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT ID_UBICACION, NOMBRE, PATH_UBICACION FROM UBICACIONES_CINTAS";
+                strSql = "SELECT TOP 100 ID_UBICACION, NOMBRE, DESCRIPCION FROM UBICACIONES_CINTAS ORDER BY ID_UBICACION DESC";
+                DsReturn = conexionDB.DataSQL(strSql, "ubicacion");
+            }
+            catch (Exception ex)
+            {
+                error.LogError(ex.ToString(), ex.StackTrace);
+                return false;
+            }
+            return true;
+        }
+
+        public bool GetUbicacionesOpcion()
+        {
+            try
+            {
+                strSql = "SELECT ID_UBICACION, CONCAT(NOMBRE, ' - ' ,DESCRIPCION) AS NOMBRE FROM UBICACIONES_CINTAS";
                 DsReturn = conexionDB.DataSQL(strSql, "ubicacion");
             }
             catch (Exception ex)
@@ -36,7 +51,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "INSERT INTO UBICACIONES_CINTAS (ID_UBICACION,NOMBRE,PATH_UBICACION) " +
+                strSql = "INSERT INTO UBICACIONES_CINTAS (ID_UBICACION,NOMBRE,DESCRIPCION) " +
                     "VALUES ((SELECT ISNULL(MAX(ID_UBICACION), 0) + 1 FROM UBICACIONES_CINTAS), @Unombre, @Upath)";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
@@ -59,7 +74,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "UPDATE UBICACIONES_CINTAS SET NOMBRE = @nombre,PATH_UBICACION = @path WHERE ID_UBICACION = @id";
+                strSql = "UPDATE UBICACIONES_CINTAS SET NOMBRE = @nombre, DESCRIPCION = @path WHERE ID_UBICACION = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
@@ -103,7 +118,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT ID_UBICACION, NOMBRE, PATH_UBICACION FROM UBICACIONES_CINTAS " + parametros;
+                strSql = "SELECT ID_UBICACION, NOMBRE, DESCRIPCION FROM UBICACIONES_CINTAS " + parametros + " ORDER BY ID_UBICACION DESC";
                 DsReturn = conexionDB.DataSQL(strSql, "ubicacion");
             }
             catch (Exception ex)

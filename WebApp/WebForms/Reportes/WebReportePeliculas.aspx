@@ -11,7 +11,33 @@
             document.getElementById('<%=UbicacionBusqueda.Value%>').value = '';
 
             $('#modalBuscar').modal('hide');
-         }
+        }
+
+        function validarFormulario() {
+            var titulo = document.getElementById('<%=txtTituloReporte.ClientID%>').value;
+            var cambiarTitulo = document.getElementById('<%=txtTituloReporte.ClientID%>');
+            var archivo = document.getElementById('<%=txtArchivopdf.ClientID%>').value;
+            var cambiarArchivo = document.getElementById('<%=txtArchivopdf.ClientID%>');
+
+
+            if (titulo.trim() === '' && archivo.trim() === '') {
+                cambiarTitulo.classList.add('is-invalid');
+                cambiarArchivo.classList.add('is-invalid');
+                return false; // Evita que se envíe el formulario
+            } else if (titulo.trim() != '' && archivo.trim() === '') {
+                cambiarTitulo.classList.remove('is-invalid');
+                cambiarArchivo.classList.add('is-invalid');
+                return false;
+            } else if (titulo.trim() === '' && archivo.trim() != '') {
+                cambiarTitulo.classList.add('is-invalid');
+                cambiarArchivo.classList.remove('is-invalid');
+                return false;
+            }
+            // Si todos los campos son válidos, permitir el envío del formulario
+            cambiarTitulo.classList.remove('is-invalid');
+            cambiarArchivo.classList.remove('is-invalid');
+            return true;
+        }
 
          function limpiarCampos() {
             setTimeout(function () {
@@ -52,7 +78,6 @@
                             <asp:BoundField HeaderText="Nombre" DataField="NOMBRE_PELICULA" ReadOnly="true" />
                             <asp:BoundField HeaderText="Fecha Guardada" DataField="FECHA_BACKUP" ReadOnly="true" />
                             <asp:BoundField HeaderText="Observaciones" DataField="OBSERVACIONES" ReadOnly="true" />
-                            <asp:BoundField HeaderText="Tipo de Pelicula" DataField="TIPO_PELICULA" ReadOnly="true" />
                             <asp:BoundField HeaderText="Casa Productora" DataField="CASA_PRODUCTORA" ReadOnly="true" />
                             <asp:BoundField HeaderText="Ubicacion Cinta " DataField="UBICACION_CINTA" ReadOnly="true" />
                             <asp:TemplateField HeaderText="Estado">
@@ -65,7 +90,7 @@
                     </asp:GridView>
                     </div>
                     <br />
-                    <asp:LinkButton ID="btnDescargarPDF" runat="server" CssClass="btn btn-block btn-outline-primary" OnClick="btnDescargarPDF_Click" OnClientClick="limpiarCampos();">
+                    <asp:LinkButton ID="btnDescargarPDF" runat="server" CssClass="btn btn-block btn-outline-primary" OnClick="btnDescargarPDF_Click" OnClientClick="limpiarCampos()">
                          <i class="fa fa-download"></i> Descargar PDF
                     </asp:LinkButton>
                     
