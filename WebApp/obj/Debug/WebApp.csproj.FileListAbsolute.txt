@@ -79,3 +79,4 @@ C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.csproj
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache

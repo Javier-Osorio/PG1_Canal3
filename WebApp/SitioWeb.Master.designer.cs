@@ -49,6 +49,15 @@ namespace WebApp {
         protected global::System.Web.UI.WebControls.Label lblPrueba;
         
         /// <summary>
+        /// Control ltlMenu.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlMenu;
+        
+        /// <summary>
         /// Control ContentPlaceHolder1.
         /// </summary>
         /// <remarks>

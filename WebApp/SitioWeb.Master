@@ -82,7 +82,9 @@
 
                         <!-- Menu UL en formato treeview -->
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <% GenerarMenu(); %>
+                           <%-- <% GenerarMenu(); %>--%>
+                            <%--<%= GenerarMenu() %>--%>
+                            <asp:Literal ID="ltlMenu" runat="server"></asp:Literal>
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -25,10 +26,10 @@ namespace WebApp
                 if (!IsPostBack)
                 {
                     //LlenarTreeView();
+                    ltlMenu.Text = GenerarMenu();
                     // Deshabilitando el almacenamiento en caché de la página
                     Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     Response.Cache.SetNoStore();
-
                 }
                 //else
                 //{
@@ -70,28 +71,38 @@ namespace WebApp
             }
         }
 
-        protected void GenerarMenu()
+        protected string GenerarMenu()
         {
+            StringBuilder menu = new StringBuilder();
             List<Modulos> modulos = login.obtenerModulos(int.Parse(Session["rol"].ToString()));
             foreach (var modulo in modulos.Where(m => m.ID_modulo_padre1 == m.ID_modulo1))
             {
-                Response.Write("<li class='nav - item'>");
-                Response.Write("<a href='#' class='nav-link'> " +
-                    "" +
+                //Response.Write("<li class='nav-item'>");
+                menu.Append("<li class='nav-item'>");
+                //Response.Write("<a href='#' class='nav-link'> " +
+                //    "<i class='nav-icon fas fa-circle'></i>" +
+                //    "<p> " + modulo.Nombre + "<i class='fas fa-angle-left right'></i> </p> </a>");
+                menu.Append("<a href='#' class='nav-link'> " +
+                    "<i class='nav-icon fas fa-circle'></i>" +
                     "<p> " + modulo.Nombre + "<i class='fas fa-angle-left right'></i> </p> </a>");
-                Response.Write("<ul class='nav nav - treeview'>");
-                var id_moduloPadre = modulo.ID_modulo1;
-                foreach (var moduloHijo in modulos.Where(m => m.ID_modulo_padre1 == id_moduloPadre && modulo.ID_modulo1 != id_moduloPadre))
+                //Response.Write("<ul class='nav nav-treeview'>"); 
+                menu.Append("<ul class='nav nav-treeview'>");
+
+                List < Modulos> submodulos = modulos.Where(m => m.ID_modulo_padre1 == modulo.ID_modulo1).ToList();
+                foreach (var sub in submodulos)
                 {
-                    Response.Write("<li class='nav - item'>" +
-                        "<a href = '"+ ResolveUrl(moduloHijo.Url_path) +"' class='nav-link'> " +
-                        "" +
-                        "<p>"+ moduloHijo.Nombre +"</p> " +
-                        "</a> </li>");
+                    if (sub.ID_modulo1 != modulo.ID_modulo1)
+                    {
+                        //Response.Write($"<li class='nav-item'> <a href = '{ResolveUrl(sub.Url_path)}' class='nav-link'> <i class='far fa-circle nav-icon'></i><p>{sub.Nombre}</p></a></li>");
+                        menu.Append($"<li class='nav-item'> <a href = '{ResolveUrl(sub.Url_path)}' class='nav-link'> <i class='far fa-circle nav-icon'></i><p>{sub.Nombre}</p></a></li>");
+                    }                    
                 }
-                Response.Write("</ul> </li>");
+                //Response.Write("</ul> </li>");
+                menu.Append("</ul> </li>");
             }
-        }
+
+            return menu.ToString();
+        }          
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
