@@ -40,13 +40,22 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlNombreMaterial;
         
         /// <summary>
+        /// Control fchBackup.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fchBackup;
+        
+        /// <summary>
         /// Control txtEpisodioMin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEpisodioMin;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEpisodioMin;
         
         /// <summary>
         /// Control txtEpisodioMax.
@@ -55,7 +64,7 @@ namespace WebApp.WebForms.Programacion {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEpisodioMax;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEpisodioMax;
         
         /// <summary>
         /// Control txtObservaciones.
@@ -121,13 +130,22 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlNombreEditar;
         
         /// <summary>
+        /// Control fchBackupEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fchBackupEditar;
+        
+        /// <summary>
         /// Control txtEpisodioMinEditar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEpisodioMinEditar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEpisodioMinEditar;
         
         /// <summary>
         /// Control txtEpisodioMaxEditar.
@@ -136,7 +154,7 @@ namespace WebApp.WebForms.Programacion {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEpisodioMaxEditar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEpisodioMaxEditar;
         
         /// <summary>
         /// Control txtObserEditar.

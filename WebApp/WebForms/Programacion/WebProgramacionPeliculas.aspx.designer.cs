@@ -40,6 +40,15 @@ namespace WebApp.WebForms.Programacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlNombreMaterial;
         
         /// <summary>
+        /// Control fchBackup.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fchBackup;
+        
+        /// <summary>
         /// Control txtObservaciones.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace WebApp.WebForms.Programacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlNombreEditar;
+        
+        /// <summary>
+        /// Control fchBackupEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fchBackupEditar;
         
         /// <summary>
         /// Control txtObserEditar.

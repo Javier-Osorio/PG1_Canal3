@@ -47,13 +47,6 @@ C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\roslyn\vbc.exe.conf
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\roslyn\vbc.rsp
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\roslyn\VBCSCompiler.exe
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
-C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
-C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
-C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.dll
-C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.pdb
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\BouncyCastle.Crypto.dll
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\Common.Logging.Core.dll
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\Common.Logging.dll
@@ -66,6 +59,7 @@ C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\itext.pdfa.dll
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\itext.sign.dll
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\itext.styledxmlparser.dll
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\itext.svg.dll
+C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\BouncyCastle.Crypto.xml
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\Common.Logging.pdb
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\Common.Logging.xml
@@ -80,3 +74,8 @@ C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\itext.pdfa.xml
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\itext.sign.xml
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\itext.styledxmlparser.xml
 C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\itext.svg.xml
+C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
+C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
+C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.dll
+C:\Users\JAVIER OSORIO\Documents\PG-Canal3\WebApp\WebApp\obj\Debug\WebApp.pdb

@@ -20,7 +20,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT TOP 100 ID_BACKUP_PELICULA,NP.NOMBRE AS NOMBRE_PELICULA,CASE WHEN FECHA_BACKUP IS NULL THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
+                strSql = "SELECT TOP 100 ID_BACKUP_PELICULA,NP.NOMBRE AS NOMBRE_PELICULA,CASE WHEN FECHA_BACKUP IS NULL THEN '' WHEN FECHA_BACKUP = '' THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
                     "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES,CP.NOMBRE AS CASA_PRODUCTORA,U.NOMBRE AS UBICACION_CINTA," +
                     "CASE WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 0 THEN 'EN BLOQUES' END ESTADO FROM BACKUPS_PELICULAS BP " +
                     "INNER JOIN NOMBRES_PELICULAS NP ON NP.ID_NOMBRE_PELICULA = BP.ID_NOMBRE_PELICULA " +
@@ -41,11 +41,12 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             try
             {
                 strSql = "INSERT INTO BACKUPS_PELICULAS(ID_BACKUP_PELICULA,ID_NOMBRE_PELICULA, FECHA_BACKUP, OBSERVACIONES,ID_CASA_PRODUCTORA,ID_UBICACION,ESTADO) " +
-                    "VALUES((SELECT ISNULL(MAX(ID_BACKUP_PELICULA), 0) + 1 FROM BACKUPS_PELICULAS), @nom, GETDATE(), @obse, @casa, @ubi, @estado)";
+                    "VALUES((SELECT ISNULL(MAX(ID_BACKUP_PELICULA), 0) + 1 FROM BACKUPS_PELICULAS), @nom, @fecha, @obse, @casa, @ubi, @estado)";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
                 comando.Parameters.AddWithValue("@nom", backups.ID_nombre1);
+                comando.Parameters.AddWithValue("@fecha", backups.Fecha_backup);
                 comando.Parameters.AddWithValue("@obse", backups.Observaciones);
                 //comando.Parameters.AddWithValue("@tipo", backups.ID_tipo_pelicula1);
                 comando.Parameters.AddWithValue("@casa", backups.ID_casa_productora1);
@@ -67,12 +68,13 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "UPDATE BACKUPS_PELICULAS SET ID_NOMBRE_PELICULA = @nom, OBSERVACIONES = @obse, " +
+                strSql = "UPDATE BACKUPS_PELICULAS SET ID_NOMBRE_PELICULA = @nom, FECHA_BACKUP = @fecha, OBSERVACIONES = @obse, " +
                     "ID_CASA_PRODUCTORA = @casa, ID_UBICACION = @ubi, ESTADO = @estado WHERE ID_BACKUP_PELICULA = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
                 comando.Parameters.AddWithValue("@nom", backups.ID_nombre1);
+                comando.Parameters.AddWithValue("@fecha", backups.Fecha_backup);
                 comando.Parameters.AddWithValue("@obse", backups.Observaciones);
                 //comando.Parameters.AddWithValue("@tipo", backups.ID_tipo_pelicula1);
                 comando.Parameters.AddWithValue("@casa", backups.ID_casa_productora1);
@@ -115,7 +117,8 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT ID_BACKUP_PELICULA,NP.ID_NOMBRE_PELICULA,NP.NOMBRE AS NOMBRE_PELICULA,CASE WHEN FECHA_BACKUP IS NULL THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
+                strSql = "SELECT ID_BACKUP_PELICULA,NP.ID_NOMBRE_PELICULA,NP.NOMBRE AS NOMBRE_PELICULA," +
+                    "CASE WHEN FECHA_BACKUP IS NULL THEN '' WHEN FECHA_BACKUP = '' THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 23) END as FECHA_BACKUP," +
                     "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES," +
                     "CP.ID_CASA_PRODUCTORA,CP.NOMBRE AS CASA_PRODUCTORA,U.ID_UBICACION,CONCAT(U.NOMBRE, ' - ' ,U.DESCRIPCION) AS UBICACION_CINTA,ESTADO AS ID_ESTADO,CASE WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 0 THEN 'EN BLOQUES' END ESTADO " +
                     "FROM BACKUPS_PELICULAS BP INNER JOIN NOMBRES_PELICULAS NP ON NP.ID_NOMBRE_PELICULA = BP.ID_NOMBRE_PELICULA " +
@@ -136,7 +139,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "SELECT ID_BACKUP_PELICULA,NP.NOMBRE AS NOMBRE_PELICULA,CASE WHEN FECHA_BACKUP IS NULL THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
+                strSql = "SELECT ID_BACKUP_PELICULA,NP.NOMBRE AS NOMBRE_PELICULA,CASE WHEN FECHA_BACKUP IS NULL THEN '' WHEN FECHA_BACKUP = '' THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
                     "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES,CP.NOMBRE AS CASA_PRODUCTORA,U.NOMBRE AS UBICACION_CINTA," +
                     "CASE WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 0 THEN 'EN BLOQUES' END ESTADO FROM BACKUPS_PELICULAS BP " +
                     "INNER JOIN NOMBRES_PELICULAS NP ON NP.ID_NOMBRE_PELICULA = BP.ID_NOMBRE_PELICULA " +

@@ -53,7 +53,7 @@
                     <br />
                     <br />
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistrar">Registrar</button>
-                    <div class="card-tools">
+                    <%--<div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 200px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -63,7 +63,7 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">

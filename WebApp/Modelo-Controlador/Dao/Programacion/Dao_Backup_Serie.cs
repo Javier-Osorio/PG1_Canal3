@@ -22,7 +22,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             {
                 strSql = "SELECT TOP 100 ID_BACKUP_SERIE," +
                     "NS.NOMBRE AS NOMBRE_SERIE," +
-                    "CASE WHEN FECHA_BACKUP IS NULL THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
+                    "CASE WHEN FECHA_BACKUP IS NULL THEN '' WHEN FECHA_BACKUP = '' THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
                     "CANTIDAD_EPISODIO_MIN," +
                     "CANTIDAD_EPISODIO_MAX," +
                     "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES," +
@@ -48,6 +48,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             {
                 strSql = "SELECT ID_BACKUP_SERIE,NS.ID_NOMBRE_SERIE,NS.NOMBRE AS NOMBRE_SERIE,CANTIDAD_EPISODIO_MIN,CANTIDAD_EPISODIO_MAX," +
                     "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES, " +
+                    "CASE WHEN FECHA_BACKUP IS NULL THEN '' WHEN FECHA_BACKUP = '' THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 23) END as FECHA_BACKUP," +
                     "CP.ID_CASA_PRODUCTORA,CP.NOMBRE AS CASA_PRODUCTORA,U.ID_UBICACION,CONCAT(U.NOMBRE, ' - ' ,U.DESCRIPCION) AS UBICACION_CINTA,ESTADO AS ID_ESTADO," +
                     "CASE WHEN ESTADO = 1 THEN 'COMPLETO' WHEN ESTADO = 0 THEN 'EN BLOQUES' END ESTADO FROM BACKUPS_SERIES BS " +
                     "INNER JOIN NOMBRES_SERIES NS ON NS.ID_NOMBRE_SERIE = BS.ID_NOMBRE_SERIE " +
@@ -68,11 +69,12 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             try
             {
                 strSql = "INSERT INTO BACKUPS_SERIES(ID_BACKUP_SERIE, ID_NOMBRE_SERIE,FECHA_BACKUP,CANTIDAD_EPISODIO_MIN,CANTIDAD_EPISODIO_MAX,OBSERVACIONES,ID_CASA_PRODUCTORA,ID_UBICACION,ESTADO) " +
-                    "VALUES((SELECT ISNULL(MAX(ID_BACKUP_SERIE), 0) + 1 FROM BACKUPS_SERIES), @nom, GETDATE(), @canmin, @canmax, @obse, @casa, @ubi, @estado)";
+                    "VALUES((SELECT ISNULL(MAX(ID_BACKUP_SERIE), 0) + 1 FROM BACKUPS_SERIES), @nom, @fecha, @canmin, @canmax, @obse, @casa, @ubi, @estado)";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
                 comando.Parameters.AddWithValue("@nom", backups.ID_nombre1);
+                comando.Parameters.AddWithValue("@fecha", backups.Fecha_backup);
                 comando.Parameters.AddWithValue("@canmin", backups.Cantidad_episodio_min);
                 comando.Parameters.AddWithValue("@canmax", backups.Cantidad_episodio_max);
                 comando.Parameters.AddWithValue("@obse", backups.Observaciones);
@@ -96,12 +98,13 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
         {
             try
             {
-                strSql = "UPDATE BACKUPS_SERIES SET ID_NOMBRE_SERIE = @nom, CANTIDAD_EPISODIO_MIN = @canmin, CANTIDAD_EPISODIO_MAX = @canmax, OBSERVACIONES = @obser, " +
+                strSql = "UPDATE BACKUPS_SERIES SET ID_NOMBRE_SERIE = @nom, FECHA_BACKUP = @fecha, CANTIDAD_EPISODIO_MIN = @canmin, CANTIDAD_EPISODIO_MAX = @canmax, OBSERVACIONES = @obser, " +
                     "ID_CASA_PRODUCTORA = @casa,ID_UBICACION = @ubi, ESTADO = @estado WHERE ID_BACKUP_SERIE = @id";
                 conectar = conexionDB.OpenSQL();
                 SqlCommand comando = new SqlCommand(strSql, conectar);
                 comando.Prepare();
                 comando.Parameters.AddWithValue("@nom", backup.ID_nombre1);
+                comando.Parameters.AddWithValue("@fecha", backup.Fecha_backup);
                 comando.Parameters.AddWithValue("@canmin", backup.Cantidad_episodio_min);
                 comando.Parameters.AddWithValue("@canmax", backup.Cantidad_episodio_max);
                 comando.Parameters.AddWithValue("@obser", backup.Observaciones);
@@ -149,7 +152,7 @@ namespace WebApp.Modelo_Controlador.Dao.Programacion
             {
                 strSql = "SELECT ID_BACKUP_SERIE," +
                     "NS.NOMBRE AS NOMBRE_SERIE," +
-                    "CASE WHEN FECHA_BACKUP IS NULL THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
+                    "CASE WHEN FECHA_BACKUP IS NULL THEN '' WHEN FECHA_BACKUP = '' THEN '' ELSE CONVERT(varchar, FECHA_BACKUP, 103) END as FECHA_BACKUP," +
                     "CANTIDAD_EPISODIO_MIN," +
                     "CANTIDAD_EPISODIO_MAX," +
                     "CASE WHEN OBSERVACIONES IS NULL THEN '' ELSE OBSERVACIONES END AS OBSERVACIONES," +

@@ -89,7 +89,7 @@ namespace WebApp.WebForms.Reportes
 
             if (fileName != "" && title != "")
             {
-                if (dataSet != null)
+                if (dataSet.Tables["backup_pelicula"].Rows.Count != 0)
                 {
                     // Obtener el usuario actual
                     string currentUser = Session["logueado"].ToString();
@@ -191,6 +191,16 @@ namespace WebApp.WebForms.Reportes
                         Response.End();
                     }
                 }
+                else
+                {
+                    string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 4000,
+                        title: 'No existe ningun registro para generar el reporte',
+                        icon: 'error'                        
+                    });";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+                }
             }
             else
             {
@@ -233,10 +243,24 @@ namespace WebApp.WebForms.Reportes
 
             if (dao.GetBuscar_Backup_Pelicula(parametros))
             {
-                tabla__reporte_programacion_pelicula.DataSource = dao.DsReturn.Tables["backup_pelicula"];
-                tabla__reporte_programacion_pelicula.DataBind();
-                Session["backup_p"] = dao.DsReturn;
-                LimpiarFormBuscar();
+                if (dao.DsReturn.Tables["backup_pelicula"].Rows.Count != 0)
+                {
+                    tabla__reporte_programacion_pelicula.DataSource = dao.DsReturn.Tables["backup_pelicula"];
+                    tabla__reporte_programacion_pelicula.DataBind();
+                    Session["backup_p"] = dao.DsReturn;
+                    LimpiarFormBuscar();
+                }
+                else
+                {
+                    string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'No existe los parametros ingresados de busqueda en los registros',
+                        icon: 'error'                        
+                    });";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+                }
+                
             }
             else
             {

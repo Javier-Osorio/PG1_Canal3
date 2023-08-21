@@ -115,7 +115,11 @@
                         <asp:DropDownList ID="ddlNombreMaterial" runat="server" CssClass="select2bs4">
                             
                         </asp:DropDownList>
-                    </div>                    
+                    </div>
+                    <div class="form-group">
+                        <label for="fchBackup">Fecha Backup:</label>
+                        <input runat="server" type="date" class="form-control" id="fchBackup" data-inputmask-alias="date" data-inputmask-inputformat="dd/mm/yyyy"/>
+                    </div>
                     <div class="form-group">
                         <label for="txtObservaciones">Observacion:</label>
                         <textarea runat="server" id="txtObservaciones" cols="20" rows="3" class="form-control"></textarea>
@@ -176,7 +180,11 @@
                         <asp:DropDownList ID="ddlNombreEditar" runat="server" CssClass="form-control select2bs4">
                             
                         </asp:DropDownList>
-                    </div>                   
+                    </div>
+                    <div class="form-group">
+                        <label for="fchBackupEditar">Fecha Backup:</label>
+                        <input runat="server" type="date" class="form-control" id="fchBackupEditar" data-inputmask-alias="date" data-inputmask-inputformat="dd/mm/yyyy"/>
+                    </div>
                     <div class="form-group">
                         <label for="txtObserEditar">Observacion:</label>
                         <textarea runat="server" id="txtObserEditar" cols="20" rows="3" class="form-control"></textarea>

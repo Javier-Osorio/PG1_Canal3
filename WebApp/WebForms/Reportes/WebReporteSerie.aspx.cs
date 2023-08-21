@@ -99,10 +99,24 @@ namespace WebApp.WebForms.Reportes
 
             if (dao.GetBusqueda_Backup_Serie(parametros))
             {
-                tabla_reporte_programacion_serie.DataSource = dao.DsReturn.Tables["backup_serie"];
-                tabla_reporte_programacion_serie.DataBind();
-                Session["backup_s"] = dao.DsReturn;
-                LimpiarFormBuscar();
+                if (dao.DsReturn.Tables["backup_serie"].Rows.Count != 0)
+                {
+                    tabla_reporte_programacion_serie.DataSource = dao.DsReturn.Tables["backup_serie"];
+                    tabla_reporte_programacion_serie.DataBind();
+                    Session["backup_s"] = dao.DsReturn;
+                    LimpiarFormBuscar();
+                }
+                else
+                {
+                    string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'No existe los parametros ingresados de busqueda en los registros',
+                        icon: 'error'                        
+                    });";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+                }
+                
             }
             else
             {
@@ -127,7 +141,7 @@ namespace WebApp.WebForms.Reportes
 
             if (title != "" && fileName != "")
             {
-                if (dataSet != null)
+                if (dataSet.Tables["backup_serie"].Rows.Count != 0)
                 {
                     // Obtener el usuario actual
                     string currentUser = Session["logueado"].ToString();
@@ -236,6 +250,16 @@ namespace WebApp.WebForms.Reportes
                         Response.BinaryWrite(ms.ToArray());
                         Response.End();
                     }
+                }
+                else
+                {
+                    string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 4000,
+                        title: 'No existe ningun registro para generar el reporte',
+                        icon: 'error'                        
+                    });";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
                 }
             }
             else

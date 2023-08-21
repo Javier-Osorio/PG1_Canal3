@@ -150,7 +150,7 @@
                     <br />
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistrar">Registrar</button>
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 200px;">
+                        <%--<div class="input-group input-group-sm" style="width: 200px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                             <div class="input-group-append">
@@ -158,7 +158,7 @@
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div>--%>
                     </div>
                 </div>
                 <!-- /.card-header -->

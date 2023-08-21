@@ -11,8 +11,8 @@ namespace WebApp.Modelo_Controlador.Model.Programacion
         private int ID_nombre;
         private string nombre;
         private string fecha_backup;
-        private int cantidad_episodio_min;
-        private int cantidad_episodio_max;
+        private string cantidad_episodio_min;
+        private string cantidad_episodio_max;
         private string observaciones;
         private int ID_tipo_serie;
         private string tipo_serie;
@@ -28,9 +28,9 @@ namespace WebApp.Modelo_Controlador.Model.Programacion
         public int ID_backup_serie1 { get => ID_backup_serie; set => ID_backup_serie = value; }
         public int ID_nombre1 { get => ID_nombre; set => ID_nombre = value; }
         public string Nombre { get => nombre; set => nombre = value; }
-        public int Cantidad_episodio_min { get => cantidad_episodio_min; set => cantidad_episodio_min = value; }
+        public string Cantidad_episodio_min { get => cantidad_episodio_min; set => cantidad_episodio_min = value; }
         public string Fecha_backup { get => fecha_backup; set => fecha_backup = value; }
-        public int Cantidad_episodio_max { get => cantidad_episodio_max; set => cantidad_episodio_max = value; }
+        public string Cantidad_episodio_max { get => cantidad_episodio_max; set => cantidad_episodio_max = value; }
         public string Observaciones { get => observaciones; set => observaciones = value; }
         public int ID_tipo_serie1 { get => ID_tipo_serie; set => ID_tipo_serie = value; }
         public string Tipo_serie { get => tipo_serie; set => tipo_serie = value; }

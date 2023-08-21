@@ -173,17 +173,21 @@
                             
                         </asp:DropDownList>
                     </div>
+                    <div class="form-group">
+                        <label for="fchBackup">Fecha Backup:</label>
+                        <input runat="server" type="date" class="form-control" id="fchBackup" data-inputmask-alias="date" data-inputmask-inputformat="dd/mm/yyyy"/>
+                    </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="txtEpisodioMin">Episodio Min:</label>
-                                <input runat="server" type="number" class="form-control" id="txtEpisodioMin" placeholder="" min="1" />
+                                <input runat="server" type="text" class="form-control" id="txtEpisodioMin" placeholder="" />
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="txtEpisodioMax">Episodio Max:</label>
-                                <input runat="server" type="number" class="form-control" id="txtEpisodioMax" placeholder="" min="1" />
+                                <input runat="server" type="text" class="form-control" id="txtEpisodioMax" placeholder="" />
                             </div>
                         </div>
                     </div>
@@ -249,17 +253,21 @@
                             
                         </asp:DropDownList>
                     </div>
+                    <div class="form-group">
+                        <label for="fchBackupEditar">Fecha Backup:</label>
+                        <input runat="server" type="date" class="form-control" id="fchBackupEditar" data-inputmask-alias="date" data-inputmask-inputformat="dd/mm/yyyy" />
+                    </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="txtEpiMin">Episodio Min:</label>
-                                <input runat="server" type="number" class="form-control" id="txtEpisodioMinEditar" placeholder="" min="1" />
+                                <input runat="server" type="text" class="form-control" id="txtEpisodioMinEditar" placeholder="" />
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="txtEpiMax">Episodio Max:</label>
-                                <input runat="server" type="number" class="form-control" id="txtEpisodioMaxEditar" placeholder="" min="1" />
+                                <input runat="server" type="text" class="form-control" id="txtEpisodioMaxEditar" placeholder="" />
                             </div>
                         </div>
                     </div>

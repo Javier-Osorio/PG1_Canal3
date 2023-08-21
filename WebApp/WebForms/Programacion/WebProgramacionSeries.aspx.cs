@@ -86,17 +86,21 @@ namespace WebApp.WebForms.Programacion
             txtObservaciones.Value = "";
             ddlEstado.SelectedIndex = 0;
             ddlCasaProductora.SelectedIndex = 0;
-            ddlNombreMaterial.SelectedIndex = 0;
-            
+            ddlNombreMaterial.SelectedIndex = 0;           
             ddlUbicacion.SelectedIndex = 0;
+            fchBackup.Value = "";
+
         }
-        void limpiarDDLS()
+        void limpiarEditar()
         {
             ddlEstadoEditar.Items.Clear();
             ddlCasaEditar.Items.Clear();
-            ddlNombreEditar.Items.Clear();
-            
+            ddlNombreEditar.Items.Clear();           
             ddlUbicacionEditar.Items.Clear();
+            txtEpisodioMinEditar.Value = "";
+            txtEpisodioMaxEditar.Value = "";
+            txtObserEditar.Value = "";
+            fchBackupEditar.Value = "";
         }
         void LlenarDDLSEditar()
         {
@@ -157,7 +161,7 @@ namespace WebApp.WebForms.Programacion
 
         protected void tabla_programacion_serie_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            limpiarDDLS();
+            limpiarEditar();
             GridViewRow row = tabla_programacion_serie.Rows[e.NewEditIndex];
             int id = int.Parse(row.Cells[0].Text);
             if (dao.listBackup_Serie(id))
@@ -183,6 +187,7 @@ namespace WebApp.WebForms.Programacion
                 string estado = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["ESTADO"].ToString();
                 item = new ListItem(estado, idestado);
                 ddlEstadoEditar.Items.Add(item);
+                fchBackupEditar.Value = dao.DsReturn.Tables["list_backup_serie"].Rows[0]["FECHA_BACKUP"].ToString();               
 
                 LlenarDDLSEditar();
             }
@@ -222,10 +227,10 @@ namespace WebApp.WebForms.Programacion
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             series.ID_nombre1 = int.Parse(ddlNombreMaterial.SelectedValue);
-            series.Cantidad_episodio_min = int.Parse(txtEpisodioMin.Value);
-            series.Cantidad_episodio_max = int.Parse(txtEpisodioMax.Value);
+            series.Cantidad_episodio_min = txtEpisodioMin.Value;
+            series.Cantidad_episodio_max = txtEpisodioMax.Value;
             series.Observaciones = txtObservaciones.Value;
-            
+            series.Fecha_backup = fchBackup.Value;
             series.ID_casa_productora1 = int.Parse(ddlCasaProductora.SelectedValue);
             series.ID_ubicacion1 = int.Parse(ddlUbicacion.SelectedValue);
             series.Estado = int.Parse(ddlEstado.SelectedValue);
@@ -258,10 +263,10 @@ namespace WebApp.WebForms.Programacion
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             series.ID_nombre1 = int.Parse(ddlNombreEditar.SelectedValue);
-            series.Cantidad_episodio_min = int.Parse(txtEpisodioMinEditar.Value);
-            series.Cantidad_episodio_max = int.Parse(txtEpisodioMaxEditar.Value);
+            series.Cantidad_episodio_min = txtEpisodioMinEditar.Value;
+            series.Cantidad_episodio_max = txtEpisodioMaxEditar.Value;
             series.Observaciones = txtObserEditar.Value;
-           
+            series.Fecha_backup = fchBackupEditar.Value;
             series.ID_casa_productora1 = int.Parse(ddlCasaEditar.SelectedValue);
             series.ID_ubicacion1 = int.Parse(ddlUbicacionEditar.SelectedValue);
             series.Estado = int.Parse(ddlEstadoEditar.SelectedValue);
@@ -270,7 +275,7 @@ namespace WebApp.WebForms.Programacion
             if (dao.ModificarBackupSerie(series))
             {
                 CargaBackupSerie();
-                limpiarDDLS();
+                //limpiarDDLS();
                 string script = @"Swal.fire({                        
                         showConfirmButton: false,
                         timer: 3000,
@@ -281,7 +286,7 @@ namespace WebApp.WebForms.Programacion
             }
             else
             {
-                limpiarDDLS();
+                //limpiarDDLS();
                 string script = @"Swal.fire({
                         showConfirmButton: false,
                         timer: 3000,
@@ -321,10 +326,23 @@ namespace WebApp.WebForms.Programacion
 
             if (dao.GetBusqueda_Backup_Serie(parametros))
             {
-                tabla_programacion_serie.DataSource = dao.DsReturn.Tables["backup_serie"];
-                tabla_programacion_serie.DataBind();
-                Session["backup_s"] = dao.DsReturn;
-                LimpiarFormBuscar();
+                if (dao.DsReturn.Tables["backup_serie"].Rows.Count != 0)
+                {
+                    tabla_programacion_serie.DataSource = dao.DsReturn.Tables["backup_serie"];
+                    tabla_programacion_serie.DataBind();
+                    Session["backup_s"] = dao.DsReturn;
+                    LimpiarFormBuscar();
+                }
+                else
+                {
+                    string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'No existe los parametros ingresados de busqueda en los registros',
+                        icon: 'error'                        
+                    });";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+                }               
             }
             else
             {

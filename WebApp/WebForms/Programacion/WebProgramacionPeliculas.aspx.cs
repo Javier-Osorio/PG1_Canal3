@@ -87,15 +87,16 @@ namespace WebApp.WebForms.Programacion
             ddlEstado.SelectedIndex = 0;
             ddlCasaProductora.SelectedIndex = 0;
             ddlNombreMaterial.SelectedIndex = 0;
-
+            fchBackup.Value = "";
             ddlUbicacion.SelectedIndex = 0;
         }
-        void limpiarDDLS()
+        void limpiarEditar()
         {
             ddlEstadoEditar.Items.Clear();
             ddlCasaEditar.Items.Clear();
             ddlNombreEditar.Items.Clear();
- 
+            txtObserEditar.Value = "";
+            fchBackupEditar.Value = "";
             ddlUbicacionEditar.Items.Clear();
         }
 
@@ -158,7 +159,7 @@ namespace WebApp.WebForms.Programacion
 
         protected void tabla_programacion_pelicula_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            limpiarDDLS();
+            limpiarEditar();
             GridViewRow row = tabla_programacion_pelicula.Rows[e.NewEditIndex];
             int id = int.Parse(row.Cells[0].Text);
             if (dao.listBackup_Pelicula(id))
@@ -182,6 +183,7 @@ namespace WebApp.WebForms.Programacion
                 string estado = dao.DsReturn.Tables["list_backup_pelicula"].Rows[0]["ESTADO"].ToString();
                 item = new ListItem(estado, idestado);
                 ddlEstadoEditar.Items.Add(item);
+                fchBackupEditar.Value = dao.DsReturn.Tables["list_backup_pelicula"].Rows[0]["FECHA_BACKUP"].ToString();
 
                 LlenarDDLSEditar();
             }
@@ -220,6 +222,7 @@ namespace WebApp.WebForms.Programacion
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             peliculas.ID_nombre1 = int.Parse(ddlNombreMaterial.SelectedValue);
+            peliculas.Fecha_backup = fchBackup.Value;
             peliculas.Observaciones = txtObservaciones.Value;
             peliculas.ID_casa_productora1 = int.Parse(ddlCasaProductora.SelectedValue);
             peliculas.ID_ubicacion1 = int.Parse(ddlUbicacion.SelectedValue);
@@ -253,6 +256,7 @@ namespace WebApp.WebForms.Programacion
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             peliculas.ID_nombre1 = int.Parse(ddlNombreEditar.SelectedValue);
+            peliculas.Fecha_backup = fchBackupEditar.Value;
             peliculas.Observaciones = txtObserEditar.Value;
             peliculas.ID_casa_productora1 = int.Parse(ddlCasaEditar.SelectedValue);
             peliculas.ID_ubicacion1 = int.Parse(ddlUbicacionEditar.SelectedValue);
@@ -262,7 +266,7 @@ namespace WebApp.WebForms.Programacion
             if (dao.ModificarBackupPelicula(peliculas))
             {
                 CargaBackupPelicula();
-                limpiarDDLS();
+                //limpiarDDLS();
                 string script = @"Swal.fire({                        
                         showConfirmButton: false,
                         timer: 3000,
@@ -273,7 +277,7 @@ namespace WebApp.WebForms.Programacion
             }
             else
             {
-                limpiarDDLS();
+                //limpiarDDLS();
                 string script = @"Swal.fire({
                         showConfirmButton: false,
                         timer: 3000,
@@ -313,10 +317,23 @@ namespace WebApp.WebForms.Programacion
 
             if (dao.GetBuscar_Backup_Pelicula(parametros))
             {
-                tabla_programacion_pelicula.DataSource = dao.DsReturn.Tables["backup_pelicula"];
-                tabla_programacion_pelicula.DataBind();
-                Session["backup_p"] = dao.DsReturn;
-                LimpiarFormBuscar();
+                if (dao.DsReturn.Tables["backup_pelicula"].Rows.Count != 0)
+                {
+                    tabla_programacion_pelicula.DataSource = dao.DsReturn.Tables["backup_pelicula"];
+                    tabla_programacion_pelicula.DataBind();
+                    Session["backup_p"] = dao.DsReturn;
+                    LimpiarFormBuscar();
+                }
+                else
+                {
+                    string script = @"Swal.fire({
+                        showConfirmButton: false,
+                        timer: 3000,
+                        title: 'No existe los parametros ingresados de busqueda en los registros',
+                        icon: 'error'                        
+                    });";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
+                }               
             }
             else
             {
