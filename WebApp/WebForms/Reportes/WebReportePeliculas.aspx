@@ -46,7 +46,7 @@
                 setTimeout(function () {
                     document.getElementById('<%= txtTituloReporte.ClientID %>').value = '';
                     document.getElementById('<%= txtArchivopdf.ClientID %>').value = '';
-                }, 1000);
+                }, 1500);
             }            
          }
      </script> 
@@ -54,7 +54,7 @@
         <div class="col-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Reporte Backup Series</h3>
+                    <h3 class="card-title">Reporte Backup Peliculas</h3>
 
                     <div class="card-tools">
                     </div>

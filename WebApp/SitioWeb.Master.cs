@@ -71,7 +71,7 @@ namespace WebApp
             }
         }
 
-        protected string GenerarMenu()
+        private string GenerarMenu()
         {
             StringBuilder menu = new StringBuilder();
             List<Modulos> modulos = login.obtenerModulos(int.Parse(Session["rol"].ToString()));
